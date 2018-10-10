@@ -25,6 +25,7 @@ public class MonJeu implements Jeu {
 	 */
 	public MonJeu() {
 		this.pj=new Hero();
+		this.plateau=new Plateau(15, 15);
 	}
 
 	/**

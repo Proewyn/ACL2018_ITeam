@@ -16,8 +16,8 @@ public class Hero {
 	/**
 	 * taille de l'environnement
 	 */
-	final static int LIMIT_X = 20;
-	final static int LIMIT_Y = 20;
+	final static int LIMIT_X = 15;
+	final static int LIMIT_Y = 15;
 
 	/**
 	 * constructeur vide
@@ -49,13 +49,13 @@ public class Hero {
 			if (this.x >LIMIT_X)
 				this.x = LIMIT_X;
 		}
-		if(c.bas){
-			this.y ++;
+		if(c.haut){
+			this.y --;
 			if(this.y<0)
 				this.y = 0;
 		}
-		if(c.haut){
-			this.y --;
+		if(c.bas){
+			this.y ++;
 			if(this.y > LIMIT_Y)
 				this.y = LIMIT_Y;
 		}
