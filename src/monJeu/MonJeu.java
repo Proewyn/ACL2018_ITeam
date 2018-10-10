@@ -10,6 +10,10 @@ import moteurJeu.Jeu;
  */
 public class MonJeu implements Jeu {
 
+	public static final int HAUT 	= 800;
+	public static final int DROITE 	= 600;
+	public static final int BAS 	= 200;
+	public static final int GAUCHE 	= 400;
 	/**
 	 * le personnage du jeu
 	 */
