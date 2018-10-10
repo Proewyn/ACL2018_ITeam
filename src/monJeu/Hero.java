@@ -14,17 +14,11 @@ public class Hero {
 	public int y;
 
 	/**
-	 * taille de l'environnement
-	 */
-	final static int LIMIT_X = 15;
-	final static int LIMIT_Y = 15;
-
-	/**
 	 * constructeur vide
 	 */
 	public Hero() {
-		this.x = LIMIT_X / 2;
-		this.y = LIMIT_Y / 2;
+		this.x = 0;
+		this.y = 0;
 		
 	}
 
