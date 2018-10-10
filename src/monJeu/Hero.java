@@ -66,4 +66,14 @@ public class Hero {
 		return ("(" + this.x+","+this.y+")");
 	}
 
+	public int getx() {
+		// TODO Auto-generated method stub
+		return x;
+	}
+
+	public int gety() {
+		// TODO Auto-generated method stub
+		return y;
+	}
+
 }

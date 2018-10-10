@@ -6,11 +6,17 @@ public class Sol implements Case{
 	private int id = SOL;
 	
 	public boolean isTraversable() {
-		return false;
+		return true;
 	}
 
 	public int getId() {
 		return 0;
+	}
+
+	@Override
+	public boolean isMur() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

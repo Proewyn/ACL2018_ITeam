@@ -23,6 +23,8 @@ public class Plateau {
 			}
 			laby[i][tailley-1]=new Mur();
 		}
+		
+		laby[5][5]=new Mur();
 	}
 
 	public Case[][] getLaby(){
@@ -31,6 +33,21 @@ public class Plateau {
 	
 	public boolean collision(int x, int y) {
 		return !laby[x][y].isTraversable();
+	}
+
+	public int taillePlateaux() {
+		// TODO Auto-generated method stub
+		return laby.length;
+	}
+
+	public int taillePlateauy() {
+		// TODO Auto-generated method stub
+		return laby[0].length;
+	}
+
+	public boolean isMur(int i, int j) {
+		// TODO Auto-generated method stub
+		return laby[i][j].isMur();
 	}
 	
 }

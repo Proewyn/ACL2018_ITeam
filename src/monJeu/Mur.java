@@ -13,6 +13,12 @@ public class Mur implements Case{
 	public int getId() {
 		return 0;
 	}
+
+	@Override
+	public boolean isMur() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 	
 	
 }

@@ -25,7 +25,7 @@ public class MonJeu implements Jeu {
 	 */
 	public MonJeu() {
 		this.pj=new Hero();
-		this.plateau=new Plateau(15, 15);
+		this.plateau=new Plateau(16, 16);
 	}
 
 	/**
@@ -42,7 +42,23 @@ public class MonJeu implements Jeu {
 	 *            chaine qui donne ordre
 	 */
 	public void evoluer(Commande commande) {
-		this.getPj().deplacer(commande);
+		int x= pj.getx();
+		int y= pj.gety();
+		if (commande.gauche){
+			x--;
+		}
+		if (commande.droite){
+			x++;
+		}
+		if(commande.haut){
+			y--;
+		}
+		if(commande.bas){
+			y++;
+		}
+		if (!plateau.collision(x, y)){
+			this.getPj().deplacer(commande);
+		}
 
 	}
 
@@ -59,6 +75,11 @@ public class MonJeu implements Jeu {
 	 */
 	public Hero getPj() {
 		return pj;
+	}
+
+	public Plateau getPlateau() {
+		// TODO Auto-generated method stub
+		return plateau;
 	}
 
 }

@@ -62,7 +62,15 @@ public class DessinMonJeu implements DessinJeu {
 		// no sait que c'est un jeuTest
 		MonJeu j = (MonJeu) jeu;
 		Hero pj = j.getPj();
+		Plateau p= j.getPlateau();
 		this.dessinerObjet("PJ", pj.x, pj.y, im);
+		for (int i=0;i<p.taillePlateaux();i++){
+			for (int h=0;h<p.taillePlateauy();h++){
+				if (p.isMur(i,h)){
+					this.dessinerObjet("MUR", i, h, im);
+				}
+			}
+		}
 	}
 
 }
