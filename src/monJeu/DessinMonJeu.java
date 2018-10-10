@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+
 import moteurJeu.DessinJeu;
 
 /**
@@ -25,7 +26,29 @@ public class DessinMonJeu implements DessinJeu {
 
 	/**
 	 * appelle constructeur parent
-	 * 
+	 * package monJeu;
+
+public class Plateau {
+
+	private Case[][] laby = {
+				{new Mur(), new Mur(), new Mur(), new Mur(), new Mur()},
+				{new Mur(), new Sol(), new Sol(), new Sol(), new Mur()},
+				{new Mur(), new Sol(), new Sol(), new Sol(), new Mur()},
+				{new Mur(), new Sol(), new Sol(), new Sol(), new Mur()},
+				{new Mur(), new Mur(), new Mur(), new Mur(), new Mur()}
+			};
+	
+	
+	public Case[][] getLaby(){
+		return laby;
+	}
+	
+	public boolean collision(int x, int y) {
+		return !laby[x][y].isTraversable();
+	}
+	
+}
+
 	 * @param j
 	 *            le jeutest a afficher
 	 */
