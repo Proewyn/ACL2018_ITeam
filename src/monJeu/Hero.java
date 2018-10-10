@@ -16,8 +16,8 @@ public class Hero {
 	/**
 	 * taille de l'environnement
 	 */
-	final static int LIMIT_X = 100;
-	final static int LIMIT_Y = 100;
+	final static int LIMIT_X = 20;
+	final static int LIMIT_Y = 20;
 
 	/**
 	 * constructeur vide
