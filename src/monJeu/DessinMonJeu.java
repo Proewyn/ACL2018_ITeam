@@ -16,7 +16,7 @@ public class DessinMonJeu implements DessinJeu {
 	/**
 	 * constante pour gerer la taille des cases
 	 */
-	private static int TAILLE_CASE = 25;
+	private static int TAILLE_CASE = 5;
 
 	/**
 	 * lien vers le jeu a afficher
@@ -61,7 +61,7 @@ public class DessinMonJeu implements DessinJeu {
 	public void dessiner(BufferedImage im) {
 		// no sait que c'est un jeuTest
 		MonJeu j = (MonJeu) jeu;
-		Personnage pj = j.getPj();
+		Hero pj = j.getPj();
 		this.dessinerObjet("PJ", pj.x, pj.y, im);
 	}
 

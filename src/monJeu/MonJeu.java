@@ -13,13 +13,18 @@ public class MonJeu implements Jeu {
 	/**
 	 * le personnage du jeu
 	 */
-	private Personnage pj;
+	private Hero pj;
+	
+	/**
+	 * le plateau de jeux
+	 */
+	private Plateau plateau;
 
 	/**
 	 * constructeur de jeu avec un Personnage
 	 */
 	public MonJeu() {
-		this.pj=new Personnage();
+		this.pj=new Hero();
 	}
 
 	/**
@@ -51,7 +56,7 @@ public class MonJeu implements Jeu {
 	 * 
 	 * @return personnage du jeu
 	 */
-	public Personnage getPj() {
+	public Hero getPj() {
 		return pj;
 	}
 
