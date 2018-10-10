@@ -50,12 +50,13 @@ public class Hero {
 				this.x = LIMIT_X;
 		}
 		if(c.haut){
-			this.y --;
+
+			this.y--;
 			if(this.y<0)
 				this.y = 0;
 		}
 		if(c.bas){
-			this.y ++;
+			this.y++;
 			if(this.y > LIMIT_Y)
 				this.y = LIMIT_Y;
 		}
