@@ -3,14 +3,15 @@ package monJeu;
 public class Sol implements Case{
 
 	private boolean traversable = true;
-	private int id = SOL;
+	private int id = Bibliotheque.SOL;
 	
 	public boolean isTraversable() {
-		return false;
+		return true;
 	}
 
 	public int getId() {
-		return 0;
+		return id;
 	}
-	
+
+
 }

@@ -7,24 +7,19 @@ import moteurJeu.Commande;
  */
 public class Hero {
 
+	
 	/**
 	 * position en X et y
 	 */
 	public int x;
 	public int y;
-
-	/**
-	 * taille de l'environnement
-	 */
-	final static int LIMIT_X = 15;
-	final static int LIMIT_Y = 15;
-
+	
 	/**
 	 * constructeur vide
 	 */
 	public Hero() {
-		this.x = LIMIT_X / 2;
-		this.y = LIMIT_Y / 2;
+		this.x = 1;
+		this.y = 1;
 		
 	}
 
@@ -46,23 +41,32 @@ public class Hero {
 		if (c.droite)
 		{
 			this.x++;
-			if (this.x >LIMIT_X)
-				this.x = LIMIT_X;
+			
 		}
-		if(c.bas){
-			this.y ++;
+		if(c.haut){
+
+			this.y--;
 			if(this.y<0)
 				this.y = 0;
 		}
-		if(c.haut){
-			this.y --;
-			if(this.y > LIMIT_Y)
-				this.y = LIMIT_Y;
+		if(c.bas){
+			this.y++;
+			
 		}
 	}
 
 	public String toString() {
 		return ("(" + this.x+","+this.y+")");
+	}
+
+	public int getx() {
+		// TODO Auto-generated method stub
+		return x;
+	}
+
+	public int gety() {
+		// TODO Auto-generated method stub
+		return y;
 	}
 
 }
