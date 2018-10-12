@@ -23,8 +23,10 @@ public class Plateau {
 			}
 			laby[i][tailley-1]=new Mur();
 		}
-		
+		laby[4][6]=new Mur();
 		laby[5][5]=new Mur();
+		laby[4][4]=new Mur();
+		laby[3][5]=new Mur();
 	}
 
 	public Case[][] getLaby(){
@@ -47,7 +49,7 @@ public class Plateau {
 
 	public boolean isMur(int i, int j) {
 		// TODO Auto-generated method stub
-		return laby[i][j].isMur();
+		return laby[i][j].getId() == bibliotheque.MUR;
 	}
 	
 }

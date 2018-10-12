@@ -47,6 +47,10 @@ public class Controleur implements KeyListener {
 	 */
 	public void keyPressed(KeyEvent e) {
 
+		commandeEnCours.gauche = false;
+		commandeEnCours.droite = false;
+		commandeEnCours.haut   = false;
+		commandeEnCours.bas    = false;
 		switch (e.getKeyCode()) {
 		// si on appuie sur 'q',commande joueur est gauche
 		case KeyEvent.VK_Q:	
@@ -80,7 +84,7 @@ public class Controleur implements KeyListener {
 	/**
 	 * met a jour les commandes quand le joueur relache une touche
 	 */
-	public void keyReleased(KeyEvent e) {
+	public void keyReleased(KeyEvent e) {		
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_Q:		
 		case KeyEvent.VK_LEFT:
