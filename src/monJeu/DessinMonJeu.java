@@ -35,7 +35,7 @@ public class DessinMonJeu implements DessinJeu {
 
 	/**
 	 * dessiner un objet consiste a dessiner sur l'image suivante methode
-	 * redefinie de Afficheur
+	 * redefinie de Affiheur
 	 */
 	private void dessinerObjet(String s, int x, int y, BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
