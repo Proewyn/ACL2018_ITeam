@@ -75,7 +75,7 @@ public class DessinMonJeu implements DessinJeu {
 			}
 		}
 
-		this.dessinerObjet(Bibliotheque.JOUEUR, pj.x, pj.y, im);
+		this.dessinerObjet(Bibliotheque.JOUEUR, pj.getX(), pj.getY(), im);
 	}
 
 }

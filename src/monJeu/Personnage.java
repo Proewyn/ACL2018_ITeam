@@ -1,12 +1,14 @@
 package monJeu;
 
-import moteurJeu.Commande;
+
 
 public interface Personnage {
 	
-	public void deplacer(Commande c);
+	public void deplacer(int x2, int y2);
 	public int getX();
 	public int getY(); 
+	
+	
 	
 
 }

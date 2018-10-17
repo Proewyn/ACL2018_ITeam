@@ -20,12 +20,14 @@ public class MonJeu implements Jeu {
 	 */
 	private Plateau plateau;
 
+	private Monstre zombi;
 	/**
 	 * constructeur de jeu avec un Personnage
 	 */
 	public MonJeu() {
-		this.pj=new Hero();
 		this.plateau=new Plateau(16, 16);
+		this.pj=new Hero();		
+		this.zombi = new Zombi(10,12);
 	}
 
 	/**
@@ -57,7 +59,7 @@ public class MonJeu implements Jeu {
 			y++;
 		}
 		if (!plateau.collision(x, y)){
-			this.getPj().deplacer(commande);
+			this.getPj().deplacer(x,y);
 		}
 
 	}
