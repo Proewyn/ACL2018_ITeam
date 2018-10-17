@@ -16,7 +16,7 @@ public class DessinMonJeu implements DessinJeu {
 	/**
 	 * constante pour gerer la taille des cases
 	 */
-	private static int TAILLE_CASE = 25;
+	private static int TAILLE_CASE = 5;
 
 	/**
 	 * lien vers le jeu a afficher
@@ -65,13 +65,28 @@ public class DessinMonJeu implements DessinJeu {
 	 */
 	public void dessiner(BufferedImage im) {
 		// no sait que c'est un jeuTest
+		int vision,x,y;
+		Graphics2D crayon = (Graphics2D) im.getGraphics();
+		crayon.setColor(Color.black);
+		crayon.fillRect(0, 0, im.getHeight(),
+				im.getWidth());
 		MonJeu j      = (MonJeu) jeu;
 		Hero pj       = j.getPj();
+		vision = pj.getVision();
+		x=pj.getX();
+		y=pj.getY();
 		Plateau p	  = j.getPlateau();
 		Case[][] laby = p.getLaby(); 
 		for (int i=0;i<p.taillePlateaux();i++){
 			for (int h=0;h<p.taillePlateauy();h++){
-				this.dessinerObjet(laby[i][h].getId(), i, h, im);
+				if (Math.sqrt((x-i)*(x-i)+(y-h)*(y-h))<= vision ){
+					this.dessinerObjet(laby[i][h].getId(), i, h, im);
+				}else{
+					if(laby[i][h].isVisible()){
+						this.dessinerObjet(laby[i][h].getId(), i, h, im);
+					}
+				}
+				
 			}
 		}
 
