@@ -42,8 +42,8 @@ public class MonJeu implements Jeu {
 	 *            chaine qui donne ordre
 	 */
 	public void evoluer(Commande commande) {
-		int x= pj.getx();
-		int y= pj.gety();
+		int x= pj.getX();
+		int y= pj.getY();
 		if (commande.gauche){
 			x--;
 		}

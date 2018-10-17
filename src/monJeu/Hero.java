@@ -5,7 +5,7 @@ import moteurJeu.Commande;
 /**
  * la classe correspondant au Personnage
  */
-public class Hero {
+public class Hero implements Personnage {
 
 	
 	/**
@@ -21,6 +21,10 @@ public class Hero {
 		this.x = 1;
 		this.y = 1;
 		
+	}
+	public Hero(int x , int y){
+		this.x = x;
+		this.y = y;
 	}
 
 	/**
@@ -59,13 +63,11 @@ public class Hero {
 		return ("(" + this.x+","+this.y+")");
 	}
 
-	public int getx() {
-		// TODO Auto-generated method stub
+	public int getX() {
 		return x;
 	}
 
-	public int gety() {
-		// TODO Auto-generated method stub
+	public int getY() {
 		return y;
 	}
 
