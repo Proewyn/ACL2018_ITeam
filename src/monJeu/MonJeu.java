@@ -79,6 +79,10 @@ public class MonJeu implements Jeu {
 	public Hero getPj() {
 		return pj;
 	}
+	
+	public Monstre getZombi(){
+		return this.zombi;
+	}
 
 	public Plateau getPlateau() {
 		// TODO Auto-generated method stub

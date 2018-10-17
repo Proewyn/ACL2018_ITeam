@@ -55,12 +55,20 @@ public class DessinMonJeu implements DessinJeu {
 			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
 					TAILLE_CASE);
 			break;
+		case Bibliotheque.ZOMBI:
+			crayon.setColor(Color.pink);
+			crayon.fillOval(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
+					TAILLE_CASE);
+			break;
 		default:
 			throw new AssertionError("objet inexistant");
 		}
 	}
 
-	/**
+	/**crayon.setColor(Color.blue);
+			crayon.fillOval(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
+					TAILLE_CASE);
+			break;
 	 * methode dessiner redefinie de Afficheur retourne une image du jeu
 	 */
 	public void dessiner(BufferedImage im) {
@@ -72,6 +80,7 @@ public class DessinMonJeu implements DessinJeu {
 				im.getWidth());
 		MonJeu j      = (MonJeu) jeu;
 		Hero pj       = j.getPj();
+		Monstre z = j.getZombi();
 		vision = pj.getVision();
 		x=pj.getX();
 		y=pj.getY();
@@ -91,6 +100,12 @@ public class DessinMonJeu implements DessinJeu {
 		}
 
 		this.dessinerObjet(Bibliotheque.JOUEUR, pj.getX(), pj.getY(), im);
+		
+		if (Math.sqrt((x-z.getX())*(x-z.getX())+(y-z.getY())*(y-z.getY()))<= vision ){
+			//pour qu'il ne soit visible que dans le champ de vision
+			this.dessinerObjet(Bibliotheque.ZOMBI, z.getX(), z.getY(), im);			
+		}
+		
 	}
 
 }
