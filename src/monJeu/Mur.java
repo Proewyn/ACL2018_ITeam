@@ -3,7 +3,7 @@ package monJeu;
 public class Mur implements Case{
 	
 	private boolean traversable = false;
-	private int id = MUR;
+	private int id = Bibliotheque.MUR;
 	
 	
 	public boolean isTraversable() {
@@ -11,14 +11,8 @@ public class Mur implements Case{
 	}
 
 	public int getId() {
-		return 0;
+		return id;
 	}
 
-	@Override
-	public boolean isMur() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	
 	
 }

@@ -35,18 +35,23 @@ public class DessinMonJeu implements DessinJeu {
 
 	/**
 	 * dessiner un objet consiste a dessiner sur l'image suivante methode
-	 * redefinie de Afficheur
+	 * redefinie de Affiheur
 	 */
-	private void dessinerObjet(String s, int x, int y, BufferedImage im) {
+	private void dessinerObjet(int s, int x, int y, BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		switch (s) {
-		case "PJ":
+		case Bibliotheque.JOUEUR:
 			crayon.setColor(Color.blue);
 			crayon.fillOval(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
 					TAILLE_CASE);
 			break;
-		case "MUR":
+		case Bibliotheque.MUR:
 			crayon.setColor(Color.gray);
+			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
+					TAILLE_CASE);
+			break;
+		case Bibliotheque.SOL:
+			crayon.setColor(Color.green);
 			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
 					TAILLE_CASE);
 			break;
@@ -60,17 +65,17 @@ public class DessinMonJeu implements DessinJeu {
 	 */
 	public void dessiner(BufferedImage im) {
 		// no sait que c'est un jeuTest
-		MonJeu j = (MonJeu) jeu;
-		Hero pj = j.getPj();
-		Plateau p= j.getPlateau();
-		this.dessinerObjet("PJ", pj.x, pj.y, im);
+		MonJeu j      = (MonJeu) jeu;
+		Hero pj       = j.getPj();
+		Plateau p	  = j.getPlateau();
+		Case[][] laby = p.getLaby(); 
 		for (int i=0;i<p.taillePlateaux();i++){
 			for (int h=0;h<p.taillePlateauy();h++){
-				if (p.isMur(i,h)){
-					this.dessinerObjet("MUR", i, h, im);
-				}
+				this.dessinerObjet(laby[i][h].getId(), i, h, im);
 			}
 		}
+
+		this.dessinerObjet(Bibliotheque.JOUEUR, pj.x, pj.y, im);
 	}
 
 }
