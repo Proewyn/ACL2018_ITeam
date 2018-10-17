@@ -5,9 +5,11 @@ import moteurJeu.Commande;
 /**
  * la classe correspondant au Personnage
  */
-public class Hero {
+public class Hero implements Personnage {
 
+	private int vision; 
 	
+
 	/**
 	 * position en X et y
 	 */
@@ -20,7 +22,11 @@ public class Hero {
 	public Hero() {
 		this.x = 1;
 		this.y = 1;
-		
+		vision = 10;
+	}
+	public Hero(int x , int y){
+		this.x = x;
+		this.y = y;
 	}
 
 	/**
@@ -59,14 +65,18 @@ public class Hero {
 		return ("(" + this.x+","+this.y+")");
 	}
 
-	public int getx() {
-		// TODO Auto-generated method stub
+	public int getX() {
 		return x;
 	}
 
-	public int gety() {
-		// TODO Auto-generated method stub
+	public int getY() {
 		return y;
+	}
+	public int getVision() {
+		return vision;
+	}
+	public void setVision(int vision) {
+		this.vision = vision;
 	}
 
 }

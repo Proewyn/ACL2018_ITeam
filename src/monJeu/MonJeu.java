@@ -25,7 +25,7 @@ public class MonJeu implements Jeu {
 	 */
 	public MonJeu() {
 		this.pj=new Hero();
-		this.plateau=new Plateau(16, 16);
+		this.plateau=new Plateau(80, 80);
 	}
 
 	/**
@@ -42,8 +42,8 @@ public class MonJeu implements Jeu {
 	 *            chaine qui donne ordre
 	 */
 	public void evoluer(Commande commande) {
-		int x= pj.getx();
-		int y= pj.gety();
+		int x= pj.getX();
+		int y= pj.getY();
 		if (commande.gauche){
 			x--;
 		}
