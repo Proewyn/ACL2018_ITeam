@@ -7,7 +7,9 @@ import moteurJeu.Commande;
  */
 public class Hero implements Personnage {
 
+	private int vision; 
 	
+
 	/**
 	 * position en X et y
 	 */
@@ -20,7 +22,7 @@ public class Hero implements Personnage {
 	public Hero() {
 		this.x = 1;
 		this.y = 1;
-		
+		vision = 10;
 	}
 	public Hero(int x , int y){
 		this.x = x;
@@ -38,6 +40,7 @@ public class Hero implements Personnage {
 	public int getY() {
 		return y;
 	}
+
 	
 	private void setX(int x){
 		this.x = x;
@@ -45,10 +48,18 @@ public class Hero implements Personnage {
 	private void setY(int y){
 		this.y = y;
 	}
+	
 	public void deplacer(int x2, int y2) {
 		this.setX(x2);
 		this.setY(y2);
 		
+	}
+		
+	public int getVision() {
+		return vision;
+	}
+	public void setVision(int vision) {
+		this.vision = vision;
 	}
 
 }

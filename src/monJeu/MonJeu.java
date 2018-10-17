@@ -25,9 +25,10 @@ public class MonJeu implements Jeu {
 	 * constructeur de jeu avec un Personnage
 	 */
 	public MonJeu() {
-		this.plateau=new Plateau(16, 16);
+
 		this.pj=new Hero();		
 		this.zombi = new Zombi(10,12);
+		this.plateau=new Plateau(80, 80);
 	}
 
 	/**
