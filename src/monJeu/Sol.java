@@ -3,20 +3,15 @@ package monJeu;
 public class Sol implements Case{
 
 	private boolean traversable = true;
-	private int id = SOL;
+	private int id = Bibliotheque.SOL;
 	
 	public boolean isTraversable() {
 		return true;
 	}
 
 	public int getId() {
-		return 0;
+		return id;
 	}
 
-	@Override
-	public boolean isMur() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
+
 }
