@@ -1,5 +1,7 @@
 package moteurJeu;
 
+import monJeu.MonJeu;
+
 
 /**
  * classe MoteurGraphique represente un moteur de jeu generique.
@@ -11,7 +13,7 @@ public class MoteurGraphique {
 	/**
 	 * le jeu a executer
 	 */
-	private Jeu jeu;
+	private MonJeu jeu;
 
 	/**
 	 * l'interface graphique
@@ -31,7 +33,7 @@ public class MoteurGraphique {
 	 * @param pAffiche
 	 *            afficheur a utiliser
 	 */
-	public MoteurGraphique(Jeu pJeu, DessinJeu pAffiche) {
+	public MoteurGraphique(MonJeu pJeu, DessinJeu pAffiche) {
 		// creation du jeu
 		this.jeu = pJeu;
 		this.dessin = pAffiche;
@@ -43,7 +45,7 @@ public class MoteurGraphique {
 	public void lancerJeu(int width, int height) throws InterruptedException {
 
 		// creation de l'interface graphique
-		this.gui = new InterfaceGraphique(this.dessin,width,height);
+		this.gui = new InterfaceGraphique(this.dessin,width,height, jeu);
 		Controleur controle = this.gui.getControleur();
 
 		// boucle de jeu

@@ -1,6 +1,12 @@
 package moteurJeu;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.JFrame;
+
+import monJeu.MonJeu;
+import moteurJeu.Menu;
 
 
 /**
@@ -8,7 +14,7 @@ import javax.swing.JFrame;
  * @author Graou
  *
  */
-public class InterfaceGraphique  {
+public class InterfaceGraphique implements Observer {
 
 	/**
 	 * le Panel lie a la JFrame
@@ -28,15 +34,21 @@ public class InterfaceGraphique  {
 	 * @param afficheurUtil l'afficheur a utiliser dans le moteur
 	 * 
 	 */
-	public InterfaceGraphique(DessinJeu afficheurUtil,int x,int y)
+	public InterfaceGraphique(DessinJeu afficheurUtil,int x,int y, MonJeu mj)
 	{
+		mj.addObserver(this);
+		
 		//creation JFrame
-		JFrame f=new JFrame();
+		JFrame f = new JFrame();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		// creation panel
+		//creation panel
 		this.panel=new PanelDessin(x, y,afficheurUtil);
 		f.setContentPane(this.panel);
+		
+		//creation menu
+		Menu menuPrincipal = new Menu(mj);
+		f.setJMenuBar(menuPrincipal);
 		
 		//ajout du controleur
 		Controleur controlleurGraph=new Controleur();
@@ -64,6 +76,13 @@ public class InterfaceGraphique  {
 	 */
 	public void dessiner() {
 		this.panel.dessinerJeu();	
+	}
+
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

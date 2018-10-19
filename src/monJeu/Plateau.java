@@ -1,5 +1,13 @@
 package monJeu;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+import javax.swing.JFileChooser;
+
 import Generateur.Generateur;
 
 public class Plateau {
@@ -65,6 +73,29 @@ public class Plateau {
 				System.out.print(laby[i][j].getId()+" ");
 			}
 			System.out.println();
+		}
+	}
+	
+	public void initLabyFichier() throws FileNotFoundException {
+		JFileChooser jf = new JFileChooser();
+		int returnVal = jf.showOpenDialog(jf);
+		if (returnVal == JFileChooser.APPROVE_OPTION) {
+			FileReader flot;
+			BufferedReader flotFiltre;
+			File file = jf.getSelectedFile();
+			flot = new FileReader(file.getAbsolutePath());
+			flotFiltre = new BufferedReader(flot);
+			Scanner sc = new Scanner(flotFiltre);
+			while (sc.hasNext()){
+				String s = sc.next();
+				if (s.charAt(0)=='N') {
+					
+				}
+				if (s.charAt(0)=='R') {
+
+				}
+			}
+			sc.close();
 		}
 	}
 	

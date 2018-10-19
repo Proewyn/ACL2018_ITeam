@@ -1,5 +1,8 @@
 package monJeu;
 
+import java.io.FileNotFoundException;
+import java.util.Observable;
+
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
 
@@ -8,7 +11,7 @@ import moteurJeu.Jeu;
  * personnage
  *
  */
-public class MonJeu implements Jeu {
+public class MonJeu extends Observable implements Jeu {
 
 	/**
 	 * le personnage du jeu
@@ -86,6 +89,11 @@ public class MonJeu implements Jeu {
 	public Plateau getPlateau() {
 		// TODO Auto-generated method stub
 		return plateau;
+	}
+
+	public void initLabyFichier() throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		plateau.initLabyFichier();
 	}
 
 }
