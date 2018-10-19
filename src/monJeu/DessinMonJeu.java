@@ -3,6 +3,7 @@ package monJeu;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import moteurJeu.DessinJeu;
 
@@ -59,7 +60,7 @@ public class DessinMonJeu implements DessinJeu {
 			crayon.setColor(Color.magenta);
 			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
 		case Bibliotheque.ZOMBI:
-			crayon.setColor(Color.pink);
+			crayon.setColor(Color.YELLOW);
 			crayon.fillOval(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
 					TAILLE_CASE);
 			break;
@@ -83,7 +84,7 @@ public class DessinMonJeu implements DessinJeu {
 				im.getWidth());
 		MonJeu j      = (MonJeu) jeu;
 		Hero pj       = j.getPj();
-		Monstre z = j.getZombi();
+		ArrayList<Monstre> monstres = j.getMonstre();
 		vision = pj.getVision();
 		x=pj.getX();
 		y=pj.getY();
@@ -104,9 +105,11 @@ public class DessinMonJeu implements DessinJeu {
 
 		this.dessinerObjet(Bibliotheque.JOUEUR, pj.getX(), pj.getY(), im);
 		
-		if (Math.sqrt((x-z.getX())*(x-z.getX())+(y-z.getY())*(y-z.getY()))<= vision ){
-			//pour qu'il ne soit visible que dans le champ de vision
-			this.dessinerObjet(Bibliotheque.ZOMBI, z.getX(), z.getY(), im);			
+		for (Monstre m : monstres) { //pour dessiner la liste de monstre
+			if (Math.sqrt((x-m.getX())*(x-m.getX())+(y-m.getY())*(y-m.getY()))<= vision ){
+				//pour qu'il ne soit visible que dans le champ de vision
+				this.dessinerObjet(Bibliotheque.ZOMBI, m.getX(), m.getY(), im);			
+			}
 		}
 		
 	}

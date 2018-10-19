@@ -15,14 +15,11 @@ public class Plateau {
 	private Case[][] laby;
 	
 	public Plateau (int taillex,int tailley){
-		initLaby(taillex,tailley);
+		initLabyGenerateur(taillex,tailley);
 	}
 	
 	private void initLaby(int taillex,int tailley) {
-		
-		Generateur gen = new Generateur(taillex, tailley);
-		laby = gen.getLab();
-		/*
+				
 		laby = new Case[taillex][tailley];
 		for (int i=0;i<tailley;i++){
 			laby[0][i]=new Mur(true);
@@ -39,8 +36,9 @@ public class Plateau {
 		laby[4][6]=new Mur();
 		laby[5][5]=new Mur();
 		laby[4][4]=new Mur();
-		laby[3][5]=new Mur();*/
+		laby[3][5]=new Mur();
 	}
+	
 
 	public Case[][] getLaby(){
 		return laby;
@@ -97,6 +95,11 @@ public class Plateau {
 			}
 			sc.close();
 		}
+	}
+	
+	public void initLabyGenerateur(int taillex,int tailley) {
+		Generateur gen = new Generateur(taillex, tailley);
+		laby = gen.getLab();
 	}
 	
 }

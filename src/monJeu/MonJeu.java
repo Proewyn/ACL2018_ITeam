@@ -1,6 +1,8 @@
 package monJeu;
 
+import java.awt.List;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Observable;
 
 import moteurJeu.Commande;
@@ -23,14 +25,18 @@ public class MonJeu extends Observable implements Jeu {
 	 */
 	private Plateau plateau;
 
-	private Monstre zombi;
+	//private Monstre zombi;
+	private ArrayList<Monstre> monstres;
 	/**
 	 * constructeur de jeu avec un Personnage
 	 */
 	public MonJeu() {
 		this.pj=new Hero();		
-		this.zombi = new Zombi(10,12);
+		//this.zombi = new Zombi(10,12);
 		this.plateau=new Plateau(80, 80);
+		this.monstres = new ArrayList<>(); //initialise la liste de monstre
+		this.addMonstres(new Zombi(10,25)); // ajout de monstre
+		this.addMonstres(new Zombi(15, 30));
 	}
 
 	/**
@@ -62,7 +68,9 @@ public class MonJeu extends Observable implements Jeu {
 			y++;
 		}
 		if (!plateau.collision(x, y)){
-			this.getPj().deplacer(x,y);
+			if(!this.collisionMonstre(x, y)) {
+				this.getPj().deplacer(x,y);
+			}
 		}
 
 	}
@@ -81,11 +89,25 @@ public class MonJeu extends Observable implements Jeu {
 	public Hero getPj() {
 		return pj;
 	}
-	
+	/*
 	public Monstre getZombi(){
 		return this.zombi;
-	}
+	}*/
 
+	public ArrayList<Monstre> getMonstre() {
+		return this.monstres;
+	}
+	
+	private boolean collisionMonstre(int x, int y) {
+		boolean b = false;
+		for (Monstre m : this.monstres) {
+			if(m.getX()==x && m.getY()==y) {
+				b = true;
+			}
+		}
+		return b;
+	}
+	
 	public Plateau getPlateau() {
 		// TODO Auto-generated method stub
 		return plateau;
@@ -95,5 +117,10 @@ public class MonJeu extends Observable implements Jeu {
 		// TODO Auto-generated method stub
 		plateau.initLabyFichier();
 	}
+	
+	public void addMonstres(Monstre m) {
+		this.monstres.add(m);
+	}
+	
 
 }
