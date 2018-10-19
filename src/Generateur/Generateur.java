@@ -35,15 +35,8 @@ public class Generateur {
 			}
 		}
 		lab[10][10] = new Spawn();
-		int i =0;
 		do {
-			try {
-				genererRetour();
-				i++;
-				System.out.println(i);
-			} catch (IndexOutOfBoundsException e) {
-				break;
-			}
+			genererRetour();	
 		} while (traverser[x][y]);
 
 		for (int e = 0; e < lab.length; e++) {
@@ -57,20 +50,20 @@ public class Generateur {
 
 	public void genererRetour() {
 		ArrayList<Integer> list = new ArrayList<>();
-
-		if (y - 2 >= 0 && lab[x][y - 2] == null )
+		Random rand = new Random();
+		int randint = rand.nextInt(100);
+				
+		if (y - 2 >= 0 		   	  && lab[x][y - 2] 	== null)
 			list.add(0);
-		if (x + 2 < lab.length && lab[x + 2][y] == null )
+		if (x + 2 < lab.length 	  && lab[x + 2][y]	== null )
 			list.add(1);
-		if (y + 2 < lab[0].length && lab[x][y + 2] == null )
+		if (y + 2 < lab[0].length && lab[x][y + 2] 	== null )
 			list.add(2);
-		if (x - 2 >= 0 && lab[x - 2][y] == null )
+		if (x - 2 >= 0 			   && lab[x - 2][y] == null)
 			list.add(3);
 
 		if (list.size() != 0) {
-			Random rand = new Random();
-			int randint = list.get(rand.nextInt(list.size()));
-
+			randint = list.get(rand.nextInt(list.size()));
 			switch (randint) {
 			case 0:
 				lab[x][y - 1] 		= new Sol();
@@ -107,13 +100,13 @@ public class Generateur {
 
 		} else {
 			list.clear();
-			if (y - 1 >= 0 && lab[x][y - 1] != null && traverser[x][y - 1])
+			if (y - 1 >= 0 && lab[x][y - 1] 			!= null && traverser[x][y - 1])
 				list.add(0);
-			if (x + 1 < lab.length && lab[x + 1][y] != null && traverser[x + 1][y])
+			if (x + 1 < lab.length && lab[x + 1][y] 	!= null && traverser[x + 1][y])
 				list.add(1);
-			if (y + 1 < lab[0].length && lab[x][y + 1] != null && traverser[x][y + 1])
+			if (y + 1 < lab[0].length && lab[x][y + 1]  != null && traverser[x][y + 1])
 				list.add(2);
-			if (x - 1 >= 0 && lab[x - 1][y] != null && traverser[x - 1][y])
+			if (x - 1 >= 0 && lab[x - 1][y] 			!= null && traverser[x - 1][y])
 				list.add(3);
 			switch (list.get(0)) {
 			case 0:

@@ -16,7 +16,7 @@ public class DessinMonJeu implements DessinJeu {
 	/**
 	 * constante pour gerer la taille des cases
 	 */
-	private static int TAILLE_CASE = 25;
+	private static int TAILLE_CASE = 5;
 
 	/**
 	 * lien vers le jeu a afficher
@@ -52,6 +52,11 @@ public class DessinMonJeu implements DessinJeu {
 			break;
 		case Bibliotheque.SOL:
 			crayon.setColor(Color.green);
+			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
+					TAILLE_CASE);
+			break;
+		case Bibliotheque.SPAWN:
+			crayon.setColor(Color.magenta);
 			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
 					TAILLE_CASE);
 			break;

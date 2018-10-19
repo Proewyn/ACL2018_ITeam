@@ -14,7 +14,8 @@ public class Plateau {
 		
 		Generateur gen = new Generateur(taillex, tailley);
 		laby = gen.getLab();
-		/*laby = new Case[taillex][tailley];
+		/*
+		laby = new Case[taillex][tailley];
 		for (int i=0;i<tailley;i++){
 			laby[0][i]=new Mur();
 			laby[taillex-1][i]=new Mur();
@@ -38,6 +39,8 @@ public class Plateau {
 	}
 	
 	public boolean collision(int x, int y) {
+		if(x < 0 || y < 0)
+			return false;
 		return !laby[x][y].isTraversable();
 	}
 
@@ -54,6 +57,15 @@ public class Plateau {
 	public boolean isMur(int i, int j) {
 		// TODO Auto-generated method stub
 		return laby[i][j].getId() == Bibliotheque.MUR;
+	}
+	
+	public void printLab(){
+		for (int i = 0; i < laby.length; i++) {
+			for (int j = 0; j < laby[0].length; j++) {
+				System.out.print(laby[i][j].getId()+" ");
+			}
+			System.out.println();
+		}
 	}
 	
 }

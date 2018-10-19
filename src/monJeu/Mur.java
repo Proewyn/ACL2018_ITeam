@@ -7,7 +7,7 @@ public class Mur implements Case{
 	
 	
 	public boolean isTraversable() {
-		return false;
+		return traversable;
 	}
 
 	public int getId() {
