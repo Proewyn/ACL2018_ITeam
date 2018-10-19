@@ -5,14 +5,16 @@ import moteurJeu.Commande;
 /**
  * la classe correspondant au Personnage
  */
-public class Hero {
+public class Hero implements Personnage {
 
+	private int vision; 
 	
+
 	/**
 	 * position en X et y
 	 */
-	public int x;
-	public int y;
+	private int x;
+	private int y;
 	
 	/**
 	 * constructeur vide
@@ -20,53 +22,44 @@ public class Hero {
 	public Hero() {
 		this.x = 1;
 		this.y = 1;
-		
+		vision = 9;
 	}
-
-	/**
-	 * deplacer le personnage dans une direction
-	 * 
-	 * @param m
-	 *            la chaine permettant de deplacer le personnage (N,S, E ou O)
-	 */
-	public void deplacer(Commande c) {
-		
-		if (c.gauche)
-		{
-			this.x--;
-			if (this.x < 0)
-				this.x = 0;
-		}
-
-		if (c.droite)
-		{
-			this.x++;
-			
-		}
-		if(c.haut){
-
-			this.y--;
-			if(this.y<0)
-				this.y = 0;
-		}
-		if(c.bas){
-			this.y++;
-			
-		}
+	public Hero(int x , int y){
+		this.x = x;
+		this.y = y;
 	}
 
 	public String toString() {
 		return ("(" + this.x+","+this.y+")");
 	}
 
-	public int getx() {
-		// TODO Auto-generated method stub
+	public int getX() {
 		return x;
 	}
 
-	public int gety() {
-		// TODO Auto-generated method stub
+	public int getY() {
 		return y;
+	}
+
+	
+	private void setX(int x){
+		this.x = x;
+	}
+	private void setY(int y){
+		this.y = y;
+	}
+	
+	public void deplacer(int x2, int y2) {
+		this.setX(x2);
+		this.setY(y2);
+		
+	}
+		
+	public int getVision() {
+		return vision;
+	}
+	public void setVision(int vision) {
+		this.vision = vision;
 	}
 
 }

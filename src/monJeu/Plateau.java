@@ -17,16 +17,16 @@ public class Plateau {
 		/*
 		laby = new Case[taillex][tailley];
 		for (int i=0;i<tailley;i++){
-			laby[0][i]=new Mur();
-			laby[taillex-1][i]=new Mur();
+			laby[0][i]=new Mur(true);
+			laby[taillex-1][i]=new Mur(true);
 		}
 		
 		for (int i=1;i<taillex-1;i++){
-			laby[i][0]=new Mur();
+			laby[i][0]=new Mur(true);
 			for (int j=1;j<tailley-1;j++){
 				laby[i][j]=new Sol();
 			}
-			laby[i][tailley-1]=new Mur();
+			laby[i][tailley-1]=new Mur(true);
 		}
 		laby[4][6]=new Mur();
 		laby[5][5]=new Mur();

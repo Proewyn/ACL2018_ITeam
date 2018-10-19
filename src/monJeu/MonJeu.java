@@ -20,11 +20,13 @@ public class MonJeu implements Jeu {
 	 */
 	private Plateau plateau;
 
+	private Monstre zombi;
 	/**
 	 * constructeur de jeu avec un Personnage
 	 */
 	public MonJeu() {
-		this.pj=new Hero();
+		this.pj=new Hero();		
+		this.zombi = new Zombi(10,12);
 		this.plateau=new Plateau(80, 80);
 	}
 
@@ -42,8 +44,8 @@ public class MonJeu implements Jeu {
 	 *            chaine qui donne ordre
 	 */
 	public void evoluer(Commande commande) {
-		int x= pj.getx();
-		int y= pj.gety();
+		int x= pj.getX();
+		int y= pj.getY();
 		if (commande.gauche){
 			x--;
 		}
@@ -57,7 +59,7 @@ public class MonJeu implements Jeu {
 			y++;
 		}
 		if (!plateau.collision(x, y)){
-			this.getPj().deplacer(commande);
+			this.getPj().deplacer(x,y);
 		}
 
 	}
@@ -75,6 +77,10 @@ public class MonJeu implements Jeu {
 	 */
 	public Hero getPj() {
 		return pj;
+	}
+	
+	public Monstre getZombi(){
+		return this.zombi;
 	}
 
 	public Plateau getPlateau() {

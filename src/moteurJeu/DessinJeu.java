@@ -18,4 +18,4 @@ public interface DessinJeu {
 	 */
 	public abstract void dessiner(BufferedImage image);
 
-}
+} 
