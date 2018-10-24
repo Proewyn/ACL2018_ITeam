@@ -7,7 +7,7 @@ public class Sol implements Case{
 	private boolean visible = false;
 	
 	public boolean isTraversable() {
-		return true;
+		return traversable;
 	}
 
 	public int getId() {

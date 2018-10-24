@@ -1,18 +1,12 @@
 package monJeu;
 
-public class Mur implements Case{
-	
-	private boolean traversable = false;
-	private int id = Bibliotheque.MUR;
+public class Spawn implements Case{
+
+	private boolean traversable = true;
+	private int id = Bibliotheque.SPAWN;
 	private boolean visible = false;
 	
-	public Mur() {
-	}
 	
-	public Mur(boolean b) {
-		visible = b;
-	}
-
 	public boolean isTraversable() {
 		return traversable;
 	}
@@ -23,9 +17,7 @@ public class Mur implements Case{
 
 	@Override
 	public boolean isVisible() {
-		// TODO Auto-generated method stub
 		return visible;
 	}
 
-	
 }
