@@ -8,7 +8,9 @@ import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 
-import Generateur.Generateur;
+import Generateur.AbstractGenerateur;
+import Generateur.GenerateurCancer;
+import Generateur.GenerateurWormHole;
 
 public class Plateau {
 
@@ -98,7 +100,7 @@ public class Plateau {
 	}
 	
 	public void initLabyGenerateur(int taillex,int tailley) {
-		Generateur gen = new Generateur(taillex, tailley);
+		AbstractGenerateur gen = new GenerateurCancer(taillex, tailley);
 		laby = gen.getLab();
 	}
 	
