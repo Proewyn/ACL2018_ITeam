@@ -33,7 +33,7 @@ public class MonJeu extends Observable implements Jeu {
 	public MonJeu() {
 		this.pj=new Hero();		
 		//this.zombi = new Zombi(10,12);
-		this.plateau=new Plateau(80, 80);
+		this.plateau=new Plateau(21, 21);
 		this.monstres = new ArrayList<>(); //initialise la liste de monstre
 		this.addMonstres(new Zombi(10,25)); // ajout de monstre
 		this.addMonstres(new Zombi(15, 30));
