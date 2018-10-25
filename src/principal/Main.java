@@ -16,7 +16,7 @@ public class Main {
 
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, aff);
-		moteur.lancerJeu(10*80,10*80);
+		moteur.lancerJeu(10*21,10*21);
 	}
 
 }
