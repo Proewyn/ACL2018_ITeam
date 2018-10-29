@@ -1,6 +1,7 @@
 package monJeu;
 
 import java.awt.List;
+import java.awt.Point;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -35,8 +36,9 @@ public class MonJeu extends Observable implements Jeu {
 		//this.zombi = new Zombi(10,12);
 		this.plateau=new Plateau(21, 21);
 		this.monstres = new ArrayList<>(); //initialise la liste de monstre
-		this.addMonstres(new Zombi(10,25)); // ajout de monstre
-		this.addMonstres(new Zombi(15, 30));
+		for(int i = 0 ; i<4 ; i++) {
+			this.addMonstreRand(new Zombi()); // ajout de monstre
+		}
 	}
 
 	/**
@@ -120,6 +122,34 @@ public class MonJeu extends Observable implements Jeu {
 	
 	public void addMonstres(Monstre m) {
 		this.monstres.add(m);
+	
+	}
+
+	/**
+	 * 
+	 * @return un point aleatoire sur le plateau en dehors des murs
+	 * 
+	 */
+	private Point pointAlea() {
+		Point alea = new Point();
+		
+		int xRand = (int) (Math.random() * this.plateau.taillePlateaux() );
+		int yRand = (int) (Math.random() * this.plateau.taillePlateauy() );
+		
+		while(this.plateau.isMur(xRand, yRand)) {
+			xRand = (int) (Math.random() * this.plateau.taillePlateaux() );
+			yRand = (int) (Math.random() * this.plateau.taillePlateauy() );
+		}
+		alea.setLocation(xRand, yRand);
+		return alea;
+		
+	}
+
+	
+	public void addMonstreRand(Monstre m) {
+		Point alea = pointAlea();
+		m.deplacer((int)alea.getX(), (int)alea.getY());
+		this.addMonstres(m);
 	}
 	
 
