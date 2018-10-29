@@ -18,4 +18,11 @@ public class Zombi extends Monstre {
 		
 	}
 
+	public Zombi() {
+		// TODO Auto-generated constructor stub
+		super();
+	}
+	
+	
+
 }
