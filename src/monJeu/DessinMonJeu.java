@@ -59,6 +59,7 @@ public class DessinMonJeu implements DessinJeu {
 		case Bibliotheque.SPAWN:
 			crayon.setColor(Color.magenta);
 			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
+			break;
 		case Bibliotheque.ZOMBI:
 			crayon.setColor(Color.YELLOW);
 			crayon.fillOval(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,

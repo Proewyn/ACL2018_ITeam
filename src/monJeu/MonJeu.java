@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Random;
 
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
@@ -76,6 +77,15 @@ public class MonJeu extends Observable implements Jeu {
 		}
 
 	}
+	
+	public void deplacerMonstre(DeplacementMonstre ia, Monstre m) {
+		Point p = ia.deplacer(m);
+		int x = (int) p.getX();
+		int y = (int) p.getY();
+		if ((!plateau.collision(x, y)) && (!this.collisionHero(x, y)) && (!this.collisionMonstre(x, y))) {
+			m.deplacer(x, y);
+		}
+	}
 
 	@Override
 	public boolean etreFini() {
@@ -109,7 +119,13 @@ public class MonJeu extends Observable implements Jeu {
 		}
 		return b;
 	}
-	
+	private boolean collisionHero(int x, int y) {
+		boolean b = false;
+		if(this.getPj().getX()==x && this.getPj().getY()==y) {
+			b = true ;
+		}
+		return b;
+	}
 	public Plateau getPlateau() {
 		// TODO Auto-generated method stub
 		return plateau;
@@ -141,6 +157,7 @@ public class MonJeu extends Observable implements Jeu {
 			yRand = (int) (Math.random() * this.plateau.taillePlateauy() );
 		}
 		alea.setLocation(xRand, yRand);
+		
 		return alea;
 		
 	}
