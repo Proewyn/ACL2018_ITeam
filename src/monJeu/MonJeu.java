@@ -9,6 +9,8 @@ import java.util.Random;
 
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
+import objet.Objet;
+import objet.Objets;
 
 /**
  * classe qui contient les donnees du jeu. Pour le moment, il ne possede qu'un
@@ -32,6 +34,17 @@ public class MonJeu extends Observable implements Jeu {
 	/**
 	 * constructeur de jeu avec un Personnage
 	 */
+	/**
+	 * liste d'objets du jeu
+	 */
+	private Objets listeDObjets;
+	private static int NBOBJET=6;
+	
+	/**
+	 * boolean pour savoir si on peut voir tout le pateau
+	 */
+	private boolean voirPlateauEntier;
+	
 	public MonJeu() {
 		this.pj=new Hero();		
 		//this.zombi = new Zombi(10,12);
@@ -40,6 +53,9 @@ public class MonJeu extends Observable implements Jeu {
 		for(int i = 0 ; i<4 ; i++) {
 			this.addMonstreRand(new Zombi()); // ajout de monstre
 		}
+		
+		voirPlateauEntier= false;
+		this.listeDObjets= new Objets(new ArrayList<Objet>(), NBOBJET, plateau);
 	}
 
 	/**
@@ -75,6 +91,8 @@ public class MonJeu extends Observable implements Jeu {
 				this.getPj().deplacer(x,y);
 			}
 		}
+		
+		listeDObjets.collision(this, x, y);
 
 	}
 	
@@ -169,5 +187,16 @@ public class MonJeu extends Observable implements Jeu {
 		this.addMonstres(m);
 	}
 	
+	public boolean getVoirPlateauEntier() {
+		return voirPlateauEntier;
+	}
 
+	public void setVoirPlateauEntier(boolean voirPlateauEntier) {
+		this.voirPlateauEntier = voirPlateauEntier;
+	}
+	
+
+	public Objets getListeDObjets() {
+		return listeDObjets;
+	}
 }
