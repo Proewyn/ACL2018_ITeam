@@ -50,7 +50,7 @@ public class MonJeu extends Observable implements Jeu {
 		//this.zombi = new Zombi(10,12);
 		this.plateau=new Plateau(21, 21);
 		this.monstres = new ArrayList<>(); //initialise la liste de monstre
-		for(int i = 0 ; i<4 ; i++) {
+		for(int i = 0 ; i<Bibliotheque.NBMONSTRE ; i++) {
 			this.addMonstreRand(new Zombi()); // ajout de monstre
 		}
 		

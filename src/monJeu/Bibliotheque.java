@@ -13,4 +13,5 @@ public class Bibliotheque {
 	public static final int TELEPORTEUR = 22;
 	public static final int COFFRE = 23;
 		
+	public static final int NBMONSTRE = 10;
 }
