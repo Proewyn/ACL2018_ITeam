@@ -19,7 +19,7 @@ public class Hero implements Personnage {
 	public Hero() {
 		this.x = 1;
 		this.y = 1;
-		vision = 100;
+		vision = 5;
 	}
 	public Hero(int x , int y){
 		this.x = x;

@@ -66,6 +66,7 @@ public class Plateau {
 
 	public boolean isMur(int i, int j) {
 		// TODO Auto-generated method stub
+		
 		return laby[i][j].getId() == Bibliotheque.MUR;
 	}
 	

@@ -13,6 +13,11 @@ public abstract class Monstre implements Personnage {
 	private int x;
 	private int y;
 	
+
+	public Monstre() {
+		this.x = 0;
+		this.y  = 0;
+	}
 	
 	public Monstre(int x, int y){
 		this.x = x;

@@ -1,12 +1,16 @@
 package monJeu;
 
 import java.awt.List;
+import java.awt.Point;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Random;
 
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
+import objet.Objet;
+import objet.Objets;
 
 /**
  * classe qui contient les donnees du jeu. Pour le moment, il ne possede qu'un
@@ -30,13 +34,28 @@ public class MonJeu extends Observable implements Jeu {
 	/**
 	 * constructeur de jeu avec un Personnage
 	 */
+	/**
+	 * liste d'objets du jeu
+	 */
+	private Objets listeDObjets;
+	private static int NBOBJET=6;
+	
+	/**
+	 * boolean pour savoir si on peut voir tout le pateau
+	 */
+	private boolean voirPlateauEntier;
+	
 	public MonJeu() {
 		this.pj=new Hero();		
 		//this.zombi = new Zombi(10,12);
-		this.plateau=new Plateau(80, 80);
+		this.plateau=new Plateau(21, 21);
 		this.monstres = new ArrayList<>(); //initialise la liste de monstre
-		this.addMonstres(new Zombi(10,25)); // ajout de monstre
-		this.addMonstres(new Zombi(15, 30));
+		for(int i = 0 ; i<4 ; i++) {
+			this.addMonstreRand(new Zombi()); // ajout de monstre
+		}
+		
+		voirPlateauEntier= false;
+		this.listeDObjets= new Objets(new ArrayList<Objet>(), NBOBJET, plateau);
 	}
 
 	/**
@@ -72,7 +91,18 @@ public class MonJeu extends Observable implements Jeu {
 				this.getPj().deplacer(x,y);
 			}
 		}
+		
+		listeDObjets.collision(this, x, y);
 
+	}
+	
+	public void deplacerMonstre(DeplacementMonstre ia, Monstre m) {
+		Point p = ia.deplacer(m);
+		int x = (int) p.getX();
+		int y = (int) p.getY();
+		if ((!plateau.collision(x, y)) && (!this.collisionHero(x, y)) && (!this.collisionMonstre(x, y))) {
+			m.deplacer(x, y);
+		}
 	}
 
 	@Override
@@ -107,7 +137,13 @@ public class MonJeu extends Observable implements Jeu {
 		}
 		return b;
 	}
-	
+	private boolean collisionHero(int x, int y) {
+		boolean b = false;
+		if(this.getPj().getX()==x && this.getPj().getY()==y) {
+			b = true ;
+		}
+		return b;
+	}
 	public Plateau getPlateau() {
 		// TODO Auto-generated method stub
 		return plateau;
@@ -120,7 +156,47 @@ public class MonJeu extends Observable implements Jeu {
 	
 	public void addMonstres(Monstre m) {
 		this.monstres.add(m);
+	
+	}
+
+	/**
+	 * 
+	 * @return un point aleatoire sur le plateau en dehors des murs
+	 * 
+	 */
+	private Point pointAlea() {
+		Point alea = new Point();
+		
+		int xRand = (int) (Math.random() * this.plateau.taillePlateaux() );
+		int yRand = (int) (Math.random() * this.plateau.taillePlateauy() );
+		
+		while(this.plateau.isMur(xRand, yRand)) {
+			xRand = (int) (Math.random() * this.plateau.taillePlateaux() );
+			yRand = (int) (Math.random() * this.plateau.taillePlateauy() );
+		}
+		alea.setLocation(xRand, yRand);
+		
+		return alea;
+		
+	}
+
+	
+	public void addMonstreRand(Monstre m) {
+		Point alea = pointAlea();
+		m.deplacer((int)alea.getX(), (int)alea.getY());
+		this.addMonstres(m);
+	}
+	
+	public boolean getVoirPlateauEntier() {
+		return voirPlateauEntier;
+	}
+
+	public void setVoirPlateauEntier(boolean voirPlateauEntier) {
+		this.voirPlateauEntier = voirPlateauEntier;
 	}
 	
 
+	public Objets getListeDObjets() {
+		return listeDObjets;
+	}
 }
