@@ -8,7 +8,11 @@ import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 
-import Generateur.Generateur;
+import Generateur.AbstractGenerateur;
+import Generateur.GenerateurCancer;
+import Generateur.GenerateurFusion;
+import Generateur.GenerateurWormHole;
+import Generateur.GenerateurWormHoleImparfait;
 
 public class Plateau {
 
@@ -62,6 +66,7 @@ public class Plateau {
 
 	public boolean isMur(int i, int j) {
 		// TODO Auto-generated method stub
+		
 		return laby[i][j].getId() == Bibliotheque.MUR;
 	}
 	
@@ -98,7 +103,7 @@ public class Plateau {
 	}
 	
 	public void initLabyGenerateur(int taillex,int tailley) {
-		Generateur gen = new Generateur(taillex, tailley);
+		AbstractGenerateur gen = new GenerateurWormHoleImparfait(taillex, tailley);
 		laby = gen.getLab();
 	}
 	
