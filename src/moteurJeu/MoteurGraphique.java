@@ -57,10 +57,7 @@ public class MoteurGraphique {
 			Commande c = controle.getCommande();
 			// fait evoluer le jeu
 			this.jeu.evoluer(c);
-			//fait deplacer les monstre
-			for(Monstre m : jeu.getMonstre()) {
-				this.jeu.deplacerMonstre(new DeplacementNaif(), m);
-			}
+			
 			// affiche le jeu
 			this.gui.dessiner();
 			// met en attente
