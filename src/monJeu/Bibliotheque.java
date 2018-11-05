@@ -12,11 +12,13 @@ public class Bibliotheque {
 	public static final int TORCHE = 21;
 	public static final int TELEPORTEUR = 22;
 	public static final int COFFRE = 23;
+
 	
 	//parametre graphique
 	public static int TAILLE_CASE = 10;
 	public static int TAILLE_OBJET =  TAILLE_CASE/2 ;
 	
 	//donnée physique
-	public static int TAILLE_TABLEAU = 51;
+	public static int TAILLE_TABLEAU = 51;	
+	public static final int NBMONSTRE = 10;
 }

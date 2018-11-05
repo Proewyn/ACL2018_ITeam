@@ -50,7 +50,7 @@ public class MonJeu extends Observable implements Jeu {
 		//this.zombi = new Zombi(10,12);
 		this.plateau=new Plateau(Bibliotheque.TAILLE_TABLEAU, Bibliotheque.TAILLE_TABLEAU);
 		this.monstres = new ArrayList<>(); //initialise la liste de monstre
-		for(int i = 0 ; i<4 ; i++) {
+		for(int i = 0 ; i<Bibliotheque.NBMONSTRE ; i++) {
 			this.addMonstreRand(new Zombi()); // ajout de monstre
 		}
 		
@@ -93,6 +93,10 @@ public class MonJeu extends Observable implements Jeu {
 		}
 		
 		listeDObjets.collision(this, x, y);
+		//fait deplacer les monstre
+		for(Monstre m : this.getMonstre()) {
+			this.deplacerMonstre(new DeplacementNaif(), m);
+		}
 
 	}
 	
