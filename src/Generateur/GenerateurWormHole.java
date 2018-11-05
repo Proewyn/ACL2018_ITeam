@@ -11,9 +11,6 @@ import monJeu.Spawn;
 
 public class GenerateurWormHole extends AbstractGenerateur {
 
-	private Case[][] lab;
-	private int x = 10;
-	private int y = 10;
 	private boolean[][] traverser;
 
 	public GenerateurWormHole(int sizeX , int sizeY) {
@@ -23,13 +20,16 @@ public class GenerateurWormHole extends AbstractGenerateur {
 
 	
 	public void generer() {
+		Random r = new Random();
+		x = (r.nextInt(lab.length)/2)*2;
+		y = (r.nextInt(lab[0].length)/2)*2;
 		for (int e = 0; e < lab.length; e++) {
 			for (int g = 0; g < lab[0].length; g++) {
 				lab[e][g] 		= null;
 				traverser[e][g] = false;
 			}
 		}
-		lab[10][10] = new Spawn();
+		lab[x][y] = new Spawn();
 		do {
 			genererRetour();	
 		} while (traverser[x][y]);

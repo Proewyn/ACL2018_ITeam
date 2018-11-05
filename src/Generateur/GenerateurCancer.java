@@ -10,6 +10,10 @@ import monJeu.Sol;
 public class GenerateurCancer extends AbstractGenerateur{
 
 	private int[][] proba;
+	private static final int DIAG        = 5;
+	private static final int DROIT       = 16; 
+	private static final int NBITERATION = 10; 
+	private static final int NBVIRUS     = 40; 
 
 	public GenerateurCancer(int sizeX, int sizeY) {
 		super(sizeX, sizeY);
@@ -25,10 +29,10 @@ public class GenerateurCancer extends AbstractGenerateur{
 	@Override
 	public void generer() {
 		Random r = new Random();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < NBVIRUS; i++) {
 			lab[r.nextInt(lab.length)][r.nextInt(lab[0].length)] = new Mur();
 		}
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < NBITERATION; i++) {
 			majProba();
 			contaminer();
 		}
@@ -44,38 +48,38 @@ public class GenerateurCancer extends AbstractGenerateur{
 		for (int i = 0; i < proba.length; i++) {
 			for (int j = 0; j < proba[0].length; j++) {
 				if(i >0 && j>0 && lab[i-1][j-1].getId() == Bibliotheque.MUR) {
-					proba[i][j] += 10;
+					proba[i][j] += DIAG;
 				}
 				if(i>0 && 									 lab[i-1][j].getId()    == Bibliotheque.MUR) {
-					proba[i][j] += 30;
+					proba[i][j] += DROIT;
 				}
 				if(i>0 && j+1<lab[0].length &&				 lab[i-1][j+1].getId()  == Bibliotheque.MUR) {
-					proba[i][j] += 10;
+					proba[i][j] += DIAG;
 				}
 				if(j+1<lab[0].length && 						 lab[i][j+1].getId()    == Bibliotheque.MUR) {
-					proba[i][j] += 30;
+					proba[i][j] += DROIT;
 				}
 				if(j+1<lab[0].length && i+1 < lab[0].length && lab[i+1][j+1].getId()  == Bibliotheque.MUR) {
-					proba[i][j] += 10;
+					proba[i][j] += DIAG;
 				}
 				if(i+1 < lab[0].length && 					  lab[i+1][j].getId()   == Bibliotheque.MUR) {
-					proba[i][j] += 30;
+					proba[i][j] += DROIT;
 				}
 				if(j>0 && i+1 < lab[0].length && 			  lab[i+1][j-1].getId() == Bibliotheque.MUR) {
-					proba[i][j] += 10;
+					proba[i][j] += DIAG;
 				}
 				if(j>0 && 									  lab[i][j-1].getId()   == Bibliotheque.MUR) {
-					proba[i][j] += 30;
+					proba[i][j] += DROIT;
 				}
 			}
 		}
 	}
-	
+
 	public void contaminer(){
 		Random r = new Random();
 		for (int i = 0; i < proba.length; i++) {
 			for (int j = 0; j < proba.length; j++) {
-				if(r.nextInt(100)<= proba[i][j]) {
+				if(r.nextInt(100)< proba[i][j]) {
 					lab[i][j] = new Mur();
 				}
 			}
