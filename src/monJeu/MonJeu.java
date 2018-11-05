@@ -38,7 +38,7 @@ public class MonJeu extends Observable implements Jeu {
 	 * liste d'objets du jeu
 	 */
 	private Objets listeDObjets;
-	private static int NBOBJET=6;
+	private static int NBOBJET=20;
 	
 	/**
 	 * boolean pour savoir si on peut voir tout le pateau
@@ -48,9 +48,9 @@ public class MonJeu extends Observable implements Jeu {
 	public MonJeu() {
 		this.pj=new Hero();		
 		//this.zombi = new Zombi(10,12);
-		this.plateau=new Plateau(21, 21);
+		this.plateau=new Plateau(Bibliotheque.TAILLE_TABLEAU, Bibliotheque.TAILLE_TABLEAU);
 		this.monstres = new ArrayList<>(); //initialise la liste de monstre
-		for(int i = 0 ; i<4 ; i++) {
+		for(int i = 0 ; i<Bibliotheque.NBMONSTRE ; i++) {
 			this.addMonstreRand(new Zombi()); // ajout de monstre
 		}
 		
