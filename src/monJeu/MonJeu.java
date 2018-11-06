@@ -95,13 +95,13 @@ public class MonJeu extends Observable implements Jeu {
 		listeDObjets.collision(this, x, y);
 		//fait deplacer les monstre
 		for(Monstre m : this.getMonstre()) {
-			this.deplacerMonstre(new DeplacementNaif(), m);
+			this.deplacerMonstre(new DeplacementMiroir(), m, commande);
 		}
 
 	}
 	
-	public void deplacerMonstre(DeplacementMonstre ia, Monstre m) {
-		Point p = ia.deplacer(m);
+	public void deplacerMonstre(DeplacementMonstre ia, Monstre m, Commande c) {
+		Point p = ia.deplacer(m,c);
 		int x = (int) p.getX();
 		int y = (int) p.getY();
 		if ((!plateau.collision(x, y)) && (!this.collisionHero(x, y)) && (!this.collisionMonstre(x, y))) {

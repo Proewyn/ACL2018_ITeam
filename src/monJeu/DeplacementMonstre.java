@@ -5,6 +5,8 @@ package monJeu;
 
 import java.awt.Point;
 
+import moteurJeu.Commande;
+
 /**
  * @author damien
  *
@@ -12,6 +14,7 @@ import java.awt.Point;
 public interface DeplacementMonstre {
 	
 	
-	public Point deplacer(Monstre m);
+	
+	public Point deplacer(Monstre m,Commande c);
 
 }
