@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 
-import Generateur.Generateur;
+import Generateur.*;
 
 public class Plateau {
 
@@ -99,7 +99,7 @@ public class Plateau {
 	}
 	
 	public void initLabyGenerateur(int taillex,int tailley) {
-		Generateur gen = new Generateur(taillex, tailley);
+		AbstractGenerateur gen = new GenerateurWormHoleImparfait(taillex, tailley);
 		laby = gen.getLab();
 	}
 	

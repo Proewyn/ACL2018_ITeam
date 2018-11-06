@@ -19,8 +19,7 @@ public class DessinMonJeu implements DessinJeu {
 	/**
 	 * constante pour gerer la taille des cases
 	 */
-	private static int TAILLE_CASE = 10;
-	private static int TAILLE_OBJET =  TAILLE_CASE/2 ;
+	
 
 	/**
 	 * lien vers le jeu a afficher
@@ -46,39 +45,49 @@ public class DessinMonJeu implements DessinJeu {
 		switch (s) {
 		case Bibliotheque.JOUEUR:
 			crayon.setColor(Color.blue);
-			crayon.fillOval(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
-					TAILLE_CASE);
+			crayon.fillOval(x * Bibliotheque.TAILLE_CASE, y * Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE,
+					Bibliotheque.TAILLE_CASE);
 			break;
 		case Bibliotheque.MUR:
 			crayon.setColor(Color.gray);
-			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
-					TAILLE_CASE);
+			crayon.fillRect(x * Bibliotheque.TAILLE_CASE, y * Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE,
+					Bibliotheque.TAILLE_CASE);
 			break;
 		case Bibliotheque.SOL:
 			crayon.setColor(Color.green);
-			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
-					TAILLE_CASE);
+			crayon.fillRect(x * Bibliotheque.TAILLE_CASE, y * Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE,
+					Bibliotheque.TAILLE_CASE);
 			break;
 		case Bibliotheque.SPAWN:
 			crayon.setColor(Color.magenta);
-			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
+			crayon.fillRect(x * Bibliotheque.TAILLE_CASE, y * Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE);
 			break;
 		case Bibliotheque.ZOMBI:
 			crayon.setColor(Color.YELLOW);
-			crayon.fillOval(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
-					TAILLE_CASE);
+			crayon.fillOval(x * Bibliotheque.TAILLE_CASE, y * Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE,
+					Bibliotheque.TAILLE_CASE);
 			break;
 		case Bibliotheque.TORCHE:
 			crayon.setColor(Color.red);
-			crayon.fillRect(x * TAILLE_CASE+TAILLE_OBJET/2, y * TAILLE_CASE+TAILLE_OBJET/2, TAILLE_OBJET,
-					TAILLE_OBJET);
+			crayon.fillRect(x * Bibliotheque.TAILLE_CASE+Bibliotheque.TAILLE_OBJET/2, y * Bibliotheque.TAILLE_CASE+Bibliotheque.TAILLE_OBJET/2, Bibliotheque.TAILLE_OBJET,
+					Bibliotheque.TAILLE_OBJET);
 			break;
 		case Bibliotheque.TELEPORTEUR:
 			crayon.setColor(Color.cyan);
-			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
+			crayon.fillRect(x * Bibliotheque.TAILLE_CASE, y * Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE);
 			crayon.setColor(Color.yellow);
-			crayon.fillRect(x * TAILLE_CASE+TAILLE_OBJET/2+1, y * TAILLE_CASE+TAILLE_OBJET/2+1, TAILLE_OBJET,
-					TAILLE_OBJET);
+			crayon.fillRect(x * Bibliotheque.TAILLE_CASE+Bibliotheque.TAILLE_OBJET/2+1, y * Bibliotheque.TAILLE_CASE+Bibliotheque.TAILLE_OBJET/2+1, Bibliotheque.TAILLE_OBJET,
+					Bibliotheque.TAILLE_OBJET);
+			break;
+		case Bibliotheque.COFFRE:
+			crayon.setColor(new Color(165,42,42));
+			crayon.fillRect(x * Bibliotheque.TAILLE_CASE, y * Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE);
+			crayon.setColor(Color.yellow);
+			crayon.fillRect(x * Bibliotheque.TAILLE_CASE+2, y * Bibliotheque.TAILLE_CASE+2, Bibliotheque.TAILLE_OBJET+2,
+					Bibliotheque.TAILLE_OBJET+2);
+			crayon.setColor(new Color(165,42,42));
+			crayon.fillRect(x * Bibliotheque.TAILLE_CASE+Bibliotheque.TAILLE_OBJET/2+1, y * Bibliotheque.TAILLE_CASE+Bibliotheque.TAILLE_OBJET/2+1, Bibliotheque.TAILLE_OBJET,
+					Bibliotheque.TAILLE_OBJET);
 			break;
 		default:
 			throw new AssertionError("objet inexistant");
