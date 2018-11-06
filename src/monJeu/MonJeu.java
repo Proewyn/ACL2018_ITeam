@@ -38,7 +38,6 @@ public class MonJeu extends Observable implements Jeu {
 	 * liste d'objets du jeu
 	 */
 	private Objets listeDObjets;
-	private static int NBOBJET=20;
 	
 	/**
 	 * boolean pour savoir si on peut voir tout le pateau
@@ -55,7 +54,7 @@ public class MonJeu extends Observable implements Jeu {
 		}
 		
 		voirPlateauEntier= false;
-		this.listeDObjets= new Objets(new ArrayList<Objet>(), NBOBJET, plateau);
+		this.listeDObjets= new Objets(new ArrayList<Objet>(), Bibliotheque.NBOBJET, plateau);
 	}
 
 	/**

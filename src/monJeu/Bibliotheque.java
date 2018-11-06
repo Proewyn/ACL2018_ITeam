@@ -15,10 +15,11 @@ public class Bibliotheque {
 
 	
 	//parametre graphique
-	public static int TAILLE_CASE = 10;
-	public static int TAILLE_OBJET =  TAILLE_CASE/2 ;
+	public static final int TAILLE_CASE = 10;
+	public static final int TAILLE_OBJET =  TAILLE_CASE/2 ;
 	
 	//donnée physique
-	public static int TAILLE_TABLEAU = 51;	
+	public static final int TAILLE_TABLEAU = 20;	
 	public static final int NBMONSTRE = 10;
+	public static final int NBOBJET=20;
 }

@@ -79,6 +79,16 @@ public class DessinMonJeu implements DessinJeu {
 			crayon.fillRect(x * Bibliotheque.TAILLE_CASE+Bibliotheque.TAILLE_OBJET/2+1, y * Bibliotheque.TAILLE_CASE+Bibliotheque.TAILLE_OBJET/2+1, Bibliotheque.TAILLE_OBJET,
 					Bibliotheque.TAILLE_OBJET);
 			break;
+		case Bibliotheque.COFFRE:
+			crayon.setColor(new Color(165,42,42));
+			crayon.fillRect(x * Bibliotheque.TAILLE_CASE, y * Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE);
+			crayon.setColor(Color.yellow);
+			crayon.fillRect(x * Bibliotheque.TAILLE_CASE+2, y * Bibliotheque.TAILLE_CASE+2, Bibliotheque.TAILLE_OBJET+2,
+					Bibliotheque.TAILLE_OBJET+2);
+			crayon.setColor(new Color(165,42,42));
+			crayon.fillRect(x * Bibliotheque.TAILLE_CASE+Bibliotheque.TAILLE_OBJET/2+1, y * Bibliotheque.TAILLE_CASE+Bibliotheque.TAILLE_OBJET/2+1, Bibliotheque.TAILLE_OBJET,
+					Bibliotheque.TAILLE_OBJET);
+			break;
 		default:
 			throw new AssertionError("objet inexistant");
 		}
