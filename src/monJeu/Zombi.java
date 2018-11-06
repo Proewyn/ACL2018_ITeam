@@ -15,14 +15,10 @@ public class Zombi extends Monstre {
 	 */
 	public Zombi(int x, int y) {
 		super(x, y);
-		
 	}
 
 	public Zombi() {
 		// TODO Auto-generated constructor stub
 		super();
 	}
-	
-	
-
 }

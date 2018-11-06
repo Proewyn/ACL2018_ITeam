@@ -1,7 +1,6 @@
 package objet.torche;
 
 import monJeu.Bibliotheque;
-import monJeu.Hero;
 import monJeu.MonJeu;
 import objet.Objet;
 

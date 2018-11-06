@@ -20,5 +20,5 @@ public class Bibliotheque {
 	
 	//donnée physique
 	public static int TAILLE_TABLEAU = 51;	
-	public static final int NBMONSTRE = 10;
+	public static final int NBMONSTRE = 50;
 }

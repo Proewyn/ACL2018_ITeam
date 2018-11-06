@@ -3,7 +3,6 @@ package Generateur;
 import java.util.Random;
 
 import monJeu.Bibliotheque;
-import monJeu.Case;
 import monJeu.Mur;
 import monJeu.Sol;
 

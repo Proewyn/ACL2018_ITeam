@@ -1,6 +1,5 @@
 package objet.torche;
 
-import monJeu.Hero;
 import monJeu.MonJeu;
 
 public class TorcheSupreme extends Torche {
