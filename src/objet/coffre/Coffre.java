@@ -25,33 +25,26 @@ public abstract class Coffre implements Objet {
 	}
 
 	@Override
-	public void action(MonJeu mj) {
-		// TODO Auto-generated method stub
-
-	}
+	public void action(MonJeu mj){}
 
 	@Override
 	public int getId() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Bibliotheque.COFFRE;
 	}
 
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
-		return 0;
+		return y;
 	}
 
 	@Override
 	public int getX() {
-		// TODO Auto-generated method stub
-		return 0;
+		return x;
 	}
 
 	@Override
 	public boolean isPasTrouve() {
-		// TODO Auto-generated method stub
-		return false;
+		return pasTrouve;
 	}
 
 }

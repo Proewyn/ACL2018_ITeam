@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 import monJeu.MonJeu;
 import monJeu.Plateau;
+import objet.coffre.CoffreTeleporteur;
 import objet.teleporteur.Teleporteur;
 import objet.teleporteur.TeleporteurAleatoire;
 import objet.teleporteur.TeleporteurFixe;
@@ -13,15 +14,18 @@ import objet.torche.TorcheSupreme;
 
 public class Objets {
 	
-	private static final int TORCHEPUS2=0;
-	private static final int TORCHESUPREME=1;
-	private static final int TELEPORTEURFIXE=2;
-	private static final int TELEPORTEURALEATOIRE = 3;
+	private static final int TORCHE=0;
+	private static final int TELEPORTEURFIXE=1;
+	private static final int TELEPORTEURALEATOIRE = 2;
+	private static final int COFFRETP=3;
 	private static final int NBTYPEOBJET=4;
 	
 	private List<Objet> listeObjets;
+	private int popTSPourcent;
+	
 	public Objets(List<Objet> lO, int nbObjet, Plateau p) {
 		this.listeObjets=lO;
+		popTSPourcent= 10;
 		generationDObjets(nbObjet,p);
 	}
 	
@@ -31,22 +35,22 @@ public class Objets {
 		Objet o ;
 		int compt=0;
 		int obj,x,y;
-		while (compt<nbObjet){
+		boolean TSPresent=false;
+		while (compt<nbObjet ){
 			obj=r.nextInt(NBTYPEOBJET);
 			x=r.nextInt(p.taillePlateaux());
 			y= r.nextInt(p.taillePlateauy());
-			while (p.collision(x, y)){
+			while (p.collision(x, y) || collision(x, y)){
 				x=r.nextInt(p.taillePlateaux());
 				y= r.nextInt(p.taillePlateauy());
 			}
 			switch (obj){
-				case TORCHEPUS2:
-					o = new TorchePlus2(x,y);
-					listeObjets.add(o);
-					compt++;
-					break;
-				case TORCHESUPREME:
-					o = new TorcheSupreme(x,y);
+				case TORCHE:
+					obj= r.nextInt(100);
+					if (obj < popTSPourcent)
+						o = new TorcheSupreme(x,y);
+					else
+						o = new TorchePlus2(x,y);
 					listeObjets.add(o);
 					compt++;
 					break;
@@ -83,6 +87,11 @@ public class Objets {
 						compt ++;
 					}
 					break;
+				case COFFRETP:
+					o = new CoffreTeleporteur(x,y);
+					listeObjets.add(o);
+					compt++;
+					break;
 					
 					
 			}
@@ -98,6 +107,15 @@ public class Objets {
 		for (Objet o :listeObjets){
 			o.Collision(mj, x, y);
 		}
+	}
+	
+	public boolean collision( int x, int y){
+		boolean col= false;
+		for(Objet o: listeObjets){
+			if (o.getX()==x && o.getY()==y)
+				col=true;
+		}
+		return col;
 	}
 
 }

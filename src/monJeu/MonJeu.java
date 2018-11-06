@@ -20,7 +20,10 @@ public class MonJeu extends Observable implements Jeu {
 	private Plateau plateau;
 	private ArrayList<Monstre> monstres;
 	private Objets listeDObjets;
-	private static int NBOBJET=20;
+	
+	/**
+	 * boolean pour savoir si on peut voir tout le pateau
+	 */
 	private boolean voirPlateauEntier;
 	
 	public MonJeu() {
@@ -31,8 +34,8 @@ public class MonJeu extends Observable implements Jeu {
 		for(int i = 0 ; i < Bibliotheque.NBMONSTRE ; i++) {
 			this.addMonstreRand(new Zombi()); // ajout de monstre
 		}
-		voirPlateauEntier= true;
-		this.listeDObjets= new Objets(new ArrayList<Objet>(), NBOBJET, plateau);
+		voirPlateauEntier= false;
+		this.listeDObjets= new Objets(new ArrayList<Objet>(), Bibliotheque.NBOBJET, plateau);
 	}
 
 	/**
@@ -71,15 +74,15 @@ public class MonJeu extends Observable implements Jeu {
 		listeDObjets.collision(this, x, y);
 		//fait deplacer les monstre
 		for(Monstre m : this.getMonstre()) {
-			this.deplacerMonstre(new DeplacementNaif(), m);
+			this.deplacerMonstre(new DeplacementMiroir(), m, commande);
 		}
 		this.cleanMonstre(this.getMonstre());
 		this.maj();
 		
 	}
 	
-	public void deplacerMonstre(DeplacementMonstre ia, Monstre m) {
-		Point p = ia.deplacer(m);
+	public void deplacerMonstre(DeplacementMonstre ia, Monstre m, Commande c) {
+		Point p = ia.deplacer(m,c);
 		int x = (int) p.getX();
 		int y = (int) p.getY();
 		if ((!plateau.collision(x, y)) && (!this.collisionHero(x, y)) && (!this.collisionMonstre(x, y, true))) {
