@@ -25,7 +25,7 @@ public class Bibliotheque {
 	public static final int NBMONSTRE = 10;
 	public static final int NBOBJET=20;
 	
-	/*
+	/**
 	 * 1 : Generateur wormhole
 	 * 2 : Generateur wormholeImparfait
 	 * 3 : Generateur Cancer
