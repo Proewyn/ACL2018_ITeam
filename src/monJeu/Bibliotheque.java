@@ -20,7 +20,16 @@ public class Bibliotheque {
 	
 
 	//donnée physique
-	public static int TAILLE_TABLEAU = 51;	
+	public static int TAILLE_TABLEAUX = 51;	
+	public static int TAILLE_TABLEAUY = 51;	
 	public static final int NBMONSTRE = 10;
 	public static final int NBOBJET=20;
+	
+	/*
+	 * 1 : Generateur wormhole
+	 * 2 : Generateur wormholeImparfait
+	 * 3 : Generateur Cancer
+	 * 4 : Generateur Fusion
+	 */
+	public static final int GENERATEUR = 4;
 }

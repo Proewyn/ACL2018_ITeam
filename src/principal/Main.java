@@ -17,7 +17,7 @@ public class Main {
 
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, aff);
-		moteur.lancerJeu(Bibliotheque.TAILLE_CASE*Bibliotheque.TAILLE_TABLEAU,Bibliotheque.TAILLE_CASE*Bibliotheque.TAILLE_TABLEAU);
+		moteur.lancerJeu();
 	}
 
 }
