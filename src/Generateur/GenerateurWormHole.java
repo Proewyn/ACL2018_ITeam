@@ -3,6 +3,7 @@ package Generateur;
 import java.util.ArrayList;
 import java.util.Random;
 
+import monJeu.Bibliotheque;
 import monJeu.Mur;
 import monJeu.Sol;
 import monJeu.Spawn;
@@ -11,9 +12,9 @@ public class GenerateurWormHole extends AbstractGenerateur {
 
 	private boolean[][] traverser;
 
-	public GenerateurWormHole(int sizeX , int sizeY) {
-		super(sizeX, sizeY);
-		traverser = new boolean[sizeX-2][sizeY-2];
+	public GenerateurWormHole() {
+		super();
+		traverser = new boolean[Bibliotheque.TAILLE_TABLEAUX-2][Bibliotheque.TAILLE_TABLEAUY-2];
 	}
 
 	

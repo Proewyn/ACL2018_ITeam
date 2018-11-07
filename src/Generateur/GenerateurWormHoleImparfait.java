@@ -8,8 +8,8 @@ public class GenerateurWormHoleImparfait extends GenerateurWormHole{
 
 	private static final int NBTROU = 150;
 	
-	public GenerateurWormHoleImparfait(int sizeX, int sizeY) {
-		super(sizeX, sizeY);
+	public GenerateurWormHoleImparfait() {
+		super();
 	}
 
 	@Override

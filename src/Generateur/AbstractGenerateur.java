@@ -1,5 +1,6 @@
 package Generateur;
 
+import monJeu.Bibliotheque;
 import monJeu.Case;
 import monJeu.Mur;
 
@@ -10,8 +11,8 @@ public abstract class AbstractGenerateur {
 	protected int x = 10;
 	protected int y = 10;
 	
-	public AbstractGenerateur(int sizeX, int sizeY) {
-		lab = new Case[sizeX-2][sizeY-2];
+	public AbstractGenerateur() {
+		lab = new Case[Bibliotheque.TAILLE_TABLEAUX-2][Bibliotheque.TAILLE_TABLEAUY-2];
 	}
 	
 	public Case[][] getLab(){
