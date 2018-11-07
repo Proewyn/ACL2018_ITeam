@@ -42,26 +42,6 @@ public class DeplacementMiroir implements DeplacementMonstre {
 			y--;
 		}
 		else{
-			/*Random r = new Random();
-			int rand = r.nextInt(4);
-			switch(rand) {
-			case 0 :
-				x--;
-				break;
-				
-			case 1 :
-				y--;
-				break;
-				
-			case 2 :
-				x++;
-				break;
-				
-			case 3 :
-				y++;
-				break;
-			
-			}*/
 			DeplacementNaif d = new DeplacementNaif();
 			x = (int)d.deplacer(m, commande).getX();
 			y =(int) d.deplacer(m, commande).getY();

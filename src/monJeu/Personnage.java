@@ -8,4 +8,5 @@ public interface Personnage {
 	public int getX();
 	public int getY();
 	public int getHp();
+	public int getId();
 }

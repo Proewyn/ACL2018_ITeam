@@ -9,6 +9,7 @@ public abstract class Monstre implements Personnage {
 	private int x;
 	private int y;
 	private int Hp;
+	
 
 	public Monstre() {
 		this.x = 0;
@@ -56,4 +57,6 @@ public abstract class Monstre implements Personnage {
 		return this.Hp;
 	}
 
+
+	
 }

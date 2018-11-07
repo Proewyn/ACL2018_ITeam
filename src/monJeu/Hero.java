@@ -9,6 +9,7 @@ public class Hero implements Personnage {
 	private int hp;
 	private int vision; 
 	
+	
 	/**
 	 * constructeur vide
 	 */
@@ -17,6 +18,7 @@ public class Hero implements Personnage {
 		this.y = 1;
 		this.hp = 10;
 		this.vision = 5;
+		
 	}
 	
 	public Hero(int x , int y) {
@@ -65,5 +67,11 @@ public class Hero implements Personnage {
 	
 	public void setVision(int vision) {
 		this.vision = vision;
+	}
+
+	@Override
+	public int getId() {
+		// TODO Auto-generated method stub
+		return Bibliotheque.JOUEUR;
 	}
 }
