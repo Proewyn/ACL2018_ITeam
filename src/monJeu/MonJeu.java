@@ -34,7 +34,7 @@ public class MonJeu extends Observable implements Jeu {
 		for(int i = 0 ; i < Bibliotheque.NBMONSTRE ; i++) {
 			this.addMonstreRand(new Zombi()); // ajout de monstre
 		}
-		voirPlateauEntier= false;
+		voirPlateauEntier= true;
 		this.listeDObjets= new Objets(new ArrayList<Objet>(), Bibliotheque.NBOBJET, plateau);
 	}
 
