@@ -3,8 +3,6 @@ package Generateur;
 import java.util.ArrayList;
 import java.util.Random;
 
-
-import monJeu.Case;
 import monJeu.Mur;
 import monJeu.Sol;
 import monJeu.Spawn;

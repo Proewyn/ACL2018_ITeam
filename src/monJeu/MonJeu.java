@@ -1,12 +1,9 @@
 package monJeu;
 
-import java.awt.List;
 import java.awt.Point;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Observable;
-import java.util.Random;
-
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
 import objet.Objet;
@@ -19,24 +16,9 @@ import objet.Objets;
  */
 public class MonJeu extends Observable implements Jeu {
 
-	/**
-	 * le personnage du jeu
-	 */
 	private Hero pj;
-	
-	/**
-	 * le plateau de jeux
-	 */
 	private Plateau plateau;
-
-	//private Monstre zombi;
 	private ArrayList<Monstre> monstres;
-	/**
-	 * constructeur de jeu avec un Personnage
-	 */
-	/**
-	 * liste d'objets du jeu
-	 */
 	private Objets listeDObjets;
 	
 	/**
@@ -49,10 +31,9 @@ public class MonJeu extends Observable implements Jeu {
 		//this.zombi = new Zombi(10,12);
 		this.plateau=new Plateau(Bibliotheque.TAILLE_TABLEAU, Bibliotheque.TAILLE_TABLEAU);
 		this.monstres = new ArrayList<>(); //initialise la liste de monstre
-		for(int i = 0 ; i<Bibliotheque.NBMONSTRE ; i++) {
+		for(int i = 0 ; i < Bibliotheque.NBMONSTRE ; i++) {
 			this.addMonstreRand(new Zombi()); // ajout de monstre
 		}
-		
 		voirPlateauEntier= false;
 		this.listeDObjets= new Objets(new ArrayList<Objet>(), Bibliotheque.NBOBJET, plateau);
 	}
@@ -85,33 +66,36 @@ public class MonJeu extends Observable implements Jeu {
 		if(commande.bas){
 			y++;
 		}
-		if (!plateau.collision(x, y)){
-			if(!this.collisionMonstre(x, y)) {
+		if (!plateau.collision(x, y)) {
+			if(!this.collisionMonstre(x, y, false)) {
 				this.getPj().deplacer(x,y);
 			}
 		}
-		
 		listeDObjets.collision(this, x, y);
 		//fait deplacer les monstre
 		for(Monstre m : this.getMonstre()) {
 			this.deplacerMonstre(new DeplacementMiroir(), m, commande);
 		}
-
+		this.cleanMonstre(this.getMonstre());
+		this.maj();
+		
 	}
 	
 	public void deplacerMonstre(DeplacementMonstre ia, Monstre m, Commande c) {
 		Point p = ia.deplacer(m,c);
 		int x = (int) p.getX();
 		int y = (int) p.getY();
-		if ((!plateau.collision(x, y)) && (!this.collisionHero(x, y)) && (!this.collisionMonstre(x, y))) {
+		if ((!plateau.collision(x, y)) && (!this.collisionHero(x, y)) && (!this.collisionMonstre(x, y, true))) {
 			m.deplacer(x, y);
+		}
+		if (this.collisionHero(x, y) && m.getHp() > 0) {
+			this.dommageCollision(m);
 		}
 	}
 
 	@Override
 	public boolean etreFini() {
-		// le jeu n'est jamais fini
-		return false;
+		return (this.getPj().getHp() <= 0);
 	}
 
 	/**
@@ -131,22 +115,29 @@ public class MonJeu extends Observable implements Jeu {
 		return this.monstres;
 	}
 	
-	private boolean collisionMonstre(int x, int y) {
+	//Si l'entité touche un monstre
+	private boolean collisionMonstre(int x, int y, boolean estMonstre) {
 		boolean b = false;
 		for (Monstre m : this.monstres) {
-			if(m.getX()==x && m.getY()==y) {
+			if(m.getX() == x && m.getY() == y) {
 				b = true;
+				if (!estMonstre) {
+					this.dommageCollision(m);
+				}
 			}
 		}
 		return b;
 	}
+	
+	//Si l'entité touche un hero
 	private boolean collisionHero(int x, int y) {
 		boolean b = false;
-		if(this.getPj().getX()==x && this.getPj().getY()==y) {
+		if(this.getPj().getX() == x && this.getPj().getY() == y) {
 			b = true ;
 		}
 		return b;
 	}
+	
 	public Plateau getPlateau() {
 		// TODO Auto-generated method stub
 		return plateau;
@@ -159,7 +150,6 @@ public class MonJeu extends Observable implements Jeu {
 	
 	public void addMonstres(Monstre m) {
 		this.monstres.add(m);
-	
 	}
 
 	/**
@@ -180,7 +170,6 @@ public class MonJeu extends Observable implements Jeu {
 		alea.setLocation(xRand, yRand);
 		
 		return alea;
-		
 	}
 
 	
@@ -201,5 +190,28 @@ public class MonJeu extends Observable implements Jeu {
 
 	public Objets getListeDObjets() {
 		return listeDObjets;
+	}
+	
+	public void maj()
+	{
+		setChanged();
+		notifyObservers(true);
+	}
+	
+	private void dommageCollision(Monstre monster) {
+		monster.setHp(monster.getHp()-1);
+		this.getPj().setHp(this.getPj().getHp()-1);
+	}
+	
+	private void cleanMonstre(ArrayList<Monstre> lm) {
+		int i = 0;
+		while (i < lm.size()) {
+			if (lm.get(i).getHp() <= 0) {
+				lm.remove(i);
+			}
+			else {
+				i++;
+			}
+		}
 	}
 }

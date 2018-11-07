@@ -1,10 +1,6 @@
 package moteurJeu;
 
-import monJeu.DeplacementMonstre;
-import monJeu.DeplacementNaif;
 import monJeu.MonJeu;
-import monJeu.Monstre;
-
 
 /**
  * classe MoteurGraphique represente un moteur de jeu generique.
