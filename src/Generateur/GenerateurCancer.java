@@ -14,9 +14,9 @@ public class GenerateurCancer extends AbstractGenerateur{
 	private static final int NBITERATION = 10; 
 	private static final int NBVIRUS     = 40; 
 
-	public GenerateurCancer(int sizeX, int sizeY) {
-		super(sizeX, sizeY);
-		proba = new int[sizeX-2][sizeY-2];
+	public GenerateurCancer() {
+		super();
+		proba = new int[Bibliotheque.TAILLE_TABLEAUX-2][Bibliotheque.TAILLE_TABLEAUY-2];
 		for (int i = 0; i < lab.length; i++) {
 			for (int j = 0; j < lab[0].length; j++) {
 				lab[i][j]   = new Sol();

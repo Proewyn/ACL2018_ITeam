@@ -7,8 +7,8 @@ import monJeu.Sol;
 
 public class GenerateurFusion extends AbstractGenerateur{
 
-	public GenerateurFusion(int sizeX, int sizeY) {
-		super(sizeX, sizeY);
+	public GenerateurFusion() {
+		super();
 		for (int i = 0; i < lab.length; i++) {
 			for (int j = 0; j < lab[0].length; j++) {
 				if(i%2 ==0 && j%2 ==0) {

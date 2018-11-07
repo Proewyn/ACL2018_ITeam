@@ -99,7 +99,25 @@ public class Plateau {
 	}
 	
 	public void initLabyGenerateur() {
-		AbstractGenerateur gen = new GenerateurWormHoleImparfait(Bibliotheque.TAILLE_TABLEAUX, Bibliotheque.TAILLE_TABLEAUY);
+		AbstractGenerateur gen;
+		switch (Bibliotheque.GENERATEUR) {
+		case 1:
+			gen = new GenerateurWormHole();
+			break;
+		case 2:
+			gen = new GenerateurWormHoleImparfait();
+			break;
+		case 3:
+			gen = new GenerateurCancer();
+			break;
+		case 4:
+			gen = new GenerateurFusion();
+			break;
+		default:
+			gen = new GenerateurWormHole();
+			break;
+		}
+		
 		laby = gen.getLab();
 	}
 	
