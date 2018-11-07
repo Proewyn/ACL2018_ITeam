@@ -19,7 +19,7 @@ public class Bibliotheque {
 	public static final int TAILLE_OBJET =  TAILLE_CASE/2 ;
 	
 	//donnée physique
-	public static final int TAILLE_TABLEAU = 20;	
+	public static final int TAILLE_TABLEAU = 50;	
 	public static final int NBMONSTRE = 10;
 	public static final int NBOBJET=20;
 }
