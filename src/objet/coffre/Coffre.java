@@ -7,14 +7,12 @@ import objet.Objet;
 public abstract class Coffre implements Objet {
 	protected int x;
 	protected int y;
-	protected int id;
 	protected boolean pasTrouve;
 	
 	public Coffre(int x,int y) {
 		this.x=x;
 		this.y=y;
 		this.pasTrouve=true;
-		id = Bibliotheque.COFFRE;
 	}
 
 	@Override
@@ -23,9 +21,6 @@ public abstract class Coffre implements Objet {
 			this.action(mj);
 
 	}
-
-	@Override
-	public void action(MonJeu mj){}
 
 	@Override
 	public int getId() {
