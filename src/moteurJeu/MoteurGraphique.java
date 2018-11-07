@@ -14,12 +14,10 @@ public class MoteurGraphique {
 	 * le jeu a executer
 	 */
 	private MonJeu jeu;
-
 	/**
 	 * l'interface graphique
 	 */
 	private InterfaceGraphique gui;
-
 	/**
 	 * l'afficheur a utiliser pour le rendu
 	 */

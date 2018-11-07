@@ -13,17 +13,14 @@ public class PanelDessin extends JPanel {
 	 * la clase chargee de Dessiner
 	 */
 	private DessinJeu dessin;
-
 	/**
 	 * image suivante est l'image cachee sur laquelle dessiner
 	 */
 	private BufferedImage imageSuivante;
-
 	/**
 	 * image en cours est l'image entrain d'etre affichee
 	 */
 	private BufferedImage imageEnCours;
-
 	/**
 	 * la taille des images
 	 */
