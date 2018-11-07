@@ -30,16 +30,16 @@ public class DeplacementMiroir implements DeplacementMonstre {
 		int x = m.getX();
 		int y = m.getY();
 		if (commande.gauche){
-			x--;
-		}
-		else if (commande.droite){
 			x++;
 		}
+		else if (commande.droite){
+			x--;
+		}
 		else if(commande.haut){
-			y--;
+			y++;
 		}
 		else if(commande.bas){
-			y++;
+			y--;
 		}
 		else{
 			/*Random r = new Random();
