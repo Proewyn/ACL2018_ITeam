@@ -19,7 +19,6 @@ import moteurJeu.Menu;
 public class InterfaceGraphique implements Observer {
 
 	private MonJeu jeu;
-	
 	/**
 	 * le Panel lie a la JFrame
 	 */
@@ -65,7 +64,6 @@ public class InterfaceGraphique implements Observer {
 		//ajout du controleur
 		Controleur controlleurGraph=new Controleur();
 		controleur=controlleurGraph;
-		//this.panel.addKeyListener(controlleurGraph);	
 		fenetre.addKeyListener(controlleurGraph);	
 		
 		//recuperation du focus

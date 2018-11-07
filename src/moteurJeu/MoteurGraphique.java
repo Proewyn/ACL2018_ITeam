@@ -43,10 +43,7 @@ public class MoteurGraphique {
 	public void lancerJeu() throws InterruptedException {
 
 		// creation de l'interface graphique
-		this.gui = new InterfaceGraphique(this.dessin,
-				Bibliotheque.TAILLE_CASE*Bibliotheque.TAILLE_TABLEAUX,
-				Bibliotheque.TAILLE_CASE*Bibliotheque.TAILLE_TABLEAUY, 
-				jeu);
+		this.gui = new InterfaceGraphique(this.dessin, Bibliotheque.TAILLE_CASE*Bibliotheque.TAILLE_TABLEAUX, Bibliotheque.TAILLE_CASE*Bibliotheque.TAILLE_TABLEAUY, jeu);
 		Controleur controle = this.gui.getControleur();
 
 		// boucle de jeu
@@ -55,7 +52,6 @@ public class MoteurGraphique {
 			Commande c = controle.getCommande();
 			// fait evoluer le jeu
 			this.jeu.evoluer(c);
-			
 			// affiche le jeu
 			this.gui.dessiner();
 			// met en attente

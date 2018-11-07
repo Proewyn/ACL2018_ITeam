@@ -13,12 +13,10 @@ public class Bibliotheque {
 	public static final int TELEPORTEUR = 22;
 	public static final int COFFRE      = 23;
 
-	
 	//parametre graphique
 	public static final int TAILLE_CASE  = 10;
-	public static final int TAILLE_OBJET =  TAILLE_CASE/2 ;
+	public static final int TAILLE_OBJET = TAILLE_CASE/2 ;
 	
-
 	//donnée physique
 	public static int TAILLE_TABLEAUX = 51;	
 	public static int TAILLE_TABLEAUY = 51;	
@@ -26,8 +24,8 @@ public class Bibliotheque {
 	public static final int NBOBJET   = 20;
 	
 	/**
-	 * 1 : Generateur wormhole
-	 * 2 : Generateur wormholeImparfait
+	 * 1 : Generateur WormHole
+	 * 2 : Generateur WormHoleImparfait
 	 * 3 : Generateur Cancer
 	 * 4 : Generateur Fusion
 	 */

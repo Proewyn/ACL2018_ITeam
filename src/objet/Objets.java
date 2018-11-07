@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import monJeu.MonJeu;
-import monJeu.Plateau;
 import objet.coffre.CoffreTeleporteur;
 import objet.teleporteur.Teleporteur;
 import objet.teleporteur.TeleporteurAleatoire;
 import objet.teleporteur.TeleporteurFixe;
 import objet.torche.TorchePlus2;
 import objet.torche.TorcheSupreme;
+import plateau.Plateau;
 
 public class Objets {
 	
@@ -35,7 +35,6 @@ public class Objets {
 		Objet o ;
 		int compt=0;
 		int obj,x,y;
-		boolean TSPresent=false;
 		while (compt<nbObjet ){
 			obj=r.nextInt(NBTYPEOBJET);
 			x=r.nextInt(p.taillePlateaux());
@@ -92,11 +91,8 @@ public class Objets {
 					listeObjets.add(o);
 					compt++;
 					break;
-					
-					
 			}
 		}
-		
 	}
 	
 	public List<Objet> getObjets(){

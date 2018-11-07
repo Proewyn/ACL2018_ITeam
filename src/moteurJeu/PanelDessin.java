@@ -55,7 +55,6 @@ public class PanelDessin extends JPanel {
 	public void dessinerJeu() {
 		// generer la nouvelle image
 		this.dessin.dessiner(this.imageSuivante);
-
 		// inverses les images doublebuffereing
 		BufferedImage temp = this.imageEnCours;
 		// l'image a dessiner est celle qu'on a construite

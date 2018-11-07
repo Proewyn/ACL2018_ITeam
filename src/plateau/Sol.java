@@ -1,4 +1,6 @@
-package monJeu;
+package plateau;
+
+import monJeu.Bibliotheque;
 
 public class Sol implements Case{
 
@@ -19,6 +21,5 @@ public class Sol implements Case{
 		// TODO Auto-generated method stub
 		return visible;
 	}
-
 
 }

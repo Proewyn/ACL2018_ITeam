@@ -1,6 +1,4 @@
-package monJeu;
-
-
+package personnage;
 
 public interface Personnage {
 	

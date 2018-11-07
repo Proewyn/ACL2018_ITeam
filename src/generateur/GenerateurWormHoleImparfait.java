@@ -1,9 +1,10 @@
-package Generateur;
+package generateur;
 
 import java.util.Random;
 
+import plateau.Sol;
+
 import monJeu.Bibliotheque;
-import monJeu.Sol;
 
 public class GenerateurWormHoleImparfait extends GenerateurWormHole{
 

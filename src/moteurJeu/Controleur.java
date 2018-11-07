@@ -86,7 +86,6 @@ public class Controleur implements KeyListener {
 			this.commandeARetourner.droite = false;
 			break;
 		}
-
 	}
 
 	@Override
@@ -112,7 +111,6 @@ public class Controleur implements KeyListener {
 			this.commandeEnCours.bas = false;
 			break;
 		}
-
 	}
 
 	@Override

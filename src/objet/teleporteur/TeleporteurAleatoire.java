@@ -3,7 +3,8 @@ package objet.teleporteur;
 import java.util.List;
 import java.util.Random;
 
-import monJeu.Hero;
+import personnage.Hero;
+
 import monJeu.MonJeu;
 
 public class TeleporteurAleatoire extends Teleporteur {

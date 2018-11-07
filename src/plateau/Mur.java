@@ -1,4 +1,6 @@
-package monJeu;
+package plateau;
+
+import monJeu.Bibliotheque;
 
 public class Mur implements Case{
 	
@@ -7,6 +9,7 @@ public class Mur implements Case{
 	private boolean visible = false;
 	
 	public Mur() {
+		
 	}
 	
 	public Mur(boolean b) {
@@ -27,5 +30,4 @@ public class Mur implements Case{
 		return visible;
 	}
 
-	
 }

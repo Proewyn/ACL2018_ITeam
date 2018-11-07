@@ -1,8 +1,8 @@
-package monJeu;
+package ia;
 
 import java.awt.Point;
-import java.util.Random;
 
+import personnage.Monstre;
 import moteurJeu.Commande;
 
 /**
@@ -26,16 +26,16 @@ public class DeplacementMiroir implements DeplacementMonstre {
 		Point p = new Point();
 		int x = m.getX();
 		int y = m.getY();
-		if (commande.gauche){
+		if (commande.gauche) {
 			x++;
 		}
-		else if (commande.droite){
+		else if (commande.droite) {
 			x--;
 		}
-		else if(commande.haut){
+		else if(commande.haut) {
 			y++;
 		}
-		else if(commande.bas){
+		else if(commande.bas) {
 			y--;
 		}
 		else{

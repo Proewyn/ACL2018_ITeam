@@ -1,12 +1,13 @@
-package Generateur;
+package generateur;
 
 import java.util.ArrayList;
 import java.util.Random;
 
+import plateau.Mur;
+import plateau.Sol;
+import plateau.Spawn;
+
 import monJeu.Bibliotheque;
-import monJeu.Mur;
-import monJeu.Sol;
-import monJeu.Spawn;
 
 public class GenerateurWormHole extends AbstractGenerateur {
 

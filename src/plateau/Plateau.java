@@ -1,4 +1,6 @@
-package monJeu;
+package plateau;
+
+import generateur.*;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,7 +10,8 @@ import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 
-import Generateur.*;
+import monJeu.Bibliotheque;
+
 
 public class Plateau {
 
@@ -18,6 +21,7 @@ public class Plateau {
 		initLabyGenerateur();
 	}
 	
+	/*
 	private void initLaby(int taillex,int tailley) {
 				
 		laby = new Case[taillex][tailley];
@@ -38,7 +42,7 @@ public class Plateau {
 		laby[4][4]=new Mur();
 		laby[3][5]=new Mur();
 	}
-	
+	*/
 
 	public Case[][] getLaby(){
 		return laby;
@@ -117,7 +121,6 @@ public class Plateau {
 			gen = new GenerateurWormHole();
 			break;
 		}
-		
 		laby = gen.getLab();
 	}
 	

@@ -1,10 +1,11 @@
-package Generateur;
+package generateur;
 
 import java.util.Random;
 
+import plateau.Mur;
+import plateau.Sol;
+
 import monJeu.Bibliotheque;
-import monJeu.Mur;
-import monJeu.Sol;
 
 public class GenerateurCancer extends AbstractGenerateur{
 

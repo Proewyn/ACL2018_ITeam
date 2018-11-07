@@ -1,4 +1,7 @@
-package monJeu;
+package personnage;
+
+import monJeu.Bibliotheque;
+
 /**
  * la classe correspondant au Personnage
  */
@@ -8,7 +11,6 @@ public class Hero implements Personnage {
 	private int y;
 	private int hp;
 	private int vision; 
-	
 	
 	/**
 	 * constructeur vide
@@ -28,10 +30,6 @@ public class Hero implements Personnage {
 		this.vision = 5;
 	}
 
-	public String toString() {
-		return ("(" + this.x+","+this.y+")");
-	}
-
 	public int getX() {
 		return x;
 	}
@@ -46,11 +44,6 @@ public class Hero implements Personnage {
 	
 	private void setY(int y) {
 		this.y = y;
-	}
-	
-	public void deplacer(int x2, int y2) {
-		this.setX(x2);
-		this.setY(y2);
 	}
 	
 	public int getHp() {
@@ -73,4 +66,14 @@ public class Hero implements Personnage {
 	public int getId() {
 		return Bibliotheque.JOUEUR;
 	}
+	
+	public void deplacer(int x2, int y2) {
+		this.setX(x2);
+		this.setY(y2);
+	}
+	
+	public String toString() {
+		return ("(" + this.x+","+this.y+")");
+	}
+
 }
