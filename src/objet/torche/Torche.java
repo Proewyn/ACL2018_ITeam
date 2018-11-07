@@ -7,13 +7,12 @@ import objet.Objet;
 public abstract class Torche implements Objet {
 	protected int x;
 	protected int y;
-	protected int id;
 	protected boolean pasTrouve;
+	
 	public Torche(int x,int y) {
 		this.x=x;
 		this.y=y;
 		this.pasTrouve=true;
-		id = Bibliotheque.TORCHE;
 	}
 
 	@Override
@@ -28,7 +27,7 @@ public abstract class Torche implements Objet {
 	}
 
 	public int getId(){
-		return id;
+		return Bibliotheque.TORCHE;
 	}
 
 	@Override

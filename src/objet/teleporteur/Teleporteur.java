@@ -12,7 +12,6 @@ public abstract class Teleporteur implements Objet {
     private int numTeleporteur;
 	protected int x;
 	protected int y;
-	protected int id;
 	protected int lien;
 	protected boolean vienDApparaitre;
 	
@@ -23,9 +22,7 @@ public abstract class Teleporteur implements Objet {
 		if (listeTeleporteur==null){
 			listeTeleporteur=l;
 		}
-		vienDApparaitre=false;
-		id = Bibliotheque.TELEPORTEUR;
-		if (!listeTeleporteur.contains(this))
+		vienDApparaitre=false;		if (!listeTeleporteur.contains(this))
 			listeTeleporteur.add(this);
 		
 		numTeleporteur=nombreTeleporteur;
@@ -55,7 +52,7 @@ public abstract class Teleporteur implements Objet {
 
 	@Override
 	public int getId() {
-		return id;
+		return Bibliotheque.TELEPORTEUR;
 	}
 
 	@Override
