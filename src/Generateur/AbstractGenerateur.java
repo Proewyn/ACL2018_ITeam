@@ -24,7 +24,7 @@ public abstract class AbstractGenerateur {
 	public abstract void generer();
 	
 	public void addBordure(){
-		Case[][] lab2 = new Case[lab.length+1][lab[0].length+1];
+		Case[][] lab2 = new Case[lab.length+2][lab[0].length+2];
 		for (int i = 0; i < lab.length; i++) {
 			for (int j = 0; j < lab[0].length; j++) {
 				lab2[i+1][j+1] = lab[i][j];
