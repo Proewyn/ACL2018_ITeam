@@ -1,4 +1,5 @@
 package principal;
+import monJeu.Bibliotheque;
 import monJeu.DessinMonJeu;
 import monJeu.MonJeu;
 import moteurJeu.MoteurGraphique;
@@ -16,7 +17,7 @@ public class Main {
 
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, aff);
-		moteur.lancerJeu(10*21,10*21);
+		moteur.lancerJeu(Bibliotheque.TAILLE_CASE*Bibliotheque.TAILLE_TABLEAU,Bibliotheque.TAILLE_CASE*Bibliotheque.TAILLE_TABLEAU);
 	}
 
 }

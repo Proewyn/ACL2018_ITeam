@@ -1,9 +1,11 @@
 package moteurJeu;
 
+import java.awt.BorderLayout;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import monJeu.MonJeu;
 import moteurJeu.Menu;
@@ -16,10 +18,14 @@ import moteurJeu.Menu;
  */
 public class InterfaceGraphique implements Observer {
 
+	private MonJeu jeu;
+	
 	/**
 	 * le Panel lie a la JFrame
 	 */
 	private PanelDessin panel;
+	private PanelStat stat;
+	private JPanel fenetre;
 	
 	/**
 	 * le controleur lie a la JFrame
@@ -36,30 +42,41 @@ public class InterfaceGraphique implements Observer {
 	 */
 	public InterfaceGraphique(DessinJeu afficheurUtil,int x,int y, MonJeu mj)
 	{
-		mj.addObserver(this);
+		jeu = mj;
 		
 		//creation JFrame
 		JFrame f = new JFrame();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//creation panel
-		this.panel=new PanelDessin(x, y,afficheurUtil);
-		f.setContentPane(this.panel);
+		fenetre = new JPanel();
+		
+		this.panel = new PanelDessin(x, y,afficheurUtil);
+		//f.setContentPane(this.panel);
+		
+		this.stat = new PanelStat(jeu);
+		
+		fenetre.add(panel, BorderLayout.WEST);
+		fenetre.add(stat, BorderLayout.EAST);
+		f.setContentPane(fenetre);
 		
 		//creation menu
-		Menu menuPrincipal = new Menu(mj);
+		Menu menuPrincipal = new Menu(jeu);
 		f.setJMenuBar(menuPrincipal);
 		
 		//ajout du controleur
 		Controleur controlleurGraph=new Controleur();
 		this.controleur=controlleurGraph;
-		this.panel.addKeyListener(controlleurGraph);	
+		//this.panel.addKeyListener(controlleurGraph);	
+		this.fenetre.addKeyListener(controlleurGraph);	
 		
 		//recuperation du focus
 		f.pack();
 		f.setVisible(true);
 		f.getContentPane().setFocusable(true);
 		f.getContentPane().requestFocus();
+		
+		jeu.addObserver(this);
 	}
 	
 	
@@ -82,7 +99,7 @@ public class InterfaceGraphique implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
+		this.stat.hp.setText("Point de vie : " + jeu.getPj().getHp());
 	}
 	
 }

@@ -8,11 +8,7 @@ import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 
-import Generateur.AbstractGenerateur;
-import Generateur.GenerateurCancer;
-import Generateur.GenerateurFusion;
-import Generateur.GenerateurWormHole;
-import Generateur.GenerateurWormHoleImparfait;
+import Generateur.*;
 
 public class Plateau {
 
