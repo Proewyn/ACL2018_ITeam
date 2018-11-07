@@ -1,5 +1,6 @@
 package moteurJeu;
 
+import monJeu.Bibliotheque;
 import monJeu.MonJeu;
 
 /**
@@ -13,12 +14,10 @@ public class MoteurGraphique {
 	 * le jeu a executer
 	 */
 	private MonJeu jeu;
-
 	/**
 	 * l'interface graphique
 	 */
 	private InterfaceGraphique gui;
-
 	/**
 	 * l'afficheur a utiliser pour le rendu
 	 */
@@ -41,10 +40,10 @@ public class MoteurGraphique {
 	/**
 	 * permet de lancer le jeu
 	 */
-	public void lancerJeu(int width, int height) throws InterruptedException {
+	public void lancerJeu() throws InterruptedException {
 
 		// creation de l'interface graphique
-		this.gui = new InterfaceGraphique(this.dessin,width,height, jeu);
+		this.gui = new InterfaceGraphique(this.dessin, Bibliotheque.TAILLE_CASE*Bibliotheque.TAILLE_TABLEAUX, Bibliotheque.TAILLE_CASE*Bibliotheque.TAILLE_TABLEAUY, jeu);
 		Controleur controle = this.gui.getControleur();
 
 		// boucle de jeu
@@ -53,7 +52,6 @@ public class MoteurGraphique {
 			Commande c = controle.getCommande();
 			// fait evoluer le jeu
 			this.jeu.evoluer(c);
-			
 			// affiche le jeu
 			this.gui.dessiner();
 			// met en attente

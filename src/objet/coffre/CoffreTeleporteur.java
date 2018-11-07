@@ -3,8 +3,8 @@ package objet.coffre;
 import java.util.Random;
 
 import objet.Objets;
+import plateau.Plateau;
 import monJeu.MonJeu;
-import monJeu.Plateau;
 
 public class CoffreTeleporteur extends Coffre {
 

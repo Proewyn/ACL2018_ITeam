@@ -19,14 +19,11 @@ import moteurJeu.Menu;
 public class InterfaceGraphique implements Observer {
 
 	private MonJeu jeu;
-	
 	/**
 	 * le Panel lie a la JFrame
 	 */
 	private PanelDessin panel;
 	private PanelStat stat;
-	private JPanel fenetre;
-	
 	/**
 	 * le controleur lie a la JFrame
 	 */
@@ -49,7 +46,7 @@ public class InterfaceGraphique implements Observer {
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//creation panel
-		fenetre = new JPanel();
+		JPanel fenetre = new JPanel();
 		
 		this.panel = new PanelDessin(x, y,afficheurUtil);
 		//f.setContentPane(this.panel);
@@ -66,9 +63,8 @@ public class InterfaceGraphique implements Observer {
 		
 		//ajout du controleur
 		Controleur controlleurGraph=new Controleur();
-		this.controleur=controlleurGraph;
-		//this.panel.addKeyListener(controlleurGraph);	
-		this.fenetre.addKeyListener(controlleurGraph);	
+		controleur=controlleurGraph;
+		fenetre.addKeyListener(controlleurGraph);	
 		
 		//recuperation du focus
 		f.pack();
@@ -78,7 +74,6 @@ public class InterfaceGraphique implements Observer {
 		
 		jeu.addObserver(this);
 	}
-	
 	
 	/**
 	 * retourne le controleur de l'affichage construit
@@ -95,11 +90,10 @@ public class InterfaceGraphique implements Observer {
 		this.panel.dessinerJeu();	
 	}
 
-
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		this.stat.hp.setText("Point de vie : " + jeu.getPj().getHp());
 	}
-	
+
 }
