@@ -71,7 +71,6 @@ public class Hero implements Personnage {
 
 	@Override
 	public int getId() {
-		// TODO Auto-generated method stub
 		return Bibliotheque.JOUEUR;
 	}
 }
