@@ -128,7 +128,7 @@ public class DessinMonJeu implements DessinJeu {
 				}
 			}
 			for (Monstre m : monstres) { //pour dessiner la liste de monstre
-					this.dessinerObjet(Bibliotheque.ZOMBI, m.getX(), m.getY(), im);			
+					this.dessinerObjet(m.getId(), m.getX(), m.getY(), im);			
 			}
 			
 		}else{
@@ -153,14 +153,14 @@ public class DessinMonJeu implements DessinJeu {
 			for (Monstre m : monstres) { //pour dessiner la liste de monstre
 				if (Math.sqrt((x-m.getX())*(x-m.getX())+(y-m.getY())*(y-m.getY()))<= vision ){
 					//pour qu'il ne soit visible que dans le champ de vision
-					this.dessinerObjet(Bibliotheque.ZOMBI, m.getX(), m.getY(), im);			
+					this.dessinerObjet(m.getId(), m.getX(), m.getY(), im);			
 				}
 			}
 			
 		}
 		
 
-		this.dessinerObjet(Bibliotheque.JOUEUR, pj.getX(), pj.getY(), im);
+		this.dessinerObjet(pj.getId(), pj.getX(), pj.getY(), im);
 				
 	}
 
