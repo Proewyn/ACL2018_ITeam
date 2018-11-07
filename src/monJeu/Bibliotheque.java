@@ -22,7 +22,7 @@ public class Bibliotheque {
 	//donnée physique
 	public static int TAILLE_TABLEAUX = 51;	
 	public static int TAILLE_TABLEAUY = 51;	
-	public static final int NBMONSTRE = 10;
+	public static final int NBMONSTRE = 100;
 	public static final int NBOBJET=20;
 	
 	/**
@@ -31,5 +31,5 @@ public class Bibliotheque {
 	 * 3 : Generateur Cancer
 	 * 4 : Generateur Fusion
 	 */
-	public static final int GENERATEUR = 4;
+	public static final int GENERATEUR = 2;
 }

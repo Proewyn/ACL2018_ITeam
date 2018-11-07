@@ -1,6 +1,3 @@
-/**
- * 
- */
 package monJeu;
 
 import java.awt.Point;

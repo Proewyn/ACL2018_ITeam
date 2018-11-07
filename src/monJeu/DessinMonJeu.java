@@ -121,16 +121,16 @@ public class DessinMonJeu implements DessinJeu {
 					this.dessinerObjet(laby[i][h].getId(), i, h, im);			
 				}
 			}
-	
-			for (Monstre m : monstres) { //pour dessiner la liste de monstre
-					this.dessinerObjet(Bibliotheque.ZOMBI, m.getX(), m.getY(), im);			
-			}
 			Objets objets = j.getListeDObjets();
 			for(Objet o : objets.getObjets()){
 				if(o.isPasTrouve()){
 					this.dessinerObjet(o.getId(),o.getX(),o.getY(),im);
 				}
 			}
+			for (Monstre m : monstres) { //pour dessiner la liste de monstre
+					this.dessinerObjet(Bibliotheque.ZOMBI, m.getX(), m.getY(), im);			
+			}
+			
 		}else{
 			for (int i=0;i<p.taillePlateaux();i++){
 				for (int h=0;h<p.taillePlateauy();h++){
@@ -144,19 +144,19 @@ public class DessinMonJeu implements DessinJeu {
 					
 				}
 			}
-	
-			for (Monstre m : monstres) { //pour dessiner la liste de monstre
-				if (Math.sqrt((x-m.getX())*(x-m.getX())+(y-m.getY())*(y-m.getY()))<= vision ){
-					//pour qu'il ne soit visible que dans le champ de vision
-					this.dessinerObjet(Bibliotheque.ZOMBI, m.getX(), m.getY(), im);			
-				}
-			}
 			Objets objets = j.getListeDObjets();
 			for(Objet o : objets.getObjets()){
 				if(o.isPasTrouve() && (Math.sqrt((x-o.getX())*(x-o.getX())+(y-o.getY())*(y-o.getY()))<= vision )){
 					this.dessinerObjet(o.getId(),o.getX(),o.getY(),im);
 				}
 			}
+			for (Monstre m : monstres) { //pour dessiner la liste de monstre
+				if (Math.sqrt((x-m.getX())*(x-m.getX())+(y-m.getY())*(y-m.getY()))<= vision ){
+					//pour qu'il ne soit visible que dans le champ de vision
+					this.dessinerObjet(Bibliotheque.ZOMBI, m.getX(), m.getY(), im);			
+				}
+			}
+			
 		}
 		
 
