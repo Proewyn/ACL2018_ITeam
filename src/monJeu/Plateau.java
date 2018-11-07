@@ -14,8 +14,8 @@ public class Plateau {
 
 	private Case[][] laby;
 	
-	public Plateau (int taillex,int tailley){
-		initLabyGenerateur(taillex,tailley);
+	public Plateau (){
+		initLabyGenerateur();
 	}
 	
 	private void initLaby(int taillex,int tailley) {
@@ -98,8 +98,8 @@ public class Plateau {
 		}
 	}
 	
-	public void initLabyGenerateur(int taillex,int tailley) {
-		AbstractGenerateur gen = new GenerateurWormHoleImparfait(taillex, tailley);
+	public void initLabyGenerateur() {
+		AbstractGenerateur gen = new GenerateurWormHoleImparfait(Bibliotheque.TAILLE_TABLEAUX, Bibliotheque.TAILLE_TABLEAUY);
 		laby = gen.getLab();
 	}
 	
