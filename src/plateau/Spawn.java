@@ -4,16 +4,20 @@ import monJeu.Bibliotheque;
 
 public class Spawn implements Case{
 
-	private boolean traversable = true;
-	private int id = Bibliotheque.SPAWN;
-	private boolean visible = false;
+	private boolean traversable;
+	private boolean visible;
+
+	public Spawn(){
+		traversable = true;
+		visible = false;
+	}
 	
 	public boolean isTraversable() {
 		return traversable;
 	}
 
 	public int getId() {
-		return id;
+		return Bibliotheque.SPAWN;
 	}
 
 	@Override
