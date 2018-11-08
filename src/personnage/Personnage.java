@@ -7,4 +7,6 @@ public interface Personnage {
 	public int getY();
 	public int getHp();
 	public int getId();
+	public void setHp(int hp);
+	
 }
