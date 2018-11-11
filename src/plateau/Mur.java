@@ -4,16 +4,17 @@ import monJeu.Bibliotheque;
 
 public class Mur implements Case{
 	
-	private boolean traversable = false;
-	private int id = Bibliotheque.MUR;
-	private boolean visible = false;
+	private boolean traversable;
+	private boolean visible;
 	
 	public Mur() {
-		
+		traversable = false;
+		visible = false;
 	}
 	
 	public Mur(boolean b) {
 		visible = b;
+		traversable = false;
 	}
 
 	public boolean isTraversable() {
@@ -21,7 +22,7 @@ public class Mur implements Case{
 	}
 
 	public int getId() {
-		return id;
+		return Bibliotheque.MUR;
 	}
 
 	@Override
