@@ -1,5 +1,6 @@
 package monJeu;
 
+import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,6 +41,18 @@ public class Plateau {
 	}
 	
 
+	public Point getSpawn(){
+		Point p = new Point(10,10);
+		for (int i = 0; i < laby.length; i++) {
+			for (int j = 0; j < laby[0].length; j++) {
+				if(laby[i][j].getId() == Bibliotheque.SPAWN) {
+					p = new Point(i,j);
+				}
+			}
+		}
+		return p;
+	}
+	
 	public Case[][] getLaby(){
 		return laby;
 	}

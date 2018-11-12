@@ -5,6 +5,7 @@ import java.util.Random;
 import monJeu.Bibliotheque;
 import monJeu.Mur;
 import monJeu.Sol;
+import monJeu.Spawn;
 
 public class GenerateurCancer extends AbstractGenerateur{
 
@@ -23,6 +24,12 @@ public class GenerateurCancer extends AbstractGenerateur{
 				proba[i][j] = 0;
 			}
 		}
+		Random r = new Random();
+		do{
+		x = (r.nextInt(lab.length)/2)*2;
+		y = (r.nextInt(lab[0].length)/2)*2;
+		}while(lab[x][y].getId() == Bibliotheque.SOL);
+		lab[x][y] = new Spawn();
 	}
 
 	@Override
