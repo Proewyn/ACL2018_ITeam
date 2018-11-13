@@ -1,0 +1,99 @@
+@startuml
+hide empty members
+package objet #aa9999{
+  interface Objet{
+    public void Collision (MonJeu mj,int x, int y)
+    public void action (MonJeu mj)
+    public int getId()
+    public int getY()
+    public int getX()
+    public boolean isPasTrouve()
+	
+  }
+
+  class Objets{
+    private static final int TORCHE
+    private static final int TELEPORTEURFIXE
+    private static final int TELEPORTEURALEATOIRE
+    private static final int COFFRETP
+    private static final int NBTYPEOBJET
+    private int popTSPourcent
+
+    public Objets(List<Objet> lO, int nbObjet, Plateau p)
+    private void generationDObjets(int nbObjet, Plateau p)
+    public List<Objet> getObjets()
+    public void collision(MonJeu mj, int x, int y)
+    public boolean collision( int x, int y)
+
+  }
+  
+  package coffre #aaaa55{
+    abstract class Coffre{
+      protected int x
+      protected int y
+      protected boolean pasTrouve
+
+      public Coffre(int x,int y)
+    }
+    
+    class CoffreTeleporteur{
+      public CoffreTeleporteur
+    }
+  }
+
+  package torche #5555aa{
+    abstract class Torche{
+      protected int x
+      protected int y
+      protected boolean pasTrouve
+
+      public Torche(int x,int y)
+    }
+
+    class Torcheplus2{
+      public TorchePlus2(int x,int y)
+    }
+    class TorcheSupreme{
+      public TorcheSupreme(int x, int y) 
+    }
+  }
+
+  package teleporteur #55aa55{
+    abstract class Teleporteur{
+      protected static int nombreTeleporteur=0
+      private int numTeleporteur
+      protected int x
+      protected int y
+      protected int lien
+      protected boolean vienDApparaitre
+
+      public Teleporteur(List<Teleporteur> l,int x ,int y)
+      public void setVienDApparaitre(boolean vienDApparaitre)
+      public void addLien(int t)
+      private void majListeTeleporteur(Teleporteur t)
+      public int getNumeroDeTeleporteur()
+      public int getNbTeleporteur()
+    }
+
+    class TeleporteurAleatoire{
+      public TeleporteurAleatoire(List<Teleporteur> l, int x, int y)
+    }
+
+    class TeleporteurFixe{
+      public TeleporteurFixe(List<Teleporteur> l, int x, int y) 
+    }
+  }
+
+  
+}
+Objets -"*" Objet
+Objet <|.. Coffre
+Objet <|.. Torche
+Objet <|.. Teleporteur
+Coffre <|-- CoffreTeleporteur
+Torche <|-- Torcheplus2
+Torche <|-- TorcheSupreme
+Teleporteur <|-- TeleporteurAleatoire
+Teleporteur <|-- TeleporteurFixe
+Teleporteur - "*" Teleporteur
+@enduml

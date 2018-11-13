@@ -1,0 +1,57 @@
+@startuml
+hide empty members
+Package generateur #ffff00{
+  abstract class AbstractGenerateur{
+    protected int x
+    protected int y
+
+    public AbstractGenerateur()
+    public Case[][] getLab()
+    public abstract void generer()
+    public void addBordure()
+  }
+
+  class GenerateurCancer {
+    private int[][] proba
+    private static final int DIAG 
+    private static final int DROIT
+    private static final int NBITERATION
+    private static final int NBVIRUS
+
+    public GenerateurCancer()
+    public void majProba()
+    public void contaminer()
+  }
+
+  class GenerateurFusion{
+    public GenerateurFusion()
+  }
+
+  class GenerateurWormHole{
+    private boolean[][] traverser
+    
+    public GenerateurWormHole()
+    public void genererRetour()
+  }
+
+  class GenerateurWormHoleImparfait{
+    private int POURCENTNBTROU
+	
+    public GenerateurWormHoleImparfait()
+  }
+
+
+}
+Package principal #00ff00{
+  class Main{
+    public static void main(String[] args) throws InterruptedException
+  }
+
+
+}
+Case "*"-- AbstractGenerateur
+AbstractGenerateur <|-- GenerateurCancer
+AbstractGenerateur <|- GenerateurFusion
+AbstractGenerateur <|-- GenerateurWormHole
+GenerateurWormHole <|-- GenerateurWormHoleImparfait
+@enduml

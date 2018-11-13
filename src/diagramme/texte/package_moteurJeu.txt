@@ -1,0 +1,99 @@
+@startuml
+hide empty members
+Package moteurJeu #99ff99{
+
+  interface DessinJeu
+  {
+    public abstract void dessiner(BufferedImage image)
+  }
+
+  class Commande
+  {
+    public boolean gauche
+    public boolean droite
+    public boolean haut
+    public boolean bas
+    public Commande()
+    public Commande(Commande commandeACopier)
+  }
+
+  class Controleur
+  {
+    
+    public Controleur()
+    public Commande getCommande()
+    public void keyPressed(KeyEvent e)
+    public void keyReleased(KeyEvent e)
+    public void keyTyped(KeyEvent e)
+  }
+
+  class EcouteurOpen
+  {
+    
+    public EcouteurOpen(MonJeu mj)
+    public void actionPerformed(ActionEvent e)
+  }
+
+  class InterfaceGraphique
+  {
+    public InterfaceGraphique(DessinJeu afficheurUtil,int x,int y, MonJeu mj)
+    public Controleur getControleur()
+    public void dessiner()
+    public void update(Observable o, Object arg)
+  }
+
+ 
+
+  class MoteurGraphique
+  {
+    public MoteurGraphique(MonJeu pJeu, DessinJeu pAffiche)
+    public void lancerJeu() throws InterruptedException
+  }
+
+  class PanelDessin
+  {
+    private int width
+    private int height
+    public PanelDessin(int x, int y, DessinJeu affiche)
+    public void dessinerJeu()
+    public void paint(Graphics g)
+  }
+
+  class PanelStat
+  {
+    public PanelStat(MonJeu jeu)
+  }
+  class Menu
+  {
+    public Menu(MonJeu mj)
+  }
+  interface Jeu
+  {
+    public void evoluer(Commande commandeUser)
+    public boolean etreFini()
+  }
+
+  
+}
+
+Controleur ..|> KeyListener
+Commande "2"-- Controleur
+ActionListener <|.. EcouteurOpen
+MonJeu "1"-- EcouteurOpen 
+
+Obsertvable <|.. InterfaceGraphique
+InterfaceGraphique --"1" Controleur
+InterfaceGraphique --"1" PanelDessin
+InterfaceGraphique --"1" PanelStat
+InterfaceGraphique --"1" MonJeu
+
+JMenuBar <|-- Menu
+MoteurGraphique -"1" InterfaceGraphique
+MonJeu "1"-- MoteurGraphique
+MoteurGraphique --"1" DessinJeu 
+PanelDessin --|> JPanel
+PanelStat --|> JPanel
+PanelStat --|> JLabel
+PanelDessin --"2" BufferedImage
+DessinJeu "1"- PanelDessin
+@enduml

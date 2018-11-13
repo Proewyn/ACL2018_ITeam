@@ -1,0 +1,65 @@
+@startuml
+hide empty members
+Package monJeu #00ffff{
+  class Bibliotheque {
+    public static final int JOUEUR 
+    public static final int MUR 
+    public static final int SOL 
+    public static final int SPAWN 	 
+    public static final int ZOMBI
+    public static final int TORCHE
+    public static final int TELEPORTEUR
+    public static final int COFFRE
+    public static final int TAILLE_CASE  
+    public static final int TAILLE_OBJET 
+    public static int TAILLE_TABLEAUX
+    public static int TAILLE_TABLEAUY
+    public static final int NBMONSTRE 
+    public static final int NBOBJET 
+    public static final int GENERATEUR
+	
+  }
+  class DessinMonJeu{
+    public DessinMonJeu(MonJeu j)
+    private void dessinerObjet(int s, int x, int y, BufferedImage im)
+    public void dessiner(BufferedImage im)
+
+
+  }
+  class MonJeu{
+    private boolean voirPlateauEntier
+
+    public MonJeu()
+    public String toString()
+    public void evoluer(Commande commande)
+    public void deplacerMonstre(DeplacementMonstre ia, Monstre m, Commande c)
+    public boolean etreFini()
+    public Hero getPj()
+    public ArrayList<Monstre> getMonstre()
+    private boolean collisionMonstre(int x, int y, boolean estMonstre)
+    private boolean collisionHero(int x, int y)
+    public Plateau getPlateau()
+    public void initLabyFichier() throws FileNotFoundException
+    public void addMonstres(Monstre m)
+    private Point pointAlea()
+    public void addMonstreRand(Monstre m)
+    public boolean getVoirPlateauEntier()
+    public void setVoirPlateauEntier(boolean voirPlateauEntier)
+    public Objets getListeDObjets()
+    public void maj()
+    private void dommageCollision(Monstre monster)
+    private void cleanMonstre(ArrayList<Monstre> lm)
+  }
+}
+
+DessinMonJeu --"1" MonJeu
+DessinMonJeu .|> DessinJeu
+
+
+MonJeu -"1" Hero
+MonJeu --"1" Plateau
+MonJeu --"*" Monstre
+MonJeu --"1" Objets
+MonJeu --|>Observable
+MonJeu ..|> Jeu
+@enduml
