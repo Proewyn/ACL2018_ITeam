@@ -4,7 +4,7 @@ import java.util.Random;
 
 import plateau.Mur;
 import plateau.Sol;
-
+import plateau.Spawn;;
 
 public class GenerateurFusion extends AbstractGenerateur{
 
@@ -54,6 +54,9 @@ public class GenerateurFusion extends AbstractGenerateur{
 				} 
 			}
 		}
+		x = (r.nextInt(lab.length)/2)*2;
+		y = (r.nextInt(lab[0].length)/2)*2;
+		lab[x][y] = new Spawn();
 	}
 
 }

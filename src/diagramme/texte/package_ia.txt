@@ -1,0 +1,25 @@
+@startuml
+hide empty members
+
+Package ia #00ffff{
+  interface DeplacementMonstre
+  {
+    public Point deplacer(Monstre m,Commande c)
+  }
+
+  class DeplacementMiroir
+  {
+    public DeplacementNaif()
+    public Point deplacer(Monstre m, Commande c)
+  }
+
+  class DeplacementNaif
+  {
+    public DeplacementMiroir()
+    public Point deplacer(Monstre m, Commande commande)
+  }
+  
+  DeplacementMonstre <|.. DeplacementNaif
+  DeplacementMonstre <|.. DeplacementMiroir
+}
+@enduml

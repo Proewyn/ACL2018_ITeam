@@ -33,15 +33,17 @@ public class MonJeu extends Observable implements Jeu {
 	 */
 	private boolean voirPlateauEntier;
 	
-	public MonJeu() {
-		this.pj = new Hero();		
-		this.plateau = new Plateau();
+	public MonJeu() {		
+		//this.zombi = new Zombi(10,12);
+		this.plateau=new Plateau();
 		this.monstres = new ArrayList<>(); //initialise la liste de monstre
 		for(int i = 0 ; i < Bibliotheque.NBMONSTRE ; i++) {
 			this.addMonstreRand(new Zombi()); // ajout de monstre
 		}
-		voirPlateauEntier = false;
-		this.listeDObjets = new Objets(new ArrayList<Objet>(), Bibliotheque.NBOBJET, plateau);
+		Point p = plateau.getSpawn();
+		this.pj = new Hero(p.x, p.y);
+		voirPlateauEntier= false;
+		this.listeDObjets= new Objets(new ArrayList<Objet>(), Bibliotheque.NBOBJET, plateau);
 	}
 
 	/**
