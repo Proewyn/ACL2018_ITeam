@@ -1,4 +1,6 @@
-package monJeu;
+package plateau;
+
+import generateur.*;
 
 import java.awt.Point;
 import java.io.BufferedReader;
@@ -9,7 +11,8 @@ import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 
-import Generateur.*;
+import monJeu.Bibliotheque;
+
 
 public class Plateau {
 
@@ -19,26 +22,6 @@ public class Plateau {
 		initLabyGenerateur();
 	}
 	
-	private void initLaby(int taillex,int tailley) {
-				
-		laby = new Case[taillex][tailley];
-		for (int i=0;i<tailley;i++){
-			laby[0][i]=new Mur(true);
-			laby[taillex-1][i]=new Mur(true);
-		}
-		
-		for (int i=1;i<taillex-1;i++){
-			laby[i][0]=new Mur(true);
-			for (int j=1;j<tailley-1;j++){
-				laby[i][j]=new Sol();
-			}
-			laby[i][tailley-1]=new Mur(true);
-		}
-		laby[4][6]=new Mur();
-		laby[5][5]=new Mur();
-		laby[4][4]=new Mur();
-		laby[3][5]=new Mur();
-	}
 	
 
 	public Point getSpawn(){
@@ -130,7 +113,6 @@ public class Plateau {
 			gen = new GenerateurWormHole();
 			break;
 		}
-		
 		laby = gen.getLab();
 	}
 	

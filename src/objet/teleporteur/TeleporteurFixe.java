@@ -2,7 +2,8 @@ package objet.teleporteur;
 
 import java.util.List;
 
-import monJeu.Hero;
+import personnage.Hero;
+
 import monJeu.MonJeu;
 
 public class TeleporteurFixe extends Teleporteur {

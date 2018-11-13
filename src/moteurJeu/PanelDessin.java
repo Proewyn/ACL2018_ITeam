@@ -13,17 +13,14 @@ public class PanelDessin extends JPanel {
 	 * la clase chargee de Dessiner
 	 */
 	private DessinJeu dessin;
-
 	/**
 	 * image suivante est l'image cachee sur laquelle dessiner
 	 */
 	private BufferedImage imageSuivante;
-
 	/**
 	 * image en cours est l'image entrain d'etre affichee
 	 */
 	private BufferedImage imageEnCours;
-
 	/**
 	 * la taille des images
 	 */
@@ -58,7 +55,6 @@ public class PanelDessin extends JPanel {
 	public void dessinerJeu() {
 		// generer la nouvelle image
 		this.dessin.dessiner(this.imageSuivante);
-
 		// inverses les images doublebuffereing
 		BufferedImage temp = this.imageEnCours;
 		// l'image a dessiner est celle qu'on a construite

@@ -1,8 +1,8 @@
-package Generateur;
+package generateur;
 
+import plateau.Case;
+import plateau.Mur;
 import monJeu.Bibliotheque;
-import monJeu.Case;
-import monJeu.Mur;
 
 public abstract class AbstractGenerateur {
 

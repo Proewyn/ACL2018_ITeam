@@ -1,4 +1,4 @@
-package monJeu;
+package personnage;
 
 /**
  * @author levy54u
@@ -9,7 +9,7 @@ public abstract class Monstre implements Personnage {
 	private int x;
 	private int y;
 	private int Hp;
-
+	
 	public Monstre() {
 		this.x = 0;
 		this.y  = 0;
@@ -21,7 +21,6 @@ public abstract class Monstre implements Personnage {
 		this.y = y;
 		this.Hp = 1;
 	}
-
 
 	public void deplacer(int x2, int y2){
 		this.setX(x2);

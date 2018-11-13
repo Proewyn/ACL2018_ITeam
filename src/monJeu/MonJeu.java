@@ -1,5 +1,8 @@
 package monJeu;
 
+import ia.DeplacementMiroir;
+import ia.DeplacementMonstre;
+
 import java.awt.Point;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -8,6 +11,10 @@ import moteurJeu.Commande;
 import moteurJeu.Jeu;
 import objet.Objet;
 import objet.Objets;
+import personnage.Hero;
+import personnage.Monstre;
+import personnage.Zombi;
+import plateau.Plateau;
 
 /**
  * classe qui contient les donnees du jeu. Pour le moment, il ne possede qu'un
@@ -55,16 +62,16 @@ public class MonJeu extends Observable implements Jeu {
 	public void evoluer(Commande commande) {
 		int x= pj.getX();
 		int y= pj.getY();
-		if (commande.gauche){
+		if (commande.gauche) {
 			x--;
 		}
-		if (commande.droite){
+		if (commande.droite) {
 			x++;
 		}
-		if(commande.haut){
+		if(commande.haut) {
 			y--;
 		}
-		if(commande.bas){
+		if(commande.bas) {
 			y++;
 		}
 		if (!plateau.collision(x, y)) {
@@ -79,7 +86,6 @@ public class MonJeu extends Observable implements Jeu {
 		}
 		this.cleanMonstre(this.getMonstre());
 		this.maj();
-		
 	}
 	
 	public void deplacerMonstre(DeplacementMonstre ia, Monstre m, Commande c) {
@@ -107,10 +113,6 @@ public class MonJeu extends Observable implements Jeu {
 	public Hero getPj() {
 		return pj;
 	}
-	/*
-	public Monstre getZombi(){
-		return this.zombi;
-	}*/
 
 	public ArrayList<Monstre> getMonstre() {
 		return this.monstres;
@@ -161,19 +163,17 @@ public class MonJeu extends Observable implements Jeu {
 	private Point pointAlea() {
 		Point alea = new Point();
 		
-		int xRand = (int) (Math.random() * this.plateau.taillePlateaux() );
-		int yRand = (int) (Math.random() * this.plateau.taillePlateauy() );
+		int xRand = (int) (Math.random() * this.plateau.taillePlateaux());
+		int yRand = (int) (Math.random() * this.plateau.taillePlateauy());
 		
 		while(this.plateau.isMur(xRand, yRand)) {
-			xRand = (int) (Math.random() * this.plateau.taillePlateaux() );
-			yRand = (int) (Math.random() * this.plateau.taillePlateauy() );
+			xRand = (int) (Math.random() * this.plateau.taillePlateaux());
+			yRand = (int) (Math.random() * this.plateau.taillePlateauy());
 		}
 		alea.setLocation(xRand, yRand);
-		
 		return alea;
 	}
 
-	
 	public void addMonstreRand(Monstre m) {
 		Point alea = pointAlea();
 		m.deplacer((int)alea.getX(), (int)alea.getY());
@@ -188,7 +188,6 @@ public class MonJeu extends Observable implements Jeu {
 		this.voirPlateauEntier = voirPlateauEntier;
 	}
 	
-
 	public Objets getListeDObjets() {
 		return listeDObjets;
 	}
@@ -215,4 +214,5 @@ public class MonJeu extends Observable implements Jeu {
 			}
 		}
 	}
+
 }

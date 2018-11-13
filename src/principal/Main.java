@@ -1,5 +1,4 @@
 package principal;
-import monJeu.Bibliotheque;
 import monJeu.DessinMonJeu;
 import monJeu.MonJeu;
 import moteurJeu.MoteurGraphique;
@@ -10,7 +9,6 @@ import moteurJeu.MoteurGraphique;
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
-
 		// creation du jeu particulier et de son afficheur
 		MonJeu jeu = new MonJeu();
 		DessinMonJeu aff = new DessinMonJeu(jeu);

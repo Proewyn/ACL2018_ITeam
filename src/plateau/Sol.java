@@ -1,17 +1,23 @@
-package monJeu;
+package plateau;
+
+import monJeu.Bibliotheque;
 
 public class Sol implements Case{
 
-	private boolean traversable = true;
-	private int id = Bibliotheque.SOL;
-	private boolean visible = false;
+	private boolean traversable;
+	private boolean visible;
+	
+	public Sol(){
+		this.traversable =true;
+		this.visible =false;
+	}
 	
 	public boolean isTraversable() {
 		return traversable;
 	}
 
 	public int getId() {
-		return id;
+		return Bibliotheque.SOL;
 	}
 
 	@Override
@@ -19,6 +25,5 @@ public class Sol implements Case{
 		// TODO Auto-generated method stub
 		return visible;
 	}
-
 
 }

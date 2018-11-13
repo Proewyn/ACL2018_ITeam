@@ -1,6 +1,4 @@
-package monJeu;
-
-
+package personnage;
 
 public interface Personnage {
 	
@@ -8,4 +6,7 @@ public interface Personnage {
 	public int getX();
 	public int getY();
 	public int getHp();
+	public int getId();
+	public void setHp(int hp);
+	
 }

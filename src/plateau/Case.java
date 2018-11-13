@@ -1,4 +1,4 @@
-package monJeu;
+package plateau;
 
 public interface Case {
 	

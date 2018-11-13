@@ -1,5 +1,5 @@
 package objet.torche;
-import monJeu.Hero;
+import personnage.Hero;
 import monJeu.MonJeu;
 
 public class TorchePlus2 extends Torche {

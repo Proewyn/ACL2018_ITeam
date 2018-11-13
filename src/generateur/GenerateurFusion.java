@@ -1,10 +1,10 @@
-package Generateur;
+package generateur;
 
 import java.util.Random;
 
-import monJeu.Mur;
-import monJeu.Sol;
-import monJeu.Spawn;
+import plateau.Mur;
+import plateau.Sol;
+import plateau.Spawn;;
 
 public class GenerateurFusion extends AbstractGenerateur{
 

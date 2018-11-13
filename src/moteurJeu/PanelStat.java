@@ -21,5 +21,4 @@ public class PanelStat extends JPanel{
 		add(hp);
 	}
 
-
 }
