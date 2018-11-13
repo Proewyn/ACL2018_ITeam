@@ -4,9 +4,9 @@ import java.util.Random;
 
 import plateau.Mur;
 import plateau.Sol;
+import plateau.Spawn;
 
 import monJeu.Bibliotheque;
-
 public class GenerateurCancer extends AbstractGenerateur{
 
 	private int[][] proba;
@@ -24,6 +24,12 @@ public class GenerateurCancer extends AbstractGenerateur{
 				proba[i][j] = 0;
 			}
 		}
+		Random r = new Random();
+		do{
+		x = (r.nextInt(lab.length)/2)*2;
+		y = (r.nextInt(lab[0].length)/2)*2;
+		}while(lab[x][y].getId() == Bibliotheque.SOL);
+		lab[x][y] = new Spawn();
 	}
 
 	@Override
