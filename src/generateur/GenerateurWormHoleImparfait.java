@@ -9,7 +9,7 @@ import monJeu.Bibliotheque;
 public class GenerateurWormHoleImparfait extends GenerateurWormHole{
 
 	private int POURCENTNBTROU = 20;
-	
+
 	public GenerateurWormHoleImparfait() {
 		super();
 	}
@@ -17,10 +17,29 @@ public class GenerateurWormHoleImparfait extends GenerateurWormHole{
 	@Override
 	public void generer() {
 		super.generer();
-		int nbtrou = (Bibliotheque.TAILLE_TABLEAUX*Bibliotheque.TAILLE_TABLEAUY)*POURCENTNBTROU/100;
+		int nbmur = 0;
+		for (int i = 0; i < lab.length; i++) {
+			for (int j = 0; j < lab[0].length; j++) {
+				if(lab[i][j].getId() == Bibliotheque.MUR)
+					nbmur ++;
+			}
+		}
+		int nbtrou = nbmur*POURCENTNBTROU/100;
 		Random r = new Random();
+		int x, y;
+		boolean valide;
 		for (int i = 0; i < nbtrou; i++) {
-			lab[r.nextInt(lab.length)][r.nextInt(lab[0].length)] = new Sol();
+			do{
+				valide = false;
+				x = r.nextInt(lab.length);
+				y = r.nextInt(lab[0].length);
+				if(x > 0 && !lab[x-1][y].isTraversable()
+				   && x+1 < lab.length && !lab[x+1][y].isTraversable()
+				   && y > 0 && !lab[x][y-1].isTraversable()
+				   && y+1 < lab[0].length && !lab[x][y+1].isTraversable())
+								valide = true;
+			}while(valide || lab[x][y].getId() == Bibliotheque.SPAWN || lab[x][y].getId() != Bibliotheque.MUR);
+			lab[x][y] = new Sol();
 		}
 	}
 

@@ -8,8 +8,8 @@ public abstract class AbstractGenerateur {
 
 	
 	protected Case[][] lab;
-	protected int x = 10;
-	protected int y = 10;
+	protected int x;
+	protected int y;
 	
 	public AbstractGenerateur() {
 		lab = new Case[Bibliotheque.TAILLE_TABLEAUX-2][Bibliotheque.TAILLE_TABLEAUY-2];
