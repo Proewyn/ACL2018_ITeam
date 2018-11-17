@@ -42,7 +42,7 @@ public class MonJeu extends Observable implements Jeu {
 		}
 		Point p = plateau.getSpawn();
 		this.pj = new Hero(p.x, p.y);
-		voirPlateauEntier= false;
+		voirPlateauEntier= true;
 		this.listeDObjets= new Objets(new ArrayList<Objet>(), Bibliotheque.NBOBJET, plateau);
 	}
 
