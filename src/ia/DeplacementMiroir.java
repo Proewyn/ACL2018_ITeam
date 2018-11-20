@@ -11,11 +11,13 @@ import moteurJeu.Commande;
  */
 public class DeplacementMiroir implements DeplacementMonstre {
 
+	private DeplacementNaif d;
 	/**
 	 * 
 	 */
 	public DeplacementMiroir() {
 		// TODO Auto-generated constructor stub
+		d = new DeplacementNaif();
 	}
 
 	/* (non-Javadoc)
@@ -39,7 +41,6 @@ public class DeplacementMiroir implements DeplacementMonstre {
 			y--;
 		}
 		else{
-			DeplacementNaif d = new DeplacementNaif();
 			x = (int)d.deplacer(m, commande).getX();
 			y =(int) d.deplacer(m, commande).getY();
 			
