@@ -1,0 +1,88 @@
+@startuml
+hide empty members
+
+DessinMonJeu --"1" MonJeu
+DessinMonJeu .|> DessinJeu
+
+
+MonJeu -"1" Hero
+MonJeu ---"1" Plateau
+MonJeu --"1" Objets
+Observable <|-- MonJeu
+Jeu <|.. MonJeu 
+Monstre "*"--- MonJeu
+
+Controleur ..|> KeyListener
+Controleur --"2" Commande
+ActionListener <|.. EcouteurOpen
+MonJeu "1"-- EcouteurOpen
+
+Obsertvable <|..InterfaceGraphique
+InterfaceGraphique --"1" Controleur
+InterfaceGraphique --"1" PanelStat
+InterfaceGraphique --"1" PanelDessin
+MonJeu "1"- InterfaceGraphique
+
+JMenuBar <|-- Menu
+MoteurGraphique -"1" InterfaceGraphique
+MonJeu "1"-- MoteurGraphique
+MoteurGraphique --"1" DessinJeu
+PanelDessin --|> JPanel
+PanelStat --|> JPanel
+PanelStat --|> JLabel
+PanelDessin --"2" BufferedImage
+DessinJeu "1"- PanelDessin
+
+
+Case "*"- AbstractGenerateur
+AbstractGenerateur <|- GenerateurFusion
+AbstractGenerateur <|-- GenerateurWormHole
+GenerateurWormHole <|-- GenerateurWormHoleImparfait
+GenerateurCancer --|>AbstractGenerateur
+
+Monstre ..|> Personnage
+Personnage <|.. Hero
+Monstre <|-- Zombi
+
+
+Objets -"*" Objet
+Objet <|.. Coffre
+Objet <|... Torche
+Objet <|... Teleporteur
+Objet <|.. Porte
+Coffre <|-- CoffreTeleporteur
+Coffre <|-- CoffreDeClef
+Torche <|-- Torcheplus2
+Torche <|-- TorcheSupreme
+Teleporteur <|-- TeleporteurAleatoire
+Teleporteur <|-- TeleporteurFixe
+Teleporteur - "*" Teleporteur
+Porte <|-- TrapeFinJeu
+Porte -"1" CoffreDeClef
+
+Plateau ---"*" Case
+Case<|..Mur
+Case<|..Sol
+Case<|..Spawn
+
+
+DeplacementMonstre <|.. DeplacementNaif
+DeplacementMonstre <|.. DeplacementMiroir
+DeplacementMonstre <|.. DeplacementPathfinding
+MonJeu "1"-- DeplacementMonstre
+
+interface DessinJeu
+interface Jeu
+interface Personnage
+interface Objet
+interface Case
+interface DeplacementMonstre
+
+abstract class AbstractGenerateur
+abstract class Monstre
+abstract class Coffre
+abstract class Torche
+abstract class Teleporteur
+
+class Bibliotheque
+@enduml
