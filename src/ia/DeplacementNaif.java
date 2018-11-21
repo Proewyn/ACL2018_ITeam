@@ -8,6 +8,7 @@ import java.util.Random;
 
 import personnage.Monstre;
 
+import monJeu.MonJeu;
 import moteurJeu.Commande;
 
 /**
@@ -23,7 +24,7 @@ public class DeplacementNaif implements DeplacementMonstre {
 		
 	}
 
-	public Point deplacer(Monstre m, Commande c) {
+	public Point deplacer(MonJeu jeu,Monstre m, Commande c) {
 		Point p = new Point();
 		Random r = new Random();
 		int rand = r.nextInt(4);

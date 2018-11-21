@@ -3,6 +3,7 @@ package ia;
 import java.awt.Point;
 
 import personnage.Monstre;
+import monJeu.MonJeu;
 import moteurJeu.Commande;
 
 /**
@@ -11,18 +12,20 @@ import moteurJeu.Commande;
  */
 public class DeplacementMiroir implements DeplacementMonstre {
 
+	private DeplacementNaif d;
 	/**
 	 * 
 	 */
 	public DeplacementMiroir() {
 		// TODO Auto-generated constructor stub
+		d = new DeplacementNaif();
 	}
 
 	/* (non-Javadoc)
 	 * @see monJeu.DeplacementMonstre#deplacer(monJeu.Monstre, moteurJeu.Commande)
 	 */
 	@Override
-	public Point deplacer(Monstre m, Commande commande) {
+	public Point deplacer(MonJeu jeu, Monstre m, Commande commande) {
 		Point p = new Point();
 		int x = m.getX();
 		int y = m.getY();
@@ -39,14 +42,15 @@ public class DeplacementMiroir implements DeplacementMonstre {
 			y--;
 		}
 		else{
-			DeplacementNaif d = new DeplacementNaif();
-			x = (int)d.deplacer(m, commande).getX();
-			y =(int) d.deplacer(m, commande).getY();
+			x = (int)d.deplacer(jeu,m, commande).getX();
+			y =(int) d.deplacer(jeu,m, commande).getY();
 			
 			
 		}
 		p.setLocation(x, y);
 		return p;
 	}
+
+
 
 }

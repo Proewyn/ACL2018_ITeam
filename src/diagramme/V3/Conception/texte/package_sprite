@@ -1,0 +1,59 @@
+@startuml
+hide empty member
+up to bottom direction
+package sprite #2048AC{
+  class LesDessins{
+    public LesDessins(Objets o, Plateau p, Personage ... pers)
+  }
+  class LesDessinsPersonnages
+  class LesDessinsObjets
+  class LesDessinsCases
+
+  package spritePersonnage #AA55AA{
+    class DessinHero
+    class LesDessinsMonstres
+    abstract class DessinMonstre
+    class DessinZombie
+  }
+  package spriteObjet #00FFFF{
+    abstract class DessinObjet
+    class DessinTorche
+    class DessinPorte
+    class DessinTeleporteur
+    class DessinCoffre
+    class DessinCoffreDeClef
+  } 
+  package spriteCase #00AA00{
+    abstract class DessinCase
+    class DessinMur
+    class DessinSol
+    class DessinSpawn
+  }
+
+}
+
+LesDessinsPersonnages "1"- LesDessins
+LesDessins --"1" LesDessinsObjets
+LesDessins -"1" LesDessinsCases
+LesDessinsPersonnages --"1" DessinHero
+LesDessinsPersonnages --"1" LesDessinsMonstres
+LesDessinsMonstres --"*" DessinMonstre
+DessinMonstre <|-- DessinZombie
+Hero "1"-- DessinHero
+Monstre --"1" DessinMonstre
+
+LesDessinsObjets --"*" DessinObjet
+DessinObjet <|-- DessinTorche
+DessinObjet <|--- DessinPorte
+DessinObjet <|---- DessinTeleporteur
+DessinObjet ----"1" Objet
+DessinObjet <|--- DessinCoffre
+DessinObjet <|-- DessinCoffreDeClef
+
+
+LesDessinsCases --"*" DessinCase
+DessinCase -"1" Case
+DessinMur -|> DessinCase
+DessinCase <|-- DessinSol
+DessinCase <|-- DessinSpawn
+@enduml

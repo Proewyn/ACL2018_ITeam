@@ -89,7 +89,7 @@ public class MonJeu extends Observable implements Jeu {
 	}
 	
 	public void deplacerMonstre(DeplacementMonstre ia, Monstre m, Commande c) {
-		Point p = ia.deplacer(m,c);
+		Point p = ia.deplacer(this,m,c);
 		int x = (int) p.getX();
 		int y = (int) p.getY();
 		if ((!plateau.collision(x, y)) && (!this.collisionHero(x, y)) && (!this.collisionMonstre(x, y, true))) {
