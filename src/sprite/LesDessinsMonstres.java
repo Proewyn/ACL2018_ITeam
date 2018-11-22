@@ -1,0 +1,37 @@
+/**
+ * 
+ */
+package sprite;
+
+import java.awt.Graphics2D;
+import java.util.List;
+
+
+import sprite.spritePersonnage.DessinMonstre;
+
+/**
+ * @author damien
+ *
+ */
+public class LesDessinsMonstres{
+
+	private List<DessinMonstre> dessinsMonstres;
+	
+	/**
+	 * 
+	 */
+	public LesDessinsMonstres(List<DessinMonstre> dessinsMonstres) {
+		this.dessinsMonstres = dessinsMonstres;
+	}
+	
+	public void dessiner(Graphics2D crayon) {
+		
+		for(DessinMonstre dm : this.dessinsMonstres) {
+			dm.dessiner(crayon);
+		}
+		
+	}
+	
+
+
+}
