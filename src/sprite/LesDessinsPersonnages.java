@@ -5,6 +5,8 @@ package sprite;
 
 import java.awt.Graphics2D;
 
+import personnage.Hero;
+
 import sprite.spritePersonnage.DessinHero;
 
 /**
@@ -28,6 +30,12 @@ public class LesDessinsPersonnages {
 	public void dessiner(Graphics2D crayon) {
 		this.dessinHero.dessiner(crayon);
 		this.dessinsMonstres.dessiner(crayon);
+		
+	}
+
+	public void dessinerVision(Hero hero, Graphics2D crayon) {
+		this.dessinHero.dessiner(crayon);
+		this.dessinsMonstres.dessinerVision(hero,crayon);
 		
 	}
 

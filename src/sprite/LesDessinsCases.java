@@ -8,6 +8,7 @@ import java.util.List;
 
 import monJeu.Bibliotheque;
 
+import personnage.Hero;
 import plateau.Case;
 
 import sprite.spriteCase.DessinCase;
@@ -45,6 +46,20 @@ public class LesDessinsCases {
 				this.dc[i][j].dessiner(i,j,crayon);
 			}
 		}
+	}
+
+
+
+
+
+	public void dessinerVision(Hero hero, Graphics2D crayon) {
+		for(int i = 0 ;i<dc.length;i++) {
+			for(int j = 0 ;j<dc[0].length;j++) {
+				
+				this.dc[i][j].dessinerVision(hero,i,j,crayon);
+			}
+		}
+		
 	}
 
 

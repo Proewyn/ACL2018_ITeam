@@ -6,6 +6,8 @@ package sprite;
 import java.awt.Graphics2D;
 import java.util.List;
 
+import personnage.Hero;
+
 
 import sprite.spritePersonnage.DessinMonstre;
 
@@ -31,6 +33,14 @@ public class LesDessinsMonstres{
 			dm.dessiner(crayon);
 		}
 		
+	}
+
+	public void dessinerVision(Hero hero,Graphics2D crayon) {
+		
+		for(DessinMonstre dm : this.dessinsMonstres) {
+			
+			dm.dessinerVision(hero,crayon);
+		}
 	}
 	
 

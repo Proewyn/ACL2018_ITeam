@@ -19,6 +19,7 @@ import sprite.spriteCase.DessinSol;
 import sprite.spriteCase.DessinSpawn;
 import sprite.spriteObjet.DessinCoffre;
 import sprite.spriteObjet.DessinObjet;
+import sprite.spriteObjet.DessinPorte;
 import sprite.spriteObjet.DessinTeleporteur;
 import sprite.spriteObjet.DessinTorche;
 import sprite.spritePersonnage.DessinHero;
@@ -59,8 +60,11 @@ public class LesDessins {
 				
 				dessinObjet.add(new DessinCoffre(obj, urlCoffre));				
 				break;
+			case Bibliotheque.PORTE:
+				dessinObjet.add(new DessinPorte(obj, urlPorte));
+				break;
 			default:
-				throw new AssertionError("objet inexistant");
+				throw new AssertionError("objet inexistant"+id);
 			
 			}
 			
@@ -107,14 +111,12 @@ public class LesDessins {
 	
 	private void initUrl() {
 		this.urlCoffre = new File("sprites/coffre.png");
-		
 		this.urlCoffreDeClef = new File("sprites/coffre.png");
 		this.urlHero = new File("sprites/hero1.png");
 		this.urlZombi = new File("sprites/mario_zombi.png");
 		this.urlMur = new File("sprites/mur1.png");
 		this.urlPorte = new File("sprites/porte.png");
 		this.urlTeleporteur = new File("sprites/tp.png");
-		
 		this.urlTorche = new File("sprites/torche.png");
 		
 		
@@ -126,6 +128,11 @@ public class LesDessins {
 		this.dessinPerso.dessiner(crayon);
 	}
 
+	public void dessinerVision(Hero hero,Graphics2D crayon){
+		this.dessinCases.dessinerVision(hero,crayon);
+		this.dessinObjets.dessinerVision(hero,crayon);
+		this.dessinPerso.dessinerVision(hero,crayon);
+	}
 
 	
 

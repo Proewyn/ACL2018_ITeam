@@ -32,6 +32,7 @@ public class MonJeu extends Observable implements Jeu {
 	 * boolean pour savoir si on peut voir tout le pateau
 	 */
 	private boolean voirPlateauEntier;
+	private boolean gagne;
 	
 	public MonJeu() {		
 		//this.zombi = new Zombi(10,12);
@@ -42,8 +43,9 @@ public class MonJeu extends Observable implements Jeu {
 		}
 		Point p = plateau.getSpawn();
 		this.pj = new Hero(p.x, p.y);
-		voirPlateauEntier= true;
+		voirPlateauEntier= false;
 		this.listeDObjets= new Objets(new ArrayList<Objet>(), Bibliotheque.NBOBJET, plateau);
+		gagne = false;
 	}
 
 	/**
@@ -102,7 +104,7 @@ public class MonJeu extends Observable implements Jeu {
 
 	@Override
 	public boolean etreFini() {
-		return (this.getPj().getHp() <= 0);
+		return (this.getPj().getHp() <= 0)||gagne;
 	}
 
 	/**
@@ -151,6 +153,14 @@ public class MonJeu extends Observable implements Jeu {
 		plateau.initLabyFichier();
 	}
 	
+	public boolean isGagne() {
+		return gagne;
+	}
+
+	public void setGagne(boolean gagne) {
+		this.gagne = gagne;
+	}
+
 	public void addMonstres(Monstre m) {
 		this.monstres.add(m);
 	}

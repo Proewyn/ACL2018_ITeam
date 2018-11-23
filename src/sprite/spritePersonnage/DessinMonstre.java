@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import monJeu.Bibliotheque;
+import personnage.Hero;
 import personnage.Monstre;
 
 /**
@@ -48,6 +49,16 @@ public abstract class DessinMonstre {
 				Bibliotheque.TAILLE_CASE,null);
 		}
 		
+		
+	}
+
+
+
+	public void dessinerVision(Hero hero, Graphics2D crayon) {
+		if (Math.sqrt((hero.getX()-m.getX())*(hero.getX()-m.getX())+(hero.getY()-m.getY())*(hero.getY()-m.getY())) <= hero.getVision() ){
+			
+			this.dessiner(crayon);
+		}
 		
 	}
 

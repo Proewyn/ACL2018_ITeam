@@ -6,6 +6,8 @@ package sprite;
 import java.awt.Graphics2D;
 import java.util.List;
 
+import personnage.Hero;
+
 import sprite.spriteObjet.DessinObjet;
 
 /**
@@ -28,6 +30,14 @@ public class LesDessinsObjets {
 		}
 		
 	}
+
+	public void dessinerVision(Hero hero, Graphics2D crayon) {
+		for(DessinObjet dObj : this.dessinObjet) {
+			dObj.dessinerVision(hero, crayon);
+		}
+		
+	}
+	
 
 
 }

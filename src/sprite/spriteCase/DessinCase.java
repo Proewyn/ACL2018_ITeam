@@ -12,6 +12,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import monJeu.Bibliotheque;
+import personnage.Hero;
 import plateau.Case;
 
 /**
@@ -37,15 +38,23 @@ public abstract class DessinCase {
 		}
 	}
 	
-	public void dessiner(Graphics2D crayon) {
-		
-		
-	}
+
 	
 	public void dessiner(int x, int y,Graphics2D crayon) {
 		crayon.setColor(Color.green);
 		crayon.fillRect(x * Bibliotheque.TAILLE_CASE, y * Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE);
 		
+	}
+
+	
+
+
+	public void dessinerVision(Hero hero, int i, int j, Graphics2D crayon) {
+		
+		if (Math.sqrt((hero.getX()-i)*(hero.getX()-i)+(hero.getY()-j)*(hero.getY()-j)) <= hero.getVision() ){
+		
+			this.dessiner(i,j,crayon);
+		}
 	}
 	
 
