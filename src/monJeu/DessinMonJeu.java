@@ -12,6 +12,7 @@ import personnage.Hero;
 import personnage.Monstre;
 import plateau.Case;
 import plateau.Plateau;
+import sprite.LesDessins;
 
 /**
  * un afficheur graphique associe au JeuTest fourni
@@ -24,6 +25,7 @@ public class DessinMonJeu implements DessinJeu {
 	 * lien vers le jeu a afficher
 	 */
 	private MonJeu jeu;
+	private LesDessins dessins;
 
 	/**
 	 * appelle constructeur parent
@@ -33,6 +35,7 @@ public class DessinMonJeu implements DessinJeu {
 	 */
 	public DessinMonJeu(MonJeu j) {
 		this.jeu = j;
+		this.dessins = new LesDessins(j.getListeDObjets(), j.getPlateau(), j.getPj(), j.getMonstre());
 	}
 
 	/**
@@ -103,7 +106,7 @@ public class DessinMonJeu implements DessinJeu {
 		Plateau p	  = j.getPlateau();
 		Case[][] laby = p.getLaby(); 
 		if(j.getVoirPlateauEntier()) {
-			for (int i = 0 ; i < p.taillePlateaux() ; i++) {
+			/*for (int i = 0 ; i < p.taillePlateaux() ; i++) {
 				for (int h = 0 ; h < p.taillePlateauy() ; h++) {
 					this.dessinerObjet(laby[i][h].getId(), i, h, im);			
 				}
@@ -116,7 +119,10 @@ public class DessinMonJeu implements DessinJeu {
 			}
 			for (Monstre m : monstres) { //pour dessiner la liste de monstre
 					this.dessinerObjet(m.getId(), m.getX(), m.getY(), im);			
-			}
+			}*/
+		
+			
+			this.dessins.dessiner(crayon);
 		}else {
 			for (int i=0;i<p.taillePlateaux();i++) {
 				for (int h=0;h<p.taillePlateauy();h++) {
@@ -141,8 +147,9 @@ public class DessinMonJeu implements DessinJeu {
 					this.dessinerObjet(m.getId(), m.getX(), m.getY(), im);			
 				}
 			}
+			this.dessinerObjet(pj.getId(), pj.getX(), pj.getY(), im);	
 		}
-		this.dessinerObjet(pj.getId(), pj.getX(), pj.getY(), im);	
+		
 	}
 
 }

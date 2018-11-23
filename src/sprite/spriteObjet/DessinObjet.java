@@ -26,7 +26,7 @@ public abstract class DessinObjet {
 	 */
 	public DessinObjet(Objet objet, File urlImage) {
 		this.objet = objet;
-		this.dessinObjet = null;
+		//this.dessinObjet = null;
 		
 		try {
 			this.dessinObjet = ImageIO.read(urlImage);
@@ -37,13 +37,12 @@ public abstract class DessinObjet {
 	}
 	
 	public void dessiner(Graphics2D crayon) {
-		crayon.drawImage(
-				this.dessinObjet, 
-				this.objet.getX() * Bibliotheque.TAILLE_CASE,
-				this.objet.getY() * Bibliotheque.TAILLE_CASE, 
-				Bibliotheque.TAILLE_CASE, 
-				Bibliotheque.TAILLE_CASE,null);
-		
+		if(objet.isPasTrouve())
+			crayon.drawImage(this.dessinObjet, this.objet.getX()
+					* Bibliotheque.TAILLE_CASE, this.objet.getY()
+					* Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE,
+					Bibliotheque.TAILLE_CASE, null);
+
 	}
 	
 }

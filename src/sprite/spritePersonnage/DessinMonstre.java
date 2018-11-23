@@ -39,13 +39,14 @@ public abstract class DessinMonstre {
 
 
 	public void dessiner(Graphics2D crayon) {
+		if(m.getHp()>0){
 		crayon.drawImage(
 				this.imageMonstre, 
 				this.m.getX() * Bibliotheque.TAILLE_CASE,
 				this.m.getY() * Bibliotheque.TAILLE_CASE, 
 				Bibliotheque.TAILLE_CASE, 
 				Bibliotheque.TAILLE_CASE,null);
-	
+		}
 		
 		
 	}

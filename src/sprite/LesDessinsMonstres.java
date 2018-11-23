@@ -27,6 +27,7 @@ public class LesDessinsMonstres{
 	public void dessiner(Graphics2D crayon) {
 		
 		for(DessinMonstre dm : this.dessinsMonstres) {
+			
 			dm.dessiner(crayon);
 		}
 		

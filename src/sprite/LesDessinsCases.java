@@ -6,31 +6,44 @@ package sprite;
 import java.awt.Graphics2D;
 import java.util.List;
 
+import monJeu.Bibliotheque;
+
+import plateau.Case;
+
 import sprite.spriteCase.DessinCase;
+import sprite.spriteCase.DessinSol;
 
 /**
  * @author damien
  *
  */
 public class LesDessinsCases {
-	private List<DessinCase> dc;
+	private DessinCase[][] dc;
 
 	/**
 	 * 
 	 */
-	public LesDessinsCases(List<DessinCase> dc) {
-		this.dc = dc;
+	public LesDessinsCases(DessinCase[][] dec) {
+		this.dc = new DessinCase[dec.length][dec[0].length];
+		for(int i = 0 ;i<dec.length;i++) {
+			for(int j = 0 ;j<dec[0].length;j++) {
+				this.dc[i][j] = dec[i][j];
+				
+			}
+		}
+		
+		System.out.println(dc);
+		
 	}
+	
+
 	
 	public void dessiner(Graphics2D crayon) {
-		for(DessinCase d : this.dc) {
-			d.dessiner(crayon);
-		}
-	}
-	
-	public void dessiner(int x, int y , Graphics2D crayon) {
-		for(DessinCase d : this.dc) {
-			d.dessiner(x,y,crayon);
+		for(int i = 0 ;i<dc.length;i++) {
+			for(int j = 0 ;j<dc[0].length;j++) {
+				
+				this.dc[i][j].dessiner(i,j,crayon);
+			}
 		}
 	}
 

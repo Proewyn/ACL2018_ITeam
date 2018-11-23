@@ -41,6 +41,7 @@ public class DessinHero {
 
 	
 	public void dessiner(Graphics2D crayon) {
+		
 		crayon.drawImage(
 				this.imageHero, 
 				this.hero.getX() * Bibliotheque.TAILLE_CASE,
