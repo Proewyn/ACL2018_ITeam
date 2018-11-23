@@ -49,7 +49,6 @@ public abstract class DessinObjet {
 	public void dessinerVision(Hero hero, Graphics2D crayon) {
 		
 		if (Math.sqrt((hero.getX()-objet.getX())*(hero.getX()-objet.getX())+(hero.getY()-objet.getY())*(hero.getY()-objet.getY())) <= hero.getVision() ){
-		
 			this.dessiner(crayon);
 		}
 	}

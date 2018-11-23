@@ -123,6 +123,7 @@ public class LesDessins {
 	}
 	
 	public void dessiner(Graphics2D crayon) {
+		
 		this.dessinCases.dessiner(crayon);
 		this.dessinObjets.dessiner(crayon);
 		this.dessinPerso.dessiner(crayon);
@@ -132,6 +133,21 @@ public class LesDessins {
 		this.dessinCases.dessinerVision(hero,crayon);
 		this.dessinObjets.dessinerVision(hero,crayon);
 		this.dessinPerso.dessinerVision(hero,crayon);
+	}
+	
+	public void dessinerWin(Boolean b,BufferedImage im){
+		if(b){
+			DessinWin dessinWin;
+			dessinWin = new DessinWin(urlTorche);
+			dessinWin.dessiner(im);
+			
+		}else{
+			DessinGameOver dessinGameOver;
+			dessinGameOver = new DessinGameOver(urlMur);
+			dessinGameOver.dessiner(im);
+		}
+		
+		
 	}
 
 	

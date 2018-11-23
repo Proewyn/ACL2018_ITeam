@@ -33,7 +33,7 @@ public class LesDessinsCases {
 			}
 		}
 		
-		System.out.println(dc);
+		
 		
 	}
 	

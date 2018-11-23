@@ -51,7 +51,7 @@ public class DessinMonJeu implements DessinJeu {
 		crayon.fillRect(0, 0, im.getHeight(), im.getWidth());
 		MonJeu j = (MonJeu) jeu;
 		if (j.etreFini()) {
-			dessinWin(im);
+			dessins.dessinerWin(j.isGagne(), im);
 
 		} else {
 
@@ -68,17 +68,5 @@ public class DessinMonJeu implements DessinJeu {
 		}
 	}
 
-	private void dessinWin(BufferedImage im) {
-		Graphics2D crayon = (Graphics2D) im.getGraphics();
-		if (((MonJeu) jeu).isGagne()){
-			crayon.setColor(Color.CYAN);
-			crayon.fillRect(0, 0, im.getHeight(), im.getWidth());
-		}else{
-			crayon.setColor(Color.RED);
-			crayon.fillRect(0, 0, im.getHeight(), im.getWidth());
-
-		}
-		
-	}
 
 }
