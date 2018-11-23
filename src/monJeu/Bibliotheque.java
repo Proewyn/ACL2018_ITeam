@@ -12,16 +12,17 @@ public class Bibliotheque {
 	public static final int TORCHE      = 21;
 	public static final int TELEPORTEUR = 22;
 	public static final int COFFRE      = 23;
+	public static final int PORTE = 24;
 
 	//parametre graphique
-	public static final int TAILLE_CASE  = 10;
+	public static final int TAILLE_CASE  = 40;
 	public static final int TAILLE_OBJET = TAILLE_CASE/2 ;
 	
 	//donnée physique
-	public static int TAILLE_TABLEAUX = 51;	
-	public static int TAILLE_TABLEAUY = 51;	
-	public static final int NBMONSTRE = 100;
-	public static final int NBOBJET   = 20;
+	public static int TAILLE_TABLEAUX = 21;	
+	public static int TAILLE_TABLEAUY = 21;	
+	public static final int NBMONSTRE = 2;
+	public static final int NBOBJET   = 10;
 	
 	/**
 	 * 1 : Generateur WormHole
@@ -30,4 +31,5 @@ public class Bibliotheque {
 	 * 4 : Generateur Fusion
 	 */
 	public static final int GENERATEUR = 2;
+	
 }

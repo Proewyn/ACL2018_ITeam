@@ -33,7 +33,7 @@ public class Plateau {
 				}
 			}
 		}
-		System.out.println(p.toString());
+		
 		return p;
 	}
 	

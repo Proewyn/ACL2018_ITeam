@@ -2,6 +2,7 @@ package monJeu;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -80,6 +81,10 @@ public class DessinMonJeu implements DessinJeu {
 			crayon.setColor(new Color(165,42,42));
 			crayon.fillRect(x * Bibliotheque.TAILLE_CASE+Bibliotheque.TAILLE_OBJET/2+1, y * Bibliotheque.TAILLE_CASE+Bibliotheque.TAILLE_OBJET/2+1, Bibliotheque.TAILLE_OBJET, Bibliotheque.TAILLE_OBJET);
 			break;
+		case Bibliotheque.PORTE:
+			crayon.setColor(Color.black);
+			crayon.fillRect(x * Bibliotheque.TAILLE_CASE, y * Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE);
+			break;
 		default:
 			throw new AssertionError("objet inexistant");
 		}
@@ -90,59 +95,77 @@ public class DessinMonJeu implements DessinJeu {
 	 */
 	public void dessiner(BufferedImage im) {
 		// no sait que c'est un jeuTest
+		
 		int vision,x,y;
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		crayon.setColor(Color.black);
 		crayon.fillRect(0, 0, im.getHeight(), im.getWidth());
 		MonJeu j      = (MonJeu) jeu;
-		Hero pj       = j.getPj();
-		ArrayList<Monstre> monstres = j.getMonstre();
-		vision = pj.getVision();
-		x = pj.getX();
-		y = pj.getY();
-		Plateau p	  = j.getPlateau();
-		Case[][] laby = p.getLaby(); 
-		if(j.getVoirPlateauEntier()) {
-			for (int i = 0 ; i < p.taillePlateaux() ; i++) {
-				for (int h = 0 ; h < p.taillePlateauy() ; h++) {
-					this.dessinerObjet(laby[i][h].getId(), i, h, im);			
+		if (j.etreFini()){
+			dessinWin( im);
+			
+		}else{
+			Hero pj       = j.getPj();
+			ArrayList<Monstre> monstres = j.getMonstre();
+			vision = pj.getVision();
+			x = pj.getX();
+			y = pj.getY();
+			Plateau p	  = j.getPlateau();
+			Case[][] laby = p.getLaby(); 
+			if(j.getVoirPlateauEntier()) {
+				for (int i = 0 ; i < p.taillePlateaux() ; i++) {
+					for (int h = 0 ; h < p.taillePlateauy() ; h++) {
+						this.dessinerObjet(laby[i][h].getId(), i, h, im);			
+					}
 				}
-			}
-			Objets objets = j.getListeDObjets();
-			for(Objet o : objets.getObjets()) {
-				if(o.isPasTrouve()) {
-					this.dessinerObjet(o.getId(),o.getX(),o.getY(),im);
+				Objets objets = j.getListeDObjets();
+				for(Objet o : objets.getObjets()) {
+					if(o.isPasTrouve()) {
+						this.dessinerObjet(o.getId(),o.getX(),o.getY(),im);
+					}
 				}
-			}
-			for (Monstre m : monstres) { //pour dessiner la liste de monstre
-					this.dessinerObjet(m.getId(), m.getX(), m.getY(), im);			
-			}
-		}else {
-			for (int i=0;i<p.taillePlateaux();i++) {
-				for (int h=0;h<p.taillePlateauy();h++) {
-					if (Math.sqrt((x-i)*(x-i)+(y-h)*(y-h))<= vision ) {
-						this.dessinerObjet(laby[i][h].getId(), i, h, im);
-					}else {
-						if(laby[i][h].isVisible()) {
+				for (Monstre m : monstres) { //pour dessiner la liste de monstre
+						this.dessinerObjet(m.getId(), m.getX(), m.getY(), im);			
+				}
+			}else {
+				for (int i=0;i<p.taillePlateaux();i++) {
+					for (int h=0;h<p.taillePlateauy();h++) {
+						if (Math.sqrt((x-i)*(x-i)+(y-h)*(y-h))<= vision ) {
 							this.dessinerObjet(laby[i][h].getId(), i, h, im);
+						}else {
+							if(laby[i][h].isVisible()) {
+								this.dessinerObjet(laby[i][h].getId(), i, h, im);
+							}
 						}
 					}
 				}
-			}
-			Objets objets = j.getListeDObjets();
-			for(Objet o : objets.getObjets()){
-				if(o.isPasTrouve() && (Math.sqrt((x-o.getX())*(x-o.getX())+(y-o.getY())*(y-o.getY())) <= vision)){
-					this.dessinerObjet(o.getId(),o.getX(),o.getY(),im);
+				Objets objets = j.getListeDObjets();
+				for(Objet o : objets.getObjets()){
+					if(o.isPasTrouve() && (Math.sqrt((x-o.getX())*(x-o.getX())+(y-o.getY())*(y-o.getY())) <= vision)){
+						this.dessinerObjet(o.getId(),o.getX(),o.getY(),im);
+					}
+				}
+				for (Monstre m : monstres) { //pour dessiner la liste de monstre
+					if (Math.sqrt((x-m.getX())*(x-m.getX())+(y-m.getY())*(y-m.getY())) <= vision ){
+						//pour qu'il ne soit visible que dans le champ de vision
+						this.dessinerObjet(m.getId(), m.getX(), m.getY(), im);			
+					}
 				}
 			}
-			for (Monstre m : monstres) { //pour dessiner la liste de monstre
-				if (Math.sqrt((x-m.getX())*(x-m.getX())+(y-m.getY())*(y-m.getY())) <= vision ){
-					//pour qu'il ne soit visible que dans le champ de vision
-					this.dessinerObjet(m.getId(), m.getX(), m.getY(), im);			
-				}
-			}
+			this.dessinerObjet(pj.getId(), pj.getX(), pj.getY(), im);	
 		}
-		this.dessinerObjet(pj.getId(), pj.getX(), pj.getY(), im);	
+	}
+
+	private void dessinWin(BufferedImage im) {
+		Graphics2D crayon = (Graphics2D) im.getGraphics();
+		if (((MonJeu) jeu).isGagne()){
+			crayon.setColor(Color.CYAN);
+			crayon.fillRect(0, 0, im.getHeight(), im.getWidth());
+		}else{
+			crayon.setColor(Color.RED);
+			crayon.fillRect(0, 0, im.getHeight(), im.getWidth());
+		}
+		
 	}
 
 }

@@ -1,46 +1,49 @@
 package objet.porte;
 
+import monJeu.Bibliotheque;
 import monJeu.MonJeu;
 import objet.Objet;
+import objet.coffre.CoffreDeClef;
 
 public abstract class Porte implements Objet {
 
 	protected int x;
 	protected int y;
+	protected CoffreDeClef clef;
+	
+	public Porte(int x,int y, CoffreDeClef c) {
+		this.x=x;
+		this.y=y;
+		this.clef=c;
+	}
+	
 	@Override
 	public void Collision(MonJeu mj, int x, int y) {
-		// TODO Auto-generated method stub
+		if(!clef.isPasTrouve() && this.x==x && this.y==y)
+			this.action(mj);
 
 	}
 
-	@Override
-	public void action(MonJeu mj) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public int getId() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return Bibliotheque.PORTE;
 	}
 
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
-		return 0;
+		return y;
 	}
 
 	@Override
 	public int getX() {
-		// TODO Auto-generated method stub
-		return 0;
+		return x;
 	}
 
 	@Override
 	public boolean isPasTrouve() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }
