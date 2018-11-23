@@ -28,6 +28,11 @@ public class LesDessinsCases {
 		}
 	}
 	
+	public void dessiner(int x, int y , Graphics2D crayon) {
+		for(DessinCase d : this.dc) {
+			d.dessiner(x,y,crayon);
+		}
+	}
 
 
 }

@@ -3,6 +3,7 @@
  */
 package sprite.spriteCase;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.io.File;
@@ -20,7 +21,7 @@ import plateau.Case;
 public abstract class DessinCase {
 
 	private Case c;
-	private Image dessinCase;
+	protected Image dessinCase;
 	
 	/**
 	 * 
@@ -40,15 +41,12 @@ public abstract class DessinCase {
 		
 		
 	}
+	
 	public void dessiner(int x, int y,Graphics2D crayon) {
-		crayon.drawImage(dessinCase,
-				x * Bibliotheque.TAILLE_CASE, 
-				y * Bibliotheque.TAILLE_CASE, 
-				Bibliotheque.TAILLE_CASE, 
-				Bibliotheque.TAILLE_CASE,null);
+		crayon.setColor(Color.green);
+		crayon.fillRect(x * Bibliotheque.TAILLE_CASE, y * Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE);
 		
 	}
 	
-
 
 }

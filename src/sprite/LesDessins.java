@@ -19,36 +19,52 @@ public class LesDessins {
 	private LesDessinsObjets dessinObjets;
 	private LesDessinsCases dessinCases;
 	private LesDessinsPersonnages dessinPerso;
-
+	private File urlTorche;
+	private File urlTeleporteur;
+	private File urlCoffre;
+	private File urlCoffreDeClef;
+	private File urlHero;
+	private File urlMur;
+	private File urlZombi;
+	private File urlPorte;
+	
+	
 	public LesDessins(Objets o, Plateau p , Personnage ...persos) {
 		ArrayList<DessinObjet> dessinObjet = new ArrayList<>();
-		File urlImage = null;
+		
 		for (Objet obj : o.getObjets()) {
 			int id = obj.getId();
 			switch(id) {
 			case Bibliotheque.TORCHE:
-				urlImage = new File("/torche.png");
-				dessinObjet.add(new DessinTorche(obj, urlImage));
+				
+				dessinObjet.add(new DessinTorche(obj, urlTorche));
 				break;
 			case Bibliotheque.TELEPORTEUR:
-				urlImage = new File("/tp.png");
-				dessinObjet.add(new DessinTeleporteur(obj, urlImage));
+				
+				dessinObjet.add(new DessinTeleporteur(obj, urlTeleporteur));
 				break;
 			case Bibliotheque.COFFRE:
-				urlImage = new File("/coffre.png");
-				dessinObjet.add(new DessinCoffre(obj, urlImage));				
+				
+				dessinObjet.add(new DessinCoffre(obj, urlCoffre));				
 				break;
 			default:
 				throw new AssertionError("objet inexistant");
 			
 			}
 			
-			
 		}
-			
-		
-		this.dessinObjets = new LesDessinsObjets(dessinObjet);
-		
+		this.dessinObjets = new LesDessinsObjets(dessinObjet);	
+	}
+	
+	private void initUrl() {
+		this.urlCoffre = new File("/coffre.png");
+		this.urlCoffreDeClef = new File("/coffre.png");
+		this.urlHero = new File("/hero1.png");
+		this.urlZombi = new File("/mario_zombi.png");
+		this.urlMur = new File("/mur1.png");
+		this.urlPorte = new File("/porte.png");
+		this.urlTeleporteur = new File("/tp.png");
+		this.urlTorche = new File("/torche.png");
 		
 		
 	}
