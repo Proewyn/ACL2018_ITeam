@@ -7,6 +7,7 @@ public class Bibliotheque {
 	public static final int SOL 	= 2;
 	public static final int SPAWN 	= 4;
 	public static final int ZOMBI   = 8;
+	public static final int FANTOME = 16;
 	
 	//id des objets
 	public static final int TORCHE      = 21;
@@ -15,12 +16,12 @@ public class Bibliotheque {
 	public static final int PORTE = 24;
 
 	//parametre graphique
-	public static final int TAILLE_CASE  = 40;
+	public static final int TAILLE_CASE  = 20;
 	public static final int TAILLE_OBJET = TAILLE_CASE/2 ;
 	
 	//donnée physique
-	public static int TAILLE_TABLEAUX = 21;	
-	public static int TAILLE_TABLEAUY = 21;	
+	public static int TAILLE_TABLEAUX = 41;	
+	public static int TAILLE_TABLEAUY = 41;	
 
 	public static final int NBMONSTRE = 10;
 	public static final int NBOBJET   = 20;

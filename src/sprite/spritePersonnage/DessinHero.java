@@ -24,18 +24,10 @@ public class DessinHero {
 	/**
 	 * 
 	 */
-	public DessinHero(Hero hero, File urlImage) {
+	public DessinHero(Hero hero, Image dessinHero) {
 		
 		this.hero = hero ;
-		this.imageHero = null;
-		
-		try {
-			this.imageHero= ImageIO.read(urlImage);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		this.imageHero = dessinHero;
 		
 	}
 

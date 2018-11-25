@@ -1,10 +1,14 @@
 package sprite;
 
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import monJeu.Bibliotheque;
 import objet.Objet;
@@ -30,19 +34,21 @@ public class LesDessins {
 	private LesDessinsObjets dessinObjets;
 	private LesDessinsCases dessinCases;
 	private LesDessinsPersonnages dessinPerso;
-	private File urlTorche;
-	private File urlTeleporteur;
-	private File urlCoffre;
-	private File urlCoffreDeClef;
-	private File urlHero;
-	private File urlMur;
-	private File urlZombi;
-	private File urlPorte;
-	private File urlSol;
-	
+	private Image dessinTorche;
+	private Image dessinTeleporteur;
+	private Image dessinCoffre;
+	private Image dessinCoffreDeClef;
+	private Image dessinHero;
+	private Image dessinMur;
+	private Image dessinZombi;
+	private Image dessinPorte;
+	private Image dessinSol;
+	private Image dessinFantome;
+	private Image dessinGameOver;
+	private Image dessinWin;
 	
 	public LesDessins(Objets o, Plateau p , Hero hero, List<Monstre>monstre) {
-		this.initUrl();
+		this.initDessin();
 		ArrayList<DessinObjet> dessinObjet = new ArrayList<>();
 		int id = 0;
 		for (Objet obj : o.getObjets()) {
@@ -50,18 +56,18 @@ public class LesDessins {
 			switch(id) {
 			case Bibliotheque.TORCHE:
 				
-				dessinObjet.add(new DessinTorche(obj, urlTorche));
+				dessinObjet.add(new DessinTorche(obj, dessinTorche));
 				break;
 			case Bibliotheque.TELEPORTEUR:
 				
-				dessinObjet.add(new DessinTeleporteur(obj, urlTeleporteur));
+				dessinObjet.add(new DessinTeleporteur(obj, dessinTeleporteur));
 				break;
 			case Bibliotheque.COFFRE:
 				
-				dessinObjet.add(new DessinCoffre(obj, urlCoffre));				
+				dessinObjet.add(new DessinCoffre(obj, dessinCoffre));				
 				break;
 			case Bibliotheque.PORTE:
-				dessinObjet.add(new DessinPorte(obj, urlPorte));
+				dessinObjet.add(new DessinPorte(obj, dessinPorte));
 				break;
 			default:
 				throw new AssertionError("objet inexistant"+id);
@@ -79,14 +85,14 @@ public class LesDessins {
 				id = cases[i][j].getId();
 				switch(id){
 				case Bibliotheque.SOL:
-					dc[i][j] = new DessinSol(cases[i][j], urlMur);
+					dc[i][j] = new DessinSol(cases[i][j], dessinSol);
 					break;
 					
 				case Bibliotheque.MUR:
-					dc[i][j] = new DessinMur(cases[i][j], urlMur);
+					dc[i][j] = new DessinMur(cases[i][j], dessinMur);
 					break;
 				case Bibliotheque.SPAWN:
-					dc[i][j] = new DessinSpawn(cases[i][j], urlMur);
+					dc[i][j] = new DessinSpawn(cases[i][j], dessinMur);
 					break;
 						
 				}
@@ -100,28 +106,40 @@ public class LesDessins {
 			id = m.getId();
 			switch(id){
 			case Bibliotheque.ZOMBI:
-				dm.add(new DessinZombie(m, urlZombi));
+				dm.add(new DessinZombie(m, dessinZombi));
+				break;
+			case Bibliotheque.FANTOME:
+				dm.add(new DessinFantome(m, dessinFantome));
+				break;
 			}
 		}
-		this.dessinPerso = new LesDessinsPersonnages(new DessinHero(hero, urlHero), new LesDessinsMonstres(dm));
+		this.dessinPerso = new LesDessinsPersonnages(new DessinHero(hero, dessinHero), new LesDessinsMonstres(dm));
 		
 		
 	
 	}
+
+
 	
-	private void initUrl() {
-		this.urlCoffre = new File("sprites/coffre.png");
-		this.urlCoffreDeClef = new File("sprites/coffre.png");
-		this.urlHero = new File("sprites/hero1.png");
-		this.urlZombi = new File("sprites/mario_zombi.png");
-		this.urlMur = new File("sprites/mur1.png");
-		this.urlPorte = new File("sprites/porte.png");
-		this.urlTeleporteur = new File("sprites/tp.png");
-		this.urlTorche = new File("sprites/torche.png");
-		
+	private void initDessin() {
+		try {
+			this.dessinCoffre = ImageIO.read(new File("sprites/coffre.png"));
+			this.dessinHero = ImageIO.read(new File("sprites/hero1.png"));
+			this.dessinZombi = ImageIO.read(new File("sprites/zombi__.png"));
+			this.dessinMur = ImageIO.read(new File("sprites/mur1.png"));
+			this.dessinPorte = ImageIO.read(new File("sprites/porte.png"));
+			this.dessinTeleporteur = ImageIO.read(new File("sprites/tp.png"));
+			this.dessinTorche = ImageIO.read(new File("sprites/torche.png"));
+			this.dessinFantome = ImageIO.read(new File("sprites/fantome.png"));
+			this.dessinSol = ImageIO.read(new File("sprites/herbre.png"));
+			//this.dessinGameOver = ImageIO.read(input);
+			//this.dessinWin = ImageIO.read(input);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
-	
 	public void dessiner(Graphics2D crayon) {
 		
 		this.dessinCases.dessiner(crayon);
@@ -138,12 +156,12 @@ public class LesDessins {
 	public void dessinerWin(Boolean b,BufferedImage im){
 		if(b){
 			DessinWin dessinWin;
-			dessinWin = new DessinWin(urlTorche);
+			dessinWin = new DessinWin(dessinTorche);
 			dessinWin.dessiner(im);
 			
 		}else{
 			DessinGameOver dessinGameOver;
-			dessinGameOver = new DessinGameOver(urlMur);
+			dessinGameOver = new DessinGameOver(dessinMur);
 			dessinGameOver.dessiner(im);
 		}
 		

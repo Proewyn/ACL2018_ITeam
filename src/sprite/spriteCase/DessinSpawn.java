@@ -5,6 +5,7 @@ package sprite.spriteCase;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.io.File;
 
 import monJeu.Bibliotheque;
@@ -18,10 +19,10 @@ public class DessinSpawn extends DessinCase {
 
 	/**
 	 * @param c
-	 * @param urlImage
+	 * @param dessinMur
 	 */
-	public DessinSpawn(Case c, File urlImage) {
-		super(c, urlImage);
+	public DessinSpawn(Case c, Image dessinMur) {
+		super(c, dessinMur);
 		// TODO Auto-generated constructor stub
 	}
 	

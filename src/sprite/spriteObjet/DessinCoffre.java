@@ -3,6 +3,7 @@
  */
 package sprite.spriteObjet;
 
+import java.awt.Image;
 import java.io.File;
 
 import objet.Objet;
@@ -15,10 +16,10 @@ public class DessinCoffre extends DessinObjet {
 
 	/**
 	 * @param objet
-	 * @param urlImage
+	 * @param dessinCoffre
 	 */
-	public DessinCoffre(Objet objet, File urlImage) {
-		super(objet, urlImage);
+	public DessinCoffre(Objet objet, Image dessinCoffre) {
+		super(objet, dessinCoffre);
 		// TODO Auto-generated constructor stub
 	}
 

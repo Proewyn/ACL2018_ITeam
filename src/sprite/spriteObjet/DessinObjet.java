@@ -25,16 +25,10 @@ public abstract class DessinObjet {
 	/**
 	 * 
 	 */
-	public DessinObjet(Objet objet, File urlImage) {
+	public DessinObjet(Objet objet, Image dessin) {
 		this.objet = objet;
-		//this.dessinObjet = null;
+		this.dessinObjet = dessin;
 		
-		try {
-			this.dessinObjet = ImageIO.read(urlImage);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	public void dessiner(Graphics2D crayon) {

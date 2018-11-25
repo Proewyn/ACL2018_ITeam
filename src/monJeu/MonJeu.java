@@ -7,10 +7,13 @@ import java.awt.Point;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Random;
+
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
 import objet.Objet;
 import objet.Objets;
+import personnage.Fantome;
 import personnage.Hero;
 import personnage.Monstre;
 import personnage.Zombi;
@@ -38,9 +41,7 @@ public class MonJeu extends Observable implements Jeu {
 		//this.zombi = new Zombi(10,12);
 		this.plateau=new Plateau();
 		this.monstres = new ArrayList<>(); //initialise la liste de monstre
-		for(int i = 0 ; i < Bibliotheque.NBMONSTRE ; i++) {
-			this.addMonstreRand(new Zombi()); // ajout de monstre
-		}
+		this.ajoutMonstre();
 		Point p = plateau.getSpawn();
 		this.pj = new Hero(p.x, p.y);
 		voirPlateauEntier= false;
@@ -90,11 +91,33 @@ public class MonJeu extends Observable implements Jeu {
 		this.maj();
 	}
 	
+	private void ajoutMonstre() {
+		Random r = new Random();
+		int rand = r.nextInt(2);
+		
+		for(int i = 0 ; i < Bibliotheque.NBMONSTRE ; i++) {
+			rand = r.nextInt(2);
+			
+			switch(rand) {
+			case 0:
+				this.addMonstreRand(new Zombi()); // ajout de zombi
+			case 1:
+				this.addMonstreRand(new Fantome()); //ajout de fantome
+			}
+			
+		}
+		
+	}
+	
 	public void deplacerMonstre(DeplacementMonstre ia, Monstre m, Commande c) {
 		Point p = ia.deplacer(this,m,c);
 		int x = (int) p.getX();
 		int y = (int) p.getY();
-		if ((!plateau.collision(x, y)) && (!this.collisionHero(x, y)) && (!this.collisionMonstre(x, y, true))) {
+		if(m.getId()==Bibliotheque.FANTOME) {
+			if ((!(x<0 || y<0 || x > plateau.taillePlateaux()-1 || y > plateau.taillePlateauy()-1 )) && (!this.collisionHero(x, y)) && (!this.collisionMonstre(x, y, true))) {
+				m.deplacer(x, y);
+			}	
+		}else if ((!plateau.collision(x, y)) && (!this.collisionHero(x, y)) && (!this.collisionMonstre(x, y, true))) {
 			m.deplacer(x, y);
 		}
 		if (this.collisionHero(x, y) && m.getHp() > 0) {

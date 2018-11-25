@@ -26,15 +26,10 @@ public abstract class DessinMonstre {
 	/**
 	 * 
 	 */
-	public DessinMonstre(Monstre m ,File urlImage) {
+	public DessinMonstre(Monstre m ,Image dessinMonstre) {
 		this.m = m;
-		this.imageMonstre = null;
-		try {
-			this.imageMonstre = ImageIO.read(urlImage);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.imageMonstre = dessinMonstre;
+
 	}
 	
 

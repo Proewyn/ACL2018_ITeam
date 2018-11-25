@@ -23,14 +23,9 @@ public class DessinGameOver {
 	/**
 	 * 
 	 */
-	public DessinGameOver(File urlImage) {
-		this.gameOver = null;
-		try {
-			this.gameOver = ImageIO.read(urlImage);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public DessinGameOver(Image gameOver) {
+		this.gameOver = gameOver;
+		
 	}
 	
 	public void dessiner(BufferedImage im){

@@ -23,14 +23,9 @@ public class DessinWin {
 	/**
 	 * 
 	 */
-	public DessinWin(File urlImage) {
-		this.win = null;
-		try {
-			this.win = ImageIO.read(urlImage);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public DessinWin(Image dessinWin) {
+		this.win = dessinWin;
+		
 	}
 	
 	public void dessiner(BufferedImage im){

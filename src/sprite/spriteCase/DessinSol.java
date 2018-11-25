@@ -5,6 +5,7 @@ package sprite.spriteCase;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.io.File;
 
 import monJeu.Bibliotheque;
@@ -19,18 +20,20 @@ public class DessinSol extends DessinCase {
 
 	/**
 	 * @param c
-	 * @param urlImage
+	 * @param dessinMur
 	 */
-	public DessinSol(Case c,File urlImage) {
-		super(c, urlImage);
+	public DessinSol(Case c,Image dessinSol) {
+		super(c, dessinSol);
 		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
 	public void dessiner(int x, int y,Graphics2D crayon) {
-		crayon.setColor(Color.green);
-		crayon.fillRect(x * Bibliotheque.TAILLE_CASE, y * Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE);
-		
+		crayon.drawImage(this.dessinCase,
+				x * Bibliotheque.TAILLE_CASE, 
+				y * Bibliotheque.TAILLE_CASE, 
+				Bibliotheque.TAILLE_CASE, 
+				Bibliotheque.TAILLE_CASE,null);
 	}
 
 }

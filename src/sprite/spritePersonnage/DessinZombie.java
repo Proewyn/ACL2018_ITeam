@@ -3,6 +3,7 @@
  */
 package sprite.spritePersonnage;
 
+import java.awt.Image;
 import java.io.File;
 
 import personnage.Monstre;
@@ -15,10 +16,10 @@ public class DessinZombie extends DessinMonstre {
 
 	/**
 	 * @param m
-	 * @param urlImage
+	 * @param dessinZombi
 	 */
-	public DessinZombie(Monstre m, File urlImage) {
-		super(m, urlImage);
+	public DessinZombie(Monstre m, Image dessinZombi) {
+		super(m, dessinZombi);
 		// TODO Auto-generated constructor stub
 	}
 

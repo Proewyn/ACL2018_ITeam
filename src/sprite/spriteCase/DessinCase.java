@@ -27,15 +27,10 @@ public abstract class DessinCase {
 	/**
 	 * 
 	 */
-	public DessinCase(Case c, File urlImage) {
+	public DessinCase(Case c, Image dessinCase) {
 		this.c = c;
-		this.dessinCase = null;
-		try {
-			this.dessinCase = ImageIO.read(urlImage);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.dessinCase = dessinCase;
+
 	}
 	
 

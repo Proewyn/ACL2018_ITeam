@@ -3,6 +3,7 @@
  */
 package sprite.spriteObjet;
 
+import java.awt.Image;
 import java.io.File;
 
 import objet.Objet;
@@ -13,8 +14,8 @@ import objet.Objet;
  */
 public class DessinTorche extends DessinObjet{
 
-	public DessinTorche(Objet objet, File urlImage) {
-		super(objet, urlImage);
+	public DessinTorche(Objet objet, Image dessinTorche) {
+		super(objet, dessinTorche);
 		// TODO Auto-generated constructor stub
 	}
 

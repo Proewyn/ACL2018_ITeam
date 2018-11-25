@@ -4,6 +4,7 @@
 package sprite.spriteCase;
 
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.io.File;
 
 import monJeu.Bibliotheque;
@@ -17,10 +18,10 @@ public class DessinMur extends DessinCase {
 
 	/**
 	 * @param c
-	 * @param urlImage
+	 * @param dessinMur
 	 */
-	public DessinMur(Case c, File urlImage) {
-		super(c, urlImage);
+	public DessinMur(Case c, Image dessinMur) {
+		super(c, dessinMur);
 		// TODO Auto-generated constructor stub
 	}
 	
