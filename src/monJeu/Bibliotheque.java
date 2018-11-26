@@ -21,7 +21,9 @@ public class Bibliotheque {
 	
 	//donnée physique
 	public static int TAILLE_TABLEAUX = 41;	
-	public static int TAILLE_TABLEAUY = 41;	
+	public static int TAILLE_TABLEAUY = 41;
+	public static int VUE_LARGEUR = 11;
+	public static int VUE_HAUTEUR = 11;
 
 	public static final int NBMONSTRE = 10;
 	public static final int NBOBJET   = 20;

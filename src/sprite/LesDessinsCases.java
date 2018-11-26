@@ -63,4 +63,16 @@ public class LesDessinsCases {
 	}
 
 
+
+	public void dessinerPortee(Hero hero, Graphics2D crayon) {
+		for (int i = hero.getXVue() ; i < Bibliotheque.VUE_LARGEUR + hero.getXVue() ; i++) {
+			for (int j = hero.getYVue() ; j < Bibliotheque.VUE_HAUTEUR + hero.getYVue() ; j++) {
+				this.dc[i][j].dessinerPortee(hero,i,j,crayon);
+				this.dc[i][j].dessinerVision(hero,i,j,crayon);
+				
+			}
+		}
+	}
+
+
 }

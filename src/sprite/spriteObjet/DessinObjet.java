@@ -46,6 +46,11 @@ public abstract class DessinObjet {
 			this.dessiner(crayon);
 		}
 	}
+
+	public void dessinerPortee(Hero hero, Graphics2D crayon) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

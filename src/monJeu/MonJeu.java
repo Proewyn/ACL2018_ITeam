@@ -80,6 +80,7 @@ public class MonJeu extends Observable implements Jeu {
 		if (!plateau.collision(x, y)) {
 			if(!this.collisionMonstre(x, y, false)) {
 				this.getPj().deplacer(x,y);
+				this.getPj().deplacerVue(x, y);
 			}
 		}
 		listeDObjets.collision(this, x, y);
