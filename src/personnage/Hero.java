@@ -28,10 +28,11 @@ public class Hero implements Personnage {
 	}
 	
 	public Hero(int x , int y) {
-		this.x = x;
-		this.y = y;
+		this.x = 0;
+		this.y = 0;
 		this.x_vue = 0;
 		this.y_vue = 0;
+		this.deplacer(x, y);
 		this.hp = 10;
 		this.vision = 5;
 	}
@@ -82,19 +83,25 @@ public class Hero implements Personnage {
 	}
 	
 	public void deplacer(int x2, int y2) {
+		System.out.println("ptdr");
 		this.setX(x2);
 		this.setY(y2);
+		deplacerVue(x2, y2);
 	}
 	
 	public void deplacerVue(int x2, int y2) {
 		//Vers la gauche
+		while 	((x - x_vue > (Bibliotheque.VUE_LARGEUR/2) && !(x_vue+Bibliotheque.VUE_LARGEUR == Bibliotheque.TAILLE_TABLEAUX)) ||
+				(x < x_vue + Bibliotheque.VUE_LARGEUR/2 && !(x_vue<=0)) ||
+				(y - y_vue > Bibliotheque.VUE_HAUTEUR/2 &&  y_vue+Bibliotheque.VUE_HAUTEUR < Bibliotheque.TAILLE_TABLEAUY) ||
+				(y < y_vue +Bibliotheque.VUE_HAUTEUR/2 && !(y_vue<=0))) {
 		if (x - x_vue < Bibliotheque.VUE_LARGEUR/2) {
 			x_vue--;
 			if (x_vue < 0) {
 				x_vue = 0;
 			}
 		}
-		//Vers le haut
+		//Vers le bas
 		if (y - y_vue < Bibliotheque.VUE_HAUTEUR/2) {
 			y_vue--;
 			if (y_vue < 0) {
@@ -108,12 +115,13 @@ public class Hero implements Personnage {
 				x_vue = Bibliotheque.TAILLE_TABLEAUX - Bibliotheque.VUE_LARGEUR;
 			}
 		}
-		//Vers le bas
-		if (y_vue + Bibliotheque.VUE_HAUTEUR - y <= Bibliotheque.TAILLE_TABLEAUY/2) {
+		//Vers le haut
+		if (y_vue + Bibliotheque.VUE_HAUTEUR - y <= Bibliotheque.VUE_HAUTEUR/2) {
 			y_vue++;
 			if (y_vue + Bibliotheque.VUE_HAUTEUR >= Bibliotheque.TAILLE_TABLEAUY) {
 				y_vue = Bibliotheque.TAILLE_TABLEAUY - Bibliotheque.VUE_HAUTEUR;
 			}
+		}
 		}
 	}
 	

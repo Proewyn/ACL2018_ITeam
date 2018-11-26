@@ -42,11 +42,25 @@ public class LesDessinsObjets {
 
 	public void dessinerPortee(Hero hero, Graphics2D crayon) {
 		for(DessinObjet dObj : this.dessinObjet) {
-			dObj.dessinerPortee(hero, crayon);
-			dObj.dessinerVision(hero, crayon);
+			if (dObj.getObjet().getX() >= hero.getXVue() && dObj.getObjet().getX() < Bibliotheque.VUE_LARGEUR + hero.getXVue()) {
+				if (dObj.getObjet().getY() >= hero.getYVue() && dObj.getObjet().getY() < Bibliotheque.VUE_HAUTEUR + hero.getYVue()) {
+					dObj.dessiner(hero, crayon);
+				}
+			}
+		}
+	}
+
+	public void dessinerPorteeVision(Hero hero, Graphics2D crayon) {
+		
+		for(DessinObjet dObj : this.dessinObjet) {
+			if (dObj.getObjet().getX() >= hero.getXVue() && dObj.getObjet().getX() < Bibliotheque.VUE_LARGEUR + hero.getXVue()) {
+				if (dObj.getObjet().getY() >= hero.getYVue() && dObj.getObjet().getY() < Bibliotheque.VUE_HAUTEUR + hero.getYVue()) {
+					dObj.dessinerVision(hero, crayon);
+				}
+			}
 		}
 	}
 	
-
+	
 
 }

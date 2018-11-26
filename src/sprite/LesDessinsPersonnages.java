@@ -39,5 +39,15 @@ public class LesDessinsPersonnages {
 		
 	}
 
+	public void dessinerPortee(Hero hero, Graphics2D crayon) {
+		this.dessinHero.dessiner(crayon);
+		this.dessinsMonstres.dessinerPortee(hero,crayon);
+	}
+
+	public void dessinerPorteeVision(Hero hero, Graphics2D crayon) {
+		this.dessinHero.dessiner(crayon);
+		this.dessinsMonstres.dessinerPorteeVision(hero,crayon);
+	}
+
 
 }

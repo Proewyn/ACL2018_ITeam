@@ -43,15 +43,25 @@ public abstract class DessinObjet {
 	public void dessinerVision(Hero hero, Graphics2D crayon) {
 		
 		if (Math.sqrt((hero.getX()-objet.getX())*(hero.getX()-objet.getX())+(hero.getY()-objet.getY())*(hero.getY()-objet.getY())) <= hero.getVision() ){
-			this.dessiner(crayon);
+			this.dessiner(hero,crayon);
 		}
 	}
 
 	public void dessinerPortee(Hero hero, Graphics2D crayon) {
-		// TODO Auto-generated method stub
-		
+		this.dessiner(hero,crayon);
 	}
 	
+	public void dessiner(Hero h , Graphics2D crayon) {
+		if(objet.isPasTrouve())
+			crayon.drawImage(this.dessinObjet, (this.objet.getX()- h.getXVue())
+					* Bibliotheque.TAILLE_CASE, (this.objet.getY() - h.getYVue())
+					* Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE,
+					Bibliotheque.TAILLE_CASE, null);
+
+	}
 	
+	public Objet getObjet() {
+		return this.objet;
+	}
 	
 }

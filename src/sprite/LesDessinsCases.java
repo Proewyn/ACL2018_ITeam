@@ -59,20 +59,26 @@ public class LesDessinsCases {
 				this.dc[i][j].dessinerVision(hero,i,j,crayon);
 			}
 		}
-		
 	}
 
 
 
 	public void dessinerPortee(Hero hero, Graphics2D crayon) {
 		for (int i = hero.getXVue() ; i < Bibliotheque.VUE_LARGEUR + hero.getXVue() ; i++) {
-			for (int j = hero.getYVue() ; j < Bibliotheque.VUE_HAUTEUR + hero.getYVue() ; j++) {
-				this.dc[i][j].dessinerPortee(hero,i,j,crayon);
-				this.dc[i][j].dessinerVision(hero,i,j,crayon);
-				
+			for (int j = hero.getYVue() ; j < Bibliotheque.VUE_HAUTEUR+ hero.getYVue() ; j++) {
+				this.dc[i][j].dessiner(i-hero.getXVue(),j-hero.getYVue(),crayon);
 			}
 		}
 	}
 
+
+
+	public void dessinerPorteeVision(Hero hero, Graphics2D crayon) {
+		for (int i = hero.getXVue() ; i < Bibliotheque.VUE_LARGEUR + hero.getXVue() ; i++) {
+			for (int j = hero.getYVue() ; j < Bibliotheque.VUE_HAUTEUR+ hero.getYVue() ; j++) {
+				this.dc[i][j].dessinerVision(hero,i,j,crayon);
+			}
+		}
+	}
 
 }

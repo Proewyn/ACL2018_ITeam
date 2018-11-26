@@ -16,14 +16,14 @@ public class Bibliotheque {
 	public static final int PORTE = 24;
 
 	//parametre graphique
-	public static final int TAILLE_CASE  = 20;
+	public static final int TAILLE_CASE  = 35;
 	public static final int TAILLE_OBJET = TAILLE_CASE/2 ;
 	
 	//donnée physique
 	public static int TAILLE_TABLEAUX = 41;	
 	public static int TAILLE_TABLEAUY = 41;
-	public static int VUE_LARGEUR = 11;
-	public static int VUE_HAUTEUR = 11;
+	public static int VUE_LARGEUR = 21;
+	public static int VUE_HAUTEUR = 21;
 
 	public static final int NBMONSTRE = 10;
 	public static final int NBOBJET   = 20;

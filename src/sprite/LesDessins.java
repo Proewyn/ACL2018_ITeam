@@ -156,7 +156,7 @@ public class LesDessins {
 	public void dessinerPortee(Hero hero, Graphics2D crayon){
 		this.dessinCases.dessinerPortee(hero, crayon);
 		this.dessinObjets.dessinerPortee(hero,crayon);
-		//this.dessinPerso.dessinerPortee(hero,crayon);
+		this.dessinPerso.dessinerPortee(hero,crayon);
 	}
 	
 	public void dessinerWin(Boolean b,BufferedImage im){
@@ -171,6 +171,16 @@ public class LesDessins {
 			dessinGameOver.dessiner(im);
 		}
 		
+		
+	}
+
+
+
+	public void dessinerPorteeVision(Hero pj, Graphics2D crayon) {
+		
+		this.dessinCases.dessinerPorteeVision(pj, crayon);
+		this.dessinObjets.dessinerPorteeVision(pj,crayon);
+		this.dessinPerso.dessinerPorteeVision(pj,crayon);
 		
 	}
 

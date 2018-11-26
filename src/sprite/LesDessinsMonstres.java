@@ -6,6 +6,8 @@ package sprite;
 import java.awt.Graphics2D;
 import java.util.List;
 
+import monJeu.Bibliotheque;
+
 import personnage.Hero;
 
 
@@ -40,6 +42,26 @@ public class LesDessinsMonstres{
 		for(DessinMonstre dm : this.dessinsMonstres) {
 			
 			dm.dessinerVision(hero,crayon);
+		}
+	}
+
+	public void dessinerPortee(Hero hero, Graphics2D crayon) {
+		for(DessinMonstre dm : this.dessinsMonstres) {
+			if (dm.getMonstre().getX() >= hero.getXVue() && dm.getMonstre().getX() < Bibliotheque.VUE_LARGEUR + hero.getXVue()) {
+				if (dm.getMonstre().getY() >= hero.getYVue() && dm.getMonstre().getY() < Bibliotheque.VUE_HAUTEUR + hero.getYVue()) {
+					dm.dessiner(hero, crayon);
+				}
+			}
+		}
+	}
+
+	public void dessinerPorteeVision(Hero hero, Graphics2D crayon) {
+		for(DessinMonstre dm : this.dessinsMonstres) {
+			if (dm.getMonstre().getX() >= hero.getXVue() && dm.getMonstre().getX() < Bibliotheque.VUE_LARGEUR + hero.getXVue()) {
+				if (dm.getMonstre().getY() >= hero.getYVue() && dm.getMonstre().getY() < Bibliotheque.VUE_HAUTEUR + hero.getYVue()) {
+					dm.dessinerVision(hero, crayon);
+				}
+			}
 		}
 	}
 	

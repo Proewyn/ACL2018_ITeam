@@ -44,6 +44,7 @@ public class InterfaceGraphique implements Observer {
 		//creation JFrame
 		JFrame f = new JFrame();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setResizable( false );
 		
 		//creation panel
 		JPanel fenetre = new JPanel();

@@ -77,10 +77,9 @@ public class MonJeu extends Observable implements Jeu {
 		if(commande.bas) {
 			y++;
 		}
-		if (!plateau.collision(x, y)) {
+		if ((commande.gauche||commande.droite||commande.haut||commande.bas)&&!plateau.collision(x, y)) {
 			if(!this.collisionMonstre(x, y, false)) {
 				this.getPj().deplacer(x,y);
-				this.getPj().deplacerVue(x, y);
 			}
 		}
 		listeDObjets.collision(this, x, y);

@@ -36,8 +36,8 @@ public class DessinHero {
 		
 		crayon.drawImage(
 				this.imageHero, 
-				this.hero.getX() * Bibliotheque.TAILLE_CASE,
-				this.hero.getY() * Bibliotheque.TAILLE_CASE, 
+				(this.hero.getX()-hero.getXVue()) * Bibliotheque.TAILLE_CASE,
+				(this.hero.getY()- hero.getYVue()) * Bibliotheque.TAILLE_CASE, 
 				Bibliotheque.TAILLE_CASE, 
 				Bibliotheque.TAILLE_CASE,null);
 	}

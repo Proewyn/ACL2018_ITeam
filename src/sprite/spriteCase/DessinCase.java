@@ -48,22 +48,12 @@ public abstract class DessinCase {
 		
 		if (Math.sqrt((hero.getX()-i)*(hero.getX()-i)+(hero.getY()-j)*(hero.getY()-j)) <= hero.getVision() ){
 		
-			this.dessiner(i,j,crayon);
+			this.dessiner(i-hero.getXVue(),j-hero.getYVue(),crayon);
 		}
 	}
 
 
 
-	public void dessinerPortee(Hero hero, int i, int j, Graphics2D crayon) {
-		/*
-		 * for( int i = x_vue ; i < nb_vue_width + x_vue ; ++i )
-		{
-			for( int j = y_vue ; j < nb_vue_height + y_vue ; ++j )
-			{
-			graph_fond.drawRect( ( i - x_vue ) * tile_width + 2, ( j - y_vue ) * tile_height + 2, tile_width - 4, tile_height - 4 );
-		 */
-		this.dessiner(i,j,crayon);
-	}
 	
 
 }
