@@ -14,7 +14,9 @@ public class Bibliotheque {
 	public static final int TELEPORTEUR = 22;
 	public static final int COFFRE      = 23;
 	public static final int PORTE = 24;
-
+	public static final int TORCHESUPPREME = 25;
+	public static final int COFFRECLE      = 26;
+	
 	//parametre graphique
 	public static final int TAILLE_CASE  = 20;
 	public static final int TAILLE_OBJET = TAILLE_CASE/2 ;

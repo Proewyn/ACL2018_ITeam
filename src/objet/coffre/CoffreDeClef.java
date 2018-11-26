@@ -1,5 +1,6 @@
 package objet.coffre;
 
+import monJeu.Bibliotheque;
 import monJeu.MonJeu;
 
 public class CoffreDeClef extends Coffre {
@@ -12,6 +13,11 @@ public class CoffreDeClef extends Coffre {
 	public void action(MonJeu mj) {
 		pasTrouve=false;
 
+	}
+	
+	@Override
+	public int getId() {
+		return Bibliotheque.COFFRECLE;
 	}
 
 }

@@ -2,6 +2,7 @@ package monJeu;
 
 import ia.DeplacementMiroir;
 import ia.DeplacementMonstre;
+import ia.DeplacementNaif;
 
 import java.awt.Point;
 import java.io.FileNotFoundException;
@@ -86,7 +87,7 @@ public class MonJeu extends Observable implements Jeu {
 		listeDObjets.collision(this, x, y);
 		//fait deplacer les monstre
 		for(Monstre m : this.getMonstre()) {
-			this.deplacerMonstre(new DeplacementMiroir(), m, commande);
+			this.deplacerMonstre(new DeplacementMiroir(),new DeplacementNaif(), m, commande);
 		}
 		this.cleanMonstre(this.getMonstre());
 		this.maj();
@@ -94,32 +95,39 @@ public class MonJeu extends Observable implements Jeu {
 	
 	private void ajoutMonstre() {
 		Random r = new Random();
-		int rand = r.nextInt(2);
+		double rand = r.nextDouble();
+		double nbFantome = 0.4;
 		
 		for(int i = 0 ; i < Bibliotheque.NBMONSTRE ; i++) {
-			rand = r.nextInt(2);
-			
-			switch(rand) {
-			case 0:
-				this.addMonstreRand(new Zombi()); // ajout de zombi
-			case 1:
+			rand = r.nextDouble();
+			if(rand < (nbFantome)){
 				this.addMonstreRand(new Fantome()); //ajout de fantome
+			}else{
+				this.addMonstreRand(new Zombi()); // ajout de zombi
 			}
-			
 		}
 		
 	}
 	
-	public void deplacerMonstre(DeplacementMonstre ia, Monstre m, Commande c) {
-		Point p = ia.deplacer(this,m,c);
+	public void deplacerMonstre(DeplacementMonstre iaZombi,
+			DeplacementMonstre iaFantome, Monstre m, Commande c) {
+		Point p = iaZombi.deplacer(this, m, c);
 		int x = (int) p.getX();
 		int y = (int) p.getY();
-		if(m.getId()==Bibliotheque.FANTOME) {
-			if ((!(x<0 || y<0 || x > plateau.taillePlateaux()-1 || y > plateau.taillePlateauy()-1 )) && (!this.collisionHero(x, y)) && (!this.collisionMonstre(x, y, true))) {
+		if (m.getId() == Bibliotheque.FANTOME) {
+			p = iaFantome.deplacer(this, m, c);
+			x = (int) p.getX();
+			y = (int) p.getY();
+			if ((!(x < 0 || y < 0 || x > plateau.taillePlateaux() - 1 || y > plateau.taillePlateauy() - 1))
+					&& (!this.collisionHero(x, y))
+					&& (!this.collisionMonstre(x, y, true))) {
 				m.deplacer(x, y);
-			}	
-		}else if ((!plateau.collision(x, y)) && (!this.collisionHero(x, y)) && (!this.collisionMonstre(x, y, true))) {
-			m.deplacer(x, y);
+			}
+		} else {
+			if ((!plateau.collision(x, y)) && (!this.collisionHero(x, y))
+					&& (!this.collisionMonstre(x, y, true))) {
+				m.deplacer(x, y);
+			}
 		}
 		if (this.collisionHero(x, y) && m.getHp() > 0) {
 			this.dommageCollision(m);

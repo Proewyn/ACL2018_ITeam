@@ -27,7 +27,7 @@ public class Objets {
 	
 	public Objets(List<Objet> lO, int nbObjet, Plateau p) {
 		this.listeObjets=lO;
-		popTSPourcent= 10;
+		popTSPourcent= 100;
 		generationDObjets(nbObjet,p);
 	}
 	
