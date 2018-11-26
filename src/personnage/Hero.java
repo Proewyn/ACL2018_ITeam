@@ -83,7 +83,6 @@ public class Hero implements Personnage {
 	}
 	
 	public void deplacer(int x2, int y2) {
-		System.out.println("ptdr");
 		this.setX(x2);
 		this.setY(y2);
 		deplacerVue(x2, y2);

@@ -22,6 +22,7 @@ import sprite.spriteCase.DessinMur;
 import sprite.spriteCase.DessinSol;
 import sprite.spriteCase.DessinSpawn;
 import sprite.spriteObjet.DessinCoffre;
+import sprite.spriteObjet.DessinCoffreDeClef;
 import sprite.spriteObjet.DessinObjet;
 import sprite.spriteObjet.DessinPorte;
 import sprite.spriteObjet.DessinTeleporteur;
@@ -46,6 +47,8 @@ public class LesDessins {
 	private Image dessinFantome;
 	private Image dessinGameOver;
 	private Image dessinWin;
+	private Image dessinTorcheSuppreme;
+	
 	
 	public LesDessins(Objets o, Plateau p , Hero hero, List<Monstre>monstre) {
 		this.initDessin();
@@ -68,6 +71,12 @@ public class LesDessins {
 				break;
 			case Bibliotheque.PORTE:
 				dessinObjet.add(new DessinPorte(obj, dessinPorte));
+				break;
+			case Bibliotheque.TORCHESUPPREME:
+				dessinObjet.add(new DessinTorche(obj, dessinTorcheSuppreme));
+				break;
+			case Bibliotheque.COFFRECLE:
+				dessinObjet.add(new DessinCoffreDeClef(obj, dessinCoffreDeClef));
 				break;
 			default:
 				throw new AssertionError("objet inexistant"+id);
@@ -132,6 +141,8 @@ public class LesDessins {
 			this.dessinTorche = ImageIO.read(new File("sprites/torche.png"));
 			this.dessinFantome = ImageIO.read(new File("sprites/fantome.png"));
 			this.dessinSol = ImageIO.read(new File("sprites/herbre.png"));
+			this.dessinCoffreDeClef = ImageIO.read(new File("sprites/coffreSupprem.png"));
+			this.dessinTorcheSuppreme = ImageIO.read(new File("sprites/torche_suppreme.png"));
 			//this.dessinGameOver = ImageIO.read(input);
 			//this.dessinWin = ImageIO.read(input);
 		} catch (IOException e) {

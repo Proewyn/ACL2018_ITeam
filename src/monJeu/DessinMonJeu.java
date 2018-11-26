@@ -54,15 +54,12 @@ public class DessinMonJeu implements DessinJeu {
 			dessins.dessinerWin(j.isGagne(), im);
 
 		} else {
-
-
 			Hero pj = j.getPj();
 			if (j.getVoirPlateauEntier()) {
 				dessins.dessinerPortee(pj, crayon);
 			} else {
 				dessins.dessinerPorteeVision(pj, crayon);
 			}
-
 		}
 	}
 

@@ -1,5 +1,6 @@
 package objet.torche;
 
+import monJeu.Bibliotheque;
 import monJeu.MonJeu;
 
 public class TorcheSupreme extends Torche {
@@ -12,5 +13,9 @@ public class TorcheSupreme extends Torche {
 		pasTrouve=false;
 	}
 
+	@Override
+	public int getId() {
+		return Bibliotheque.TORCHESUPPREME;
+	}
 
 }
