@@ -1,0 +1,49 @@
+@startuml
+hide empty members
+Package plateau #33d8ff{
+interface Case
+class Mur
+class Sol
+class Plateau
+class Spawn{
+private boolean traversable
+private boolean visible
+public Spawn()
+}
+}
+
+interface Case{
+public boolean isTraversable()
+public int getId()
+public boolean isVisible()
+}
+
+class Plateau{
+boolean collision(int ,int)
+Case[][]getLaby() 
+void initLabyFichier()
+void initLabyGenerateur()
+boolean isMur(int,int)
+void printLab()
+int taillePlateaux()
+int taillePlateauy()
+public int getId()
+public boolean isVisible()
+}
+class Mur{
+private boolean traversable
+private boolean visible
+public Mur(boolean b)
+public Mur()
+}
+class Sol{
+private boolean traversable
+private boolean visible
+public Sol()
+}
+
+Plateau -"*" Case
+Case<|..Mur
+Case<|..Sol
+Case<|..Spawn
+@enduml

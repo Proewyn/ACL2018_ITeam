@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import monJeu.MonJeu;
+import objet.coffre.CoffreDeClef;
 import objet.coffre.CoffreTeleporteur;
+import objet.porte.TrapeFinJeu;
 import objet.teleporteur.Teleporteur;
 import objet.teleporteur.TeleporteurAleatoire;
 import objet.teleporteur.TeleporteurFixe;
@@ -25,7 +27,7 @@ public class Objets {
 	
 	public Objets(List<Objet> lO, int nbObjet, Plateau p) {
 		this.listeObjets=lO;
-		popTSPourcent= 10;
+		popTSPourcent= 100;
 		generationDObjets(nbObjet,p);
 	}
 	
@@ -33,61 +35,57 @@ public class Objets {
 	private void generationDObjets(int nbObjet, Plateau p) {
 		Random r= new Random();
 		Objet o ;
+		CoffreDeClef c;
 		int compt=0;
-		int obj,x,y;
+		int obj;
+		int[] pos;
+		pos = randPosition(p);
+		c = new CoffreDeClef(pos[0],pos[1]);
+		listeObjets.add(c);
+		
+		pos = randPosition(p);
+		o = new TrapeFinJeu(pos[0],pos[1],c);
+		listeObjets.add(o);
+		
 		while (compt<nbObjet ){
 			obj=r.nextInt(NBTYPEOBJET);
-			x=r.nextInt(p.taillePlateaux());
-			y= r.nextInt(p.taillePlateauy());
-			while (p.collision(x, y) || collision(x, y)){
-				x=r.nextInt(p.taillePlateaux());
-				y= r.nextInt(p.taillePlateauy());
-			}
+			
+			pos = randPosition(p);
 			switch (obj){
 				case TORCHE:
 					obj= r.nextInt(100);
 					if (obj < popTSPourcent)
-						o = new TorcheSupreme(x,y);
+						o = new TorcheSupreme(pos[0],pos[1]);
 					else
-						o = new TorchePlus2(x,y);
+						o = new TorchePlus2(pos[0],pos[1]);
 					listeObjets.add(o);
 					compt++;
 					break;
 				case TELEPORTEURFIXE:
-					Teleporteur t = new TeleporteurFixe(new ArrayList<Teleporteur>(), x, y);
+					Teleporteur t = new TeleporteurFixe(new ArrayList<Teleporteur>(), pos[0],pos[1]);
 					listeObjets.add(t);
 					compt ++;
 					
-					x=r.nextInt(p.taillePlateaux());
-					y= r.nextInt(p.taillePlateauy());
-					while (p.collision(x, y)){
-						x=r.nextInt(p.taillePlateaux());
-						y= r.nextInt(p.taillePlateauy());
-					}
-					Teleporteur t2 = new TeleporteurFixe(new ArrayList<Teleporteur>(), x, y);
+					pos = randPosition(p);
+					Teleporteur t2 = new TeleporteurFixe(new ArrayList<Teleporteur>(),pos[0],pos[1]);
 					t.addLien(t2.getNumeroDeTeleporteur());
 					t2.addLien(t.getNumeroDeTeleporteur());						
 					listeObjets.add(t2);
 					compt ++;
 					break;
 				case TELEPORTEURALEATOIRE:
-					Teleporteur ta = new TeleporteurAleatoire(new ArrayList<Teleporteur>(), x, y);
+					Teleporteur ta = new TeleporteurAleatoire(new ArrayList<Teleporteur>(),pos[0],pos[1]);
 					listeObjets.add(ta);
 					compt ++;
 					if (ta.getNumeroDeTeleporteur()==0){
-						x=r.nextInt(p.taillePlateaux());
-						y= r.nextInt(p.taillePlateauy());
-						while (p.collision(x, y)){
-							x=r.nextInt(p.taillePlateaux());
-							y= r.nextInt(p.taillePlateauy());
-						}
-						Teleporteur ta2 = new TeleporteurAleatoire(new ArrayList<Teleporteur>(), x, y);						
+						pos = randPosition(p);
+						Teleporteur ta2 = new TeleporteurAleatoire(new ArrayList<Teleporteur>(),pos[0],pos[1]);						
 						listeObjets.add(ta2);
 						compt ++;
 					}
 					break;
 				case COFFRETP:
-					o = new CoffreTeleporteur(x,y);
+					o = new CoffreTeleporteur(pos[0],pos[1]);
 					listeObjets.add(o);
 					compt++;
 					break;
@@ -114,4 +112,14 @@ public class Objets {
 		return col;
 	}
 
+	private int[] randPosition(Plateau p){
+		int x,y;
+		Random r= new Random();
+		do{
+		x=r.nextInt(p.taillePlateaux());
+		y= r.nextInt(p.taillePlateauy());
+		}while (p.collision(x, y) || collision(x, y) || (p.getSpawn().x == x && p.getSpawn().y == y) );
+		int i[] = {x,y};
+		return i;
+	}
 }

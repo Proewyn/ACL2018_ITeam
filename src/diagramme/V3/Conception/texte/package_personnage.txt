@@ -1,0 +1,49 @@
+@startuml
+hide empty members
+Package personnage #a0a0f0{
+  interface Personnage{
+    public void deplacer(int x2, int y2)
+    public int getX()
+    public int getY()
+    public int getHp()
+    public int getId()
+    public void setHp(int hp)
+  }
+
+  abstract class Monstre{
+    private int x
+    private int y
+    private int hp
+
+    public Monstre()
+    public Monstre(int x, int y)
+
+  }
+
+  class Hero{
+    private int x
+    private int y
+    private int hp
+    private int vision
+
+    public Hero()
+    public Hero(int x , int y)
+    private void setX(int x)
+    private void setY(int y)
+    public int getVision()
+    public void setVision(int vision)
+    public void deplacer(int x2, int y2)
+    public String toString()
+
+  }
+  class Zombi{
+    public Zombi(int x, int y)
+    public Zombi()
+  }
+ 
+  
+}
+Personnage <|.. Monstre
+Personnage <|.. Hero
+Monstre <|-- Zombi
+@enduml

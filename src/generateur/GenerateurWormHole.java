@@ -30,7 +30,7 @@ public class GenerateurWormHole extends AbstractGenerateur {
 			}
 		}
 		lab[x][y] = new Spawn();
-		System.out.println("x:"+x+" y:"+y);
+		
 		do {
 			genererRetour();	
 		} while (traverser[x][y]);
