@@ -38,10 +38,22 @@ public class MonJeu extends Observable implements Jeu {
 	 */
 	private boolean voirPlateauEntier;
 	private boolean gagne;
+	private boolean newJeu;
 	
 	public MonJeu() {		
-		//this.zombi = new Zombi(10,12);
 		this.plateau=new Plateau();
+		this.monstres = new ArrayList<>(); //initialise la liste de monstre
+		this.ajoutMonstre();
+		Point p = plateau.getSpawn();
+		this.pj = new Hero(p.x, p.y);
+		voirPlateauEntier= false;
+		this.listeDObjets= new Objets(new ArrayList<Objet>(), Bibliotheque.NBOBJET, plateau);
+		gagne = false;
+		newJeu = false;
+	}
+	
+	public MonJeu(Plateau plateau) {	
+		this.plateau=plateau;
 		this.monstres = new ArrayList<>(); //initialise la liste de monstre
 		this.ajoutMonstre();
 		Point p = plateau.getSpawn();
@@ -180,9 +192,9 @@ public class MonJeu extends Observable implements Jeu {
 		return plateau;
 	}
 
-	public void initLabyFichier() throws FileNotFoundException {
+	public void initLabyFichier() throws FileNotFoundException, InterruptedException {
 		// TODO Auto-generated method stub
-		plateau.initLabyFichier();
+		plateau.initLabyFichier(this);
 	}
 	
 	public boolean isGagne() {
@@ -191,6 +203,14 @@ public class MonJeu extends Observable implements Jeu {
 
 	public void setGagne(boolean gagne) {
 		this.gagne = gagne;
+	}
+
+	public boolean isNewJeu() {
+		return newJeu;
+	}
+
+	public void setNewJeu(boolean newJeu) {
+		this.newJeu = newJeu;
 	}
 
 	public void addMonstres(Monstre m) {

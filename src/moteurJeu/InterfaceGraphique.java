@@ -7,6 +7,7 @@ import java.util.Observer;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import monJeu.DessinMonJeu;
 import monJeu.MonJeu;
 import moteurJeu.Menu;
 
@@ -94,7 +95,19 @@ public class InterfaceGraphique implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		this.stat.hp.setText("Point de vie : " + jeu.getPj().getHp());
+		if (jeu.isNewJeu()) {
+			this.reset();
+		}
+		else {
+			this.stat.hp.setText("Point de vie : " + jeu.getPj().getHp());
+		}
+	}
+
+	private void reset() {
+		this.panel = new PanelDessin(panel.getWidth(), panel.getHeight(),new DessinMonJeu(jeu));
+		//f.setContentPane(this.panel);
+		
+		this.stat = new PanelStat(jeu);	
 	}
 
 }
