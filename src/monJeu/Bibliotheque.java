@@ -20,8 +20,9 @@ public class Bibliotheque {
 	//donnée physique
 	public static int TAILLE_TABLEAUX = 51;	
 	public static int TAILLE_TABLEAUY = 51;	
-	public static final int NBMONSTRE = 100;
-	public static final int NBOBJET   = 20;
+	public static final int NBMONSTRE = 50;
+	public static final int NBOBJET   = 5;
+	public static final int DISTANCEVUEMONSTRE = 10;
 	
 	/**
 	 * 1 : Generateur WormHole

@@ -2,6 +2,7 @@ package monJeu;
 
 import ia.DeplacementMiroir;
 import ia.DeplacementMonstre;
+import ia.DeplacementPathfinding;
 
 import java.awt.Point;
 import java.io.FileNotFoundException;
@@ -42,7 +43,7 @@ public class MonJeu extends Observable implements Jeu {
 		}
 		Point p = plateau.getSpawn();
 		this.pj = new Hero(p.x, p.y);
-		voirPlateauEntier= true;
+		voirPlateauEntier= false;
 		this.listeDObjets= new Objets(new ArrayList<Objet>(), Bibliotheque.NBOBJET, plateau);
 	}
 
@@ -82,7 +83,7 @@ public class MonJeu extends Observable implements Jeu {
 		listeDObjets.collision(this, x, y);
 		//fait deplacer les monstre
 		for(Monstre m : this.getMonstre()) {
-			this.deplacerMonstre(new DeplacementMiroir(), m, commande);
+			this.deplacerMonstre(new DeplacementPathfinding(), m, commande);
 		}
 		this.cleanMonstre(this.getMonstre());
 		this.maj();
