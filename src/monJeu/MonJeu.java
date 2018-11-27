@@ -87,7 +87,7 @@ public class MonJeu extends Observable implements Jeu {
 		listeDObjets.collision(this, x, y);
 		//fait deplacer les monstre
 		for(Monstre m : this.getMonstre()) {
-			this.deplacerMonstre(new DeplacementPathfinding(), new DeplacementPathfinding(), m, commande);
+			this.deplacerMonstre(new DeplacementMiroir(), new DeplacementNaif(), m, commande);
 		}
 		this.cleanMonstre(this.getMonstre());
 		this.maj();
