@@ -1,0 +1,42 @@
+@startuml
+hide empty members
+
+Package ia #00ffff{
+  interface DeplacementMonstre
+  {
+    public Point deplacer(Monstre m,Commande c)
+  }
+
+  class DeplacementMiroir
+  {
+    public DeplacementNaif(MonJeu mj)
+  }
+
+  class DeplacementNaif
+  {
+    public DeplacementMiroir(MonJeu mj)
+  }
+
+  class DeplacementPathfinding{
+    public DeplacementPathfinding(MonJeu mj)
+    public Point getNextPointTo(Point depart, int[][] poid)
+    public int[][] getPathFromTo(Case[][] plateau, Point depart, Point arriver, int[][] poid)
+    public ArrayList<Point> getPointAccessible(Case[][] plateau, Point depart) 
+  }
+  class PointComp {
+    Point arriver
+    public PointComp(Point arriver)
+    public int compare(Point p1, Point p2)
+    public double Distance(double x1, double y1, double x2, double y2)
+
+	
+  }
+ 
+}
+DeplacementMonstre <|.. DeplacementNaif
+DeplacementMonstre <|.. DeplacementMiroir
+DeplacementMonstre <|.. DeplacementPathfinding
+MonJeu "1"- DeplacementMonstre
+PointComp ..|> Comparator
+PointComp -"1" Point
+@enduml
