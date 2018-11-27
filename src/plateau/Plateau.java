@@ -12,6 +12,9 @@ import java.util.Scanner;
 import javax.swing.JFileChooser;
 
 import monJeu.Bibliotheque;
+import monJeu.DessinMonJeu;
+import monJeu.MonJeu;
+import moteurJeu.MoteurGraphique;
 
 
 public class Plateau {
@@ -40,7 +43,11 @@ public class Plateau {
 	public Case[][] getLaby(){
 		return laby;
 	}
-	
+		
+	public void setLaby(Case[][] laby) {
+		this.laby = laby;
+	}
+
 	public boolean collision(int x, int y) {
 		if(x < 0 || y < 0)
 			return false;
@@ -72,27 +79,67 @@ public class Plateau {
 		}
 	}
 	
-	public void initLabyFichier() throws FileNotFoundException {
+	public void initLabyFichier(MonJeu jeu) throws FileNotFoundException, InterruptedException {
+		int pos = 0, colonne = -1, ligne = 0;
+		boolean correct = true;
+		Case[][] labyrinthe;
 		JFileChooser jf = new JFileChooser();
 		int returnVal = jf.showOpenDialog(jf);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			FileReader flot;
-			BufferedReader flotFiltre;
+			FileReader flot, flotVerif;
+			BufferedReader flotFiltre, flotFiltreVerif;
 			File file = jf.getSelectedFile();
 			flot = new FileReader(file.getAbsolutePath());
+			flotVerif = new FileReader(file.getAbsolutePath());
 			flotFiltre = new BufferedReader(flot);
+			flotFiltreVerif = new BufferedReader(flotVerif);
 			Scanner sc = new Scanner(flotFiltre);
-			while (sc.hasNext()){
-				String s = sc.next();
-				if (s.charAt(0)=='N') {
-					
+			Scanner scVerif = new Scanner(flotFiltreVerif);
+			//On vérifie que le fichier est correct (Un rectangle)
+			while (scVerif.hasNext()){
+				String s = scVerif.next();
+				pos = 0;
+				while (pos < s.length()) {
+					pos++;
 				}
-				if (s.charAt(0)=='R') {
-
+				if (colonne < 0 ) {
+					colonne = pos;
 				}
+				if (colonne != pos) {
+					correct = false;
+				}
+				ligne++;
 			}
-			sc.close();
+			//On crée le labirynthe à partir du fichier vérifié
+			if (correct) {
+				Bibliotheque.setTaillePlateauX(colonne);
+				Bibliotheque.setTaillePlateauY(ligne);
+				labyrinthe = new Case[colonne+1][ligne+1]; 
+				ligne = 0;
+				while (sc.hasNext()){
+					String s = sc.next();
+					pos = 0;
+					while (pos < s.length()) {
+						if (s.charAt(pos)=='0') {
+							labyrinthe[ligne][pos] = new Mur();
+						}
+						if (s.charAt(pos)=='1') {
+							labyrinthe[ligne][pos] = new Sol();
+						}
+						pos++;
+					}
+					System.out.println(ligne);
+					ligne++;
+				}
+				sc.close();
+				scVerif.close();
+				this.setLaby(labyrinthe);
+			}
 		}
+		jeu = new MonJeu(this);
+		DessinMonJeu dessinJeu = new DessinMonJeu(jeu);
+		MoteurGraphique moteur = new MoteurGraphique(jeu, dessinJeu);
+		moteur.lancerJeu();
 	}
 	
 	public void initLabyGenerateur() {

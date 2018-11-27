@@ -38,4 +38,12 @@ public class Bibliotheque {
 	 */
 	public static final int GENERATEUR = 2;
 	
+	public static void setTaillePlateauX (int x) {
+		TAILLE_TABLEAUX = x;
+	}
+	
+	public static void setTaillePlateauY (int y) {
+		TAILLE_TABLEAUY = y ;
+	}
+	
 }

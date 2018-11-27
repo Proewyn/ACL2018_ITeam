@@ -12,16 +12,28 @@ public class EcouteurOpen implements ActionListener {
 	public EcouteurOpen(MonJeu mj) {
 		this.mj = mj;
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 	
+	/*
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		try {
-			mj.initLabyFichier();
+			try {
+				mj.initLabyFichier();
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
 	}
-	
+	*/
 }
