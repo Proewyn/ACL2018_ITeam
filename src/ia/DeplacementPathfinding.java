@@ -80,8 +80,8 @@ public class DeplacementPathfinding implements DeplacementMonstre {
 			return poid;
 		}
 
-		/*Collections.sort(ptAccessible, new PointComp(arriver));
-		for (Point point : ptAccessible) {
+		Collections.sort(ptAccessible, new PointComp(arriver));
+		/*for (Point point : ptAccessible) {
 			System.out.println(point.x+ " "+point.y);
 		}
 		System.out.println("||||||||||||||||");
