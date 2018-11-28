@@ -1,6 +1,3 @@
-/**
- * 
- */
 package sprite;
 
 import java.awt.Graphics2D;
@@ -20,26 +17,18 @@ public class LesDessinsObjets {
 	private List<DessinObjet> dessinObjet;
 
 	/**
-	 * 
+	 * Constructeur pour dessiner les objets
+	 * @param dessinObjet dessin pour les objets
 	 */
 	public LesDessinsObjets(List<DessinObjet> dessinObjet) {
 		this.dessinObjet = dessinObjet;
 	}
-	
-	public void dessiner(Graphics2D crayon) {
-		for(DessinObjet dObj : this.dessinObjet) {
-			dObj.dessiner(crayon);
-		}
-		
-	}
 
-	public void dessinerVision(Hero hero, Graphics2D crayon) {
-		for(DessinObjet dObj : this.dessinObjet) {
-			dObj.dessinerVision(hero, crayon);
-		}
-		
-	}
-
+	/**
+	 * Dessine les objets dans toute la portee du hero
+	 * @param hero avec sa portee
+	 * @param crayon qui dessine
+	 */
 	public void dessinerPortee(Hero hero, Graphics2D crayon) {
 		for(DessinObjet dObj : this.dessinObjet) {
 			if (dObj.getObjet().getX() >= hero.getXVue() && dObj.getObjet().getX() < Bibliotheque.VUE_LARGEUR + hero.getXVue()) {
@@ -50,8 +39,12 @@ public class LesDessinsObjets {
 		}
 	}
 
+	/**
+	 * Dessine les objets dans toute la portee du hero
+	 * @param hero avec sa portee et vision
+	 * @param crayon qui dessine
+	 */
 	public void dessinerPorteeVision(Hero hero, Graphics2D crayon) {
-		
 		for(DessinObjet dObj : this.dessinObjet) {
 			if (dObj.getObjet().getX() >= hero.getXVue() && dObj.getObjet().getX() < Bibliotheque.VUE_LARGEUR + hero.getXVue()) {
 				if (dObj.getObjet().getY() >= hero.getYVue() && dObj.getObjet().getY() < Bibliotheque.VUE_HAUTEUR + hero.getYVue()) {
@@ -60,7 +53,5 @@ public class LesDessinsObjets {
 			}
 		}
 	}
-	
-	
 
 }

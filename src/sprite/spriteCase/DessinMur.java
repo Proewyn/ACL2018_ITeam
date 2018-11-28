@@ -1,12 +1,7 @@
-/**
- * 
- */
 package sprite.spriteCase;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.io.File;
-
 import monJeu.Bibliotheque;
 import plateau.Case;
 
@@ -17,12 +12,12 @@ import plateau.Case;
 public class DessinMur extends DessinCase {
 
 	/**
-	 * @param c
-	 * @param dessinMur
+	 * Constructeur pour dessiner un mur
+	 * @param c a dessiner
+	 * @param dessinMur pour le mur
 	 */
 	public DessinMur(Case c, Image dessinMur) {
 		super(c, dessinMur);
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
@@ -32,7 +27,6 @@ public class DessinMur extends DessinCase {
 				y * Bibliotheque.TAILLE_CASE, 
 				Bibliotheque.TAILLE_CASE, 
 				Bibliotheque.TAILLE_CASE,null);
-
 	}
 
 }

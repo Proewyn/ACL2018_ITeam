@@ -57,7 +57,13 @@ public class LesDessins {
 	private Image dessinTorcheSuppreme;
 	private Image dessinFlamme;
 	
-	
+	/**
+	 * Dessine tous les elements du plateau
+	 * @param o l'element a dessiner
+	 * @param p le plateau avec ses objets
+	 * @param hero le hero
+	 * @param monstre la liste des monstres
+	 */
 	public LesDessins(Objets o, Plateau p , Hero hero, List<Monstre>monstre) {
 		this.initDessin();
 		ArrayList<DessinObjet> dessinObjet = new ArrayList<>();
@@ -66,15 +72,12 @@ public class LesDessins {
 			id = obj.getId();
 			switch(id) {
 			case Bibliotheque.TORCHE:
-				
 				dessinObjet.add(new DessinTorche(obj, dessinTorche));
 				break;
 			case Bibliotheque.TELEPORTEUR:
-				
 				dessinObjet.add(new DessinTeleporteur(obj, dessinTeleporteur));
 				break;
 			case Bibliotheque.COFFRE:
-				
 				dessinObjet.add(new DessinCoffre(obj, dessinCoffre));				
 				break;
 			case Bibliotheque.PORTE:
@@ -88,13 +91,11 @@ public class LesDessins {
 				break;
 			default:
 				throw new AssertionError("objet inexistant"+id);
-			
 			}
-			
 		}
-		this.dessinObjets = new LesDessinsObjets(dessinObjet);	
 		
-
+		this.dessinObjets = new LesDessinsObjets(dessinObjet);
+		
 		Case[][]cases = p.getLaby();
 		DessinCase[][] dc = new DessinCase[cases.length][cases[0].length] ;
 		for(int i = 0 ;i<cases.length;i++) {
@@ -104,14 +105,12 @@ public class LesDessins {
 				case Bibliotheque.SOL:
 					dc[i][j] = new DessinSol(cases[i][j], dessinSol);
 					break;
-					
 				case Bibliotheque.MUR:
 					dc[i][j] = new DessinMur(cases[i][j], dessinMur);
 					break;
 				case Bibliotheque.SPAWN:
 					dc[i][j] = new DessinSpawn(cases[i][j], dessinMur);
 					break;
-						
 				}
 			}
 		}
@@ -130,23 +129,15 @@ public class LesDessins {
 				break;
 			}
 		}
-		
-
 		this.dessinAttaque = new DessinAttaque(dessinFlamme);
 		
 		this.dessinPerso = new LesDessinsPersonnages(new DessinHero(hero, dessinHero), new LesDessinsMonstres(dm));
 		
-		
-		
-		
-	
 	}
 
-
-	
-	
-
-	
+	/**
+	 * Donne a chaque elements son sprite
+	 */
 	private void initDessin() {
 		try {
 			this.dessinCoffre = ImageIO.read(new File("sprites/coffre.png"));
@@ -164,24 +155,16 @@ public class LesDessins {
 			this.dessinGameOver = dessinMur;
 			this.dessinWin = dessinTorche;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-	}
-	public void dessiner(Graphics2D crayon) {
-		
-		this.dessinCases.dessiner(crayon);
-		this.dessinObjets.dessiner(crayon);
-		this.dessinPerso.dessiner(crayon);
 	}
 
-	public void dessinerVision(Hero hero,Graphics2D crayon){
-		this.dessinCases.dessinerVision(hero,crayon);
-		this.dessinObjets.dessinerVision(hero,crayon);
-		this.dessinPerso.dessinerVision(hero,crayon);
-	}
-	
+	/**
+	 * Dessine les elements dans toute la portee du hero
+	 * @param hero avec sa portee
+	 * @param crayon qui dessine
+	 * @param attaques a dessiner
+	 */
 	public void dessinerPortee(Hero hero, Graphics2D crayon ,LesAttaques attaques){
 		this.dessinCases.dessinerPortee(hero, crayon);
 		this.dessinObjets.dessinerPortee(hero,crayon);
@@ -191,7 +174,26 @@ public class LesDessins {
 		}
 	}
 	
+	/**
+	 * Dessine les elements dans toute la vision du hero
+	 * @param hero avec sa portee et vision
+	 * @param crayon qui dessine
+	 * @param attaques a dessiner
+	 */
+	public void dessinerPorteeVision(Hero pj, Graphics2D crayon, LesAttaques attaques) {
+		this.dessinCases.dessinerPorteeVision(pj, crayon);
+		this.dessinObjets.dessinerPorteeVision(pj,crayon);
+		this.dessinPerso.dessinerPorteeVision(pj,crayon);
+		for(AttaqueADistance a : attaques.getAttaques()){
+			this.dessinAttaque.dessinerPorteeVision(pj, crayon, a);
+		}
+	}
 	
+	/**
+	 * Dessine l'ecran de victoire ou de defaite
+	 * @param b si on gagne ou perd
+	 * @param im a dessiner
+	 */
 	public void dessinerWin(Boolean b,BufferedImage im){
 		if(b){
 			DessinWin dessinWin;
@@ -203,24 +205,6 @@ public class LesDessins {
 			dessinGameOver = new DessinGameOver(this.dessinGameOver);
 			dessinGameOver.dessiner(im);
 		}
-		
-		
 	}
-
-
-
-	public void dessinerPorteeVision(Hero pj, Graphics2D crayon, LesAttaques attaques) {
-		
-		this.dessinCases.dessinerPorteeVision(pj, crayon);
-		this.dessinObjets.dessinerPorteeVision(pj,crayon);
-		this.dessinPerso.dessinerPorteeVision(pj,crayon);
-		for(AttaqueADistance a : attaques.getAttaques()){
-			this.dessinAttaque.dessinerPorteeVision(pj, crayon, a);
-		}
-		
-	}
-
-	
-
 
 }

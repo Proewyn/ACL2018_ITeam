@@ -1,15 +1,7 @@
-/**
- * 
- */
 package sprite.spritePersonnage;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 import monJeu.Bibliotheque;
 import personnage.Hero;
 
@@ -22,18 +14,21 @@ public class DessinHero {
 	private Image imageHero;
 
 	/**
-	 * 
+	 * Constructeur pour dessiner le hero
+	 * @param hero a dessiner
+	 * @param dessinHero pour le hero
 	 */
 	public DessinHero(Hero hero, Image dessinHero) {
 		
 		this.hero = hero ;
 		this.imageHero = dessinHero;
-		
 	}
 
-	
+	/**
+	 * Dessine le hero
+	 * @param crayon pour dessiner
+	 */
 	public void dessiner(Graphics2D crayon) {
-		
 		crayon.drawImage(
 				this.imageHero, 
 				(this.hero.getX()-hero.getXVue()) * Bibliotheque.TAILLE_CASE,
@@ -41,7 +36,5 @@ public class DessinHero {
 				Bibliotheque.TAILLE_CASE, 
 				Bibliotheque.TAILLE_CASE,null);
 	}
-	
-
 	
 }
