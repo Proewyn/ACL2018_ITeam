@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Random;
 
+import attaque.LesAttaques;
+import attaque.aDistance.AttaqueADistance;
+import attaque.aDistance.Flamme;
+
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
 import objet.Objet;
@@ -27,6 +31,7 @@ public class MonJeu extends Observable implements Jeu {
 	private Plateau plateau;
 	private ArrayList<Monstre> monstres;
 	private Objets listeDObjets;
+	private LesAttaques attaques;
 	private boolean voirPlateauEntier;
 	private boolean gagne;
 	private boolean newJeu;
@@ -44,8 +49,11 @@ public class MonJeu extends Observable implements Jeu {
 		this.listeDObjets= new Objets(new ArrayList<Objet>(), Bibliotheque.NBOBJET, plateau);
 		gagne = false;
 		newJeu = false;
+		attaques = new LesAttaques(new ArrayList<AttaqueADistance>());
 	}
 	
+	
+
 	/**
 	 * Constructeur avec un plateau donnee
 	 * @param plateau donnee en entree pour initialiser le labyrinthe
@@ -80,9 +88,16 @@ public class MonJeu extends Observable implements Jeu {
 		if(commande.bas) {
 			y++;
 		}
+		
+		if(commande.attaque) {
+			attaques.addAttaque(new Flamme(x, y, commande));
+		}
 		if ((commande.gauche||commande.droite||commande.haut||commande.bas)&&!plateau.collision(x, y)) {
 			if(!this.collisionMonstre(x, y, false)) {
 				this.getPj().deplacer(x,y);
+			}
+			if(commande.attaque) {
+				attaques.addAttaque(new Flamme(x, y, commande));
 			}
 		}
 		listeDObjets.collision(this, x, y);
@@ -90,6 +105,7 @@ public class MonJeu extends Observable implements Jeu {
 		for(Monstre m : this.getMonstre()) {
 			this.deplacerMonstre(new DeplacementMiroir(), new DeplacementNaif(), m, commande);
 		}
+		this.attaques.deplacement(this);
 		this.cleanMonstre(this.getMonstre());
 		this.maj();
 	}
@@ -301,6 +317,10 @@ public class MonJeu extends Observable implements Jeu {
 				i++;
 			}
 		}
+	}
+	
+	public LesAttaques getAttaques() {
+		return attaques;
 	}
 
 	/**
