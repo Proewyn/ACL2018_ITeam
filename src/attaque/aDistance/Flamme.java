@@ -6,7 +6,7 @@ import personnage.Personnage;
 
 public class Flamme extends AttaqueADistance {
 
-	public Flamme(int x, int y, Commande dir) {
+	public Flamme(int x, int y, int dir) {
 		super(x, y, dir);
 	}
 

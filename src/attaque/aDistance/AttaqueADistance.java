@@ -7,17 +7,24 @@ import monJeu.MonJeu;
 import moteurJeu.Commande;
 
 public abstract class AttaqueADistance {
+	public static final int GAUCHE=0;
+	public static final int DROITE=1;
+	public static final int HAUT=2;
+	public static final int Bas=3;
 	
 	public boolean aToucher;
 	protected int x;
 	protected int y;
-	protected Commande direction;
+	
+	protected int direction;
 	
 	
-	public AttaqueADistance(int x,int y,Commande dir) {
+	public AttaqueADistance(int x,int y,int dir) {
 		this.x=x;
 		this.y=y;
 		this.direction=dir;
+		
+		
 	}
 
 
@@ -42,14 +49,15 @@ public abstract class AttaqueADistance {
 
 
 	public void deplacement(MonJeu mj) {
-		if (direction.gauche)
+		if (direction == GAUCHE)
 			x--;
-		if (direction.droite)
+		if (direction == DROITE)
 			x++;
-		if (direction.haut)	
+		if (direction == HAUT)
 			y--;
-		if (direction.bas)
+		if (direction == Bas)
 			y++;
+
 		collision(mj);
 	}
 		

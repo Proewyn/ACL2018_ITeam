@@ -89,6 +89,9 @@ public class Controleur implements KeyListener {
 		case KeyEvent.VK_SPACE:
 			this.commandeEnCours.attaque = true;
 			break;
+		case KeyEvent.VK_P:
+			this.commandeEnCours.pause = !commandeEnCours.pause;
+			break;
 		}
 	}
 
@@ -114,6 +117,7 @@ public class Controleur implements KeyListener {
 		case KeyEvent.VK_SPACE:
 			this.commandeEnCours.attaque = false;
 			break;
+		
 		}
 	}
 

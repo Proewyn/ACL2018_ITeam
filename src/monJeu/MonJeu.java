@@ -35,6 +35,7 @@ public class MonJeu extends Observable implements Jeu {
 	private boolean voirPlateauEntier;
 	private boolean gagne;
 	private boolean newJeu;
+	private boolean enPause;
 	
 	/**
 	 * Constructeur par defaut 
@@ -50,6 +51,7 @@ public class MonJeu extends Observable implements Jeu {
 		gagne = false;
 		newJeu = false;
 		attaques = new LesAttaques(new ArrayList<AttaqueADistance>());
+		enPause=false;
 	}
 	
 	
@@ -74,95 +76,81 @@ public class MonJeu extends Observable implements Jeu {
 	 * @param commande chaine qui donne le deplacement du hero
 	 */
 	public void evoluer(Commande commande) {
-		int x= pj.getX();
-		int y= pj.getY();
-		this.attaques.deplacement(this);
-		if (commande.gauche) {
-			x--;
-		}
-		if (commande.droite) {
-			x++;
-		}
-		if(commande.haut) {
-			y--;
-		}
-		if(commande.bas) {
-			y++;
-		}
-
-		
-		
-		if ((commande.gauche||commande.droite||commande.haut||commande.bas)&&!plateau.collision(x, y)) {
-			if(!this.collisionMonstre(x, y, false)) {
-				this.getPj().deplacer(x,y);
-			}
+		this.enPause= commande.pause;
+		if (!commande.pause) {
+			int x = pj.getX();
+			int y = pj.getY();
+			this.attaques.deplacement(this);
 			if (commande.gauche) {
-				if(commande.attaque&& !plateau.collision(x-1, y)) {
-					attaques.addAttaque(new Flamme(x-1, y, commande));
-				}
+				x--;
 			}
 			if (commande.droite) {
-				if(commande.attaque && !plateau.collision(x+1, y)) {
-					attaques.addAttaque(new Flamme(x+1, y, commande));
+				x++;
+			}
+			if (commande.haut) {
+				y--;
+			}
+			if (commande.bas) {
+				y++;
+			}
+
+			if ((commande.gauche || commande.droite || commande.haut || commande.bas)
+					&& !plateau.collision(x, y)) {
+				if (!this.collisionMonstre(x, y, false)) {
+					this.getPj().deplacer(x, y);
+				}
+				if (commande.gauche) {
+					if (commande.attaque && !plateau.collision(x - 1, y)) {
+						attaques.addAttaque(new Flamme(x - 1, y, AttaqueADistance.GAUCHE));
+					}
+				}
+				if (commande.droite) {
+					if (commande.attaque && !plateau.collision(x + 1, y)) {
+						attaques.addAttaque(new Flamme(x + 1, y, AttaqueADistance.DROITE));
+					}
+				}
+				if (commande.haut) {
+					if (commande.attaque && !plateau.collision(x, y - 1)) {
+						attaques.addAttaque(new Flamme(x, y - 1, AttaqueADistance.HAUT));
+					}
+				}
+				if (commande.bas) {
+					if (commande.attaque && !plateau.collision(x, y + 1)) {
+						attaques.addAttaque(new Flamme(x, y + 1, AttaqueADistance.Bas));
+					}
 				}
 			}
-			if(commande.haut) {
-				if(commande.attaque && !plateau.collision(x, y-1)) {
-					attaques.addAttaque(new Flamme(x, y-1, commande));
-				}
+			listeDObjets.collision(this, x, y);
+			// fait deplacer les monstre
+			for (Monstre m : this.getMonstre()) {
+				this.deplacerMonstre(new DeplacementPathfinding(),
+						new DeplacementPathfindingFantom(), m, commande);
 			}
-			if(commande.bas) {
-				if(commande.attaque&& !plateau.collision(x, y+1)) {
-					attaques.addAttaque(new Flamme(x, y+1, commande));
+			if (!(commande.gauche || commande.droite || commande.haut || commande.bas)
+					&& commande.attaque) {
+				if (!plateau.collision(x - 1, y)) {
+					
+					attaques.addAttaque(new Flamme(x - 1, y,AttaqueADistance.GAUCHE ));
 				}
+
+				if (!plateau.collision(x + 1, y)) {
+					attaques.addAttaque(new Flamme(x + 1, y, AttaqueADistance.DROITE));
+				}
+
+				if (!plateau.collision(x, y - 1)) {
+					attaques.addAttaque(new Flamme(x, y - 1, AttaqueADistance.HAUT));
+				}
+
+				if (!plateau.collision(x, y + 1)) {
+					attaques.addAttaque(new Flamme(x, y + 1,AttaqueADistance.Bas ));
+				}
+
 			}
+			attaques.collision(this);
+			this.cleanMonstre(this.getMonstre());
 		}
-		listeDObjets.collision(this, x, y);
-		//fait deplacer les monstre
-		for(Monstre m : this.getMonstre()) {
-			this.deplacerMonstre(new DeplacementPathfinding(), new DeplacementPathfindingFantom(), m, commande);
-		}
-		if (!(commande.gauche||commande.droite||commande.haut||commande.bas)&& commande.attaque){
-			Commande cg = new Commande();
-			Commande cd = new Commande();
-			Commande ch = new Commande();
-			Commande cb = new Commande();
-				if(!plateau.collision(x-1, y)) {
-					cg.gauche=true;
-					cg.droite=false;
-					cg.haut=false;
-					cg.bas=false;
-					attaques.addAttaque(new Flamme(x-1, y,cg ));
-				}
-			
-				if(!plateau.collision(x+1, y)) {
-					cd.gauche=false;
-					cd.droite=true;
-					cd.haut=false;
-					cd.bas=false;
-					attaques.addAttaque(new Flamme(x+1, y, cd));
-				}
-			
-				if( !plateau.collision(x, y-1)) {
-					ch.gauche=false;
-					ch.droite=false;
-					ch.haut=true;
-					ch.bas=false;
-					attaques.addAttaque(new Flamme(x, y-1, ch));
-				}
-			
-				if( !plateau.collision(x, y+1)) {
-					cb.gauche=false;
-					cb.droite=false;
-					cb.haut=false;
-					cb.bas=true;
-					attaques.addAttaque(new Flamme(x, y+1, cb));
-				}
-			
-		}
-		attaques.collision(this);
-		this.cleanMonstre(this.getMonstre());
 		this.maj();
+		
 	}
 	
 	/**
@@ -378,6 +366,12 @@ public class MonJeu extends Observable implements Jeu {
 	public LesAttaques getAttaques() {
 		return attaques;
 	}
+
+	public boolean isEnPause() {
+		return enPause;
+	}
+
+
 
 	/**
 	 * surcharge toString

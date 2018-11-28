@@ -53,4 +53,8 @@ public class Bibliotheque {
 		TAILLE_TABLEAUY = y ;
 	}
 	
+	public static boolean ouEx (boolean a, boolean b) {
+		return (a||b)&&(!a&&b);
+	}
+	
 }
