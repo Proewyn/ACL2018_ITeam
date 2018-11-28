@@ -78,28 +78,37 @@ public class MonJeu extends Observable implements Jeu {
 	public void evoluer(Commande commande) {
 		int x= pj.getX();
 		int y= pj.getY();
+		this.attaques.deplacement(this);
 		if (commande.gauche) {
 			x--;
+			if(commande.attaque&& !plateau.collision(x, y)) {
+				attaques.addAttaque(new Flamme(x-1, y, commande));
+			}
 		}
 		if (commande.droite) {
 			x++;
+			if(commande.attaque && !plateau.collision(x, y)) {
+				attaques.addAttaque(new Flamme(x+1, y, commande));
+			}
 		}
 		if(commande.haut) {
 			y--;
+			if(commande.attaque && !plateau.collision(x, y)) {
+				attaques.addAttaque(new Flamme(x, y-1, commande));
+			}
 		}
 		if(commande.bas) {
 			y++;
+			if(commande.attaque&& !plateau.collision(x, y)) {
+				attaques.addAttaque(new Flamme(x, y+1, commande));
+			}
 		}
+
 		
-		if(commande.attaque) {
-			attaques.addAttaque(new Flamme(x, y, commande));
-		}
+		
 		if ((commande.gauche||commande.droite||commande.haut||commande.bas)&&!plateau.collision(x, y)) {
 			if(!this.collisionMonstre(x, y, false)) {
 				this.getPj().deplacer(x,y);
-			}
-			if(commande.attaque) {
-				attaques.addAttaque(new Flamme(x, y, commande));
 			}
 		}
 		listeDObjets.collision(this, x, y);
@@ -107,7 +116,7 @@ public class MonJeu extends Observable implements Jeu {
 		for(Monstre m : this.getMonstre()) {
 			this.deplacerMonstre(new DeplacementMiroir(), new DeplacementNaif(), m, commande);
 		}
-		this.attaques.deplacement(this);
+		
 		this.cleanMonstre(this.getMonstre());
 		this.maj();
 	}

@@ -34,12 +34,15 @@ public class DessinAttaque {
 	
 	public void dessiner(Hero hero, Graphics2D crayon,AttaqueADistance attaque) {
 
-			crayon.drawImage(
+		crayon.setColor(Color.black);
+		crayon.drawImage(
 					this.dessinAttaque, 
 					(attaque.getX() - hero.getXVue()) * Bibliotheque.TAILLE_CASE,
 					(attaque.getY() - hero.getYVue())* Bibliotheque.TAILLE_CASE, 
 					Bibliotheque.TAILLE_CASE, 
 					Bibliotheque.TAILLE_CASE,null);
+		/*crayon.fillRect((attaque.getX() - hero.getXVue()) * Bibliotheque.TAILLE_CASE,
+				(attaque.getY() - hero.getYVue())* Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE);*/
 			
 	}
 	public void dessinerVision(Hero hero, Graphics2D crayon,AttaqueADistance attaque) {

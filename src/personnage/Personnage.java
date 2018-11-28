@@ -8,5 +8,5 @@ public interface Personnage {
 	public int getHp();
 	public int getId();
 	public void setHp(int hp);
-	
+	public boolean collision(int x, int y);
 }

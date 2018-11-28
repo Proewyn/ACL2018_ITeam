@@ -131,7 +131,7 @@ public class LesDessins {
 		}
 		
 
-		this.dessinAttaque = new DessinAttaque(dessinWin);
+		this.dessinAttaque = new DessinAttaque(dessinCoffre);
 		
 		this.dessinPerso = new LesDessinsPersonnages(new DessinHero(hero, dessinHero), new LesDessinsMonstres(dm));
 		
