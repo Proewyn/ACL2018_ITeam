@@ -172,6 +172,7 @@ public class Hero implements Personnage {
 	public boolean collision(int x2, int y2) {
 		// TODO Auto-generated method stub
 		return x==x2 && y==y2;
+		
 	}
 
 }
