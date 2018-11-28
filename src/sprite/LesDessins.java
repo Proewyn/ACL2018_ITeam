@@ -55,6 +55,7 @@ public class LesDessins {
 	private Image dessinGameOver;
 	private Image dessinWin;
 	private Image dessinTorcheSuppreme;
+	private Image dessinFlamme;
 	
 	
 	public LesDessins(Objets o, Plateau p , Hero hero, List<Monstre>monstre) {
@@ -131,7 +132,7 @@ public class LesDessins {
 		}
 		
 
-		this.dessinAttaque = new DessinAttaque(dessinCoffre);
+		this.dessinAttaque = new DessinAttaque(dessinFlamme);
 		
 		this.dessinPerso = new LesDessinsPersonnages(new DessinHero(hero, dessinHero), new LesDessinsMonstres(dm));
 		
@@ -159,8 +160,9 @@ public class LesDessins {
 			this.dessinSol = ImageIO.read(new File("sprites/herbre.png"));
 			this.dessinCoffreDeClef = ImageIO.read(new File("sprites/coffreSupprem.png"));
 			this.dessinTorcheSuppreme = ImageIO.read(new File("sprites/torche_suppreme.png"));
-			//this.dessinGameOver = ImageIO.read(input);
-			//this.dessinWin = ImageIO.read(input);
+			this.dessinFlamme = ImageIO.read(new File("sprites/flamme.png"));
+			this.dessinGameOver = dessinMur;
+			this.dessinWin = dessinTorche;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -180,21 +182,25 @@ public class LesDessins {
 		this.dessinPerso.dessinerVision(hero,crayon);
 	}
 	
-	public void dessinerPortee(Hero hero, Graphics2D crayon){
+	public void dessinerPortee(Hero hero, Graphics2D crayon ,LesAttaques attaques){
 		this.dessinCases.dessinerPortee(hero, crayon);
 		this.dessinObjets.dessinerPortee(hero,crayon);
 		this.dessinPerso.dessinerPortee(hero,crayon);
+		for(AttaqueADistance a : attaques.getAttaques()){
+			this.dessinAttaque.dessinerPortee(hero, crayon, a);
+		}
 	}
+	
 	
 	public void dessinerWin(Boolean b,BufferedImage im){
 		if(b){
 			DessinWin dessinWin;
-			dessinWin = new DessinWin(dessinTorche);
+			dessinWin = new DessinWin(this.dessinWin);
 			dessinWin.dessiner(im);
 			
 		}else{
 			DessinGameOver dessinGameOver;
-			dessinGameOver = new DessinGameOver(dessinMur);
+			dessinGameOver = new DessinGameOver(this.dessinGameOver);
 			dessinGameOver.dessiner(im);
 		}
 		

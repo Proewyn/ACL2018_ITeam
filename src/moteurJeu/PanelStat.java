@@ -13,6 +13,10 @@ public class PanelStat extends JPanel{
 	
 	protected JLabel hp;
 	
+	/**
+	 * Cree un Panel pour l'affichage de diverses statistiques
+	 * @param jeu donnant les informations au Panel
+	 */
 	public PanelStat(MonJeu jeu) {
 		super(new GridLayout(5, 1));
 		this.setPreferredSize(new Dimension(150, 100));

@@ -43,7 +43,7 @@ public class DessinMonJeu implements DessinJeu {
 		} else {
 			Hero pj = j.getPj();
 			if (j.getVoirPlateauEntier()) {
-				dessins.dessinerPortee(pj, crayon);
+				dessins.dessinerPortee(pj, crayon,j.getAttaques());
 			} else {
 				dessins.dessinerPorteeVision(pj, crayon , j.getAttaques());
 			}

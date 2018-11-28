@@ -15,6 +15,12 @@ public abstract class Teleporteur implements Objet {
 	protected int lien;
 	protected boolean vienDApparaitre;
 	
+	/**
+	 * Cree un teleporteur
+	 * @param l liste des teleporteurs
+	 * @param x position en X
+	 * @param y position en Y
+	 */
 	public Teleporteur(List<Teleporteur> l,int x ,int y) {
 		this.x=x;
 		this.y=y;
@@ -22,16 +28,15 @@ public abstract class Teleporteur implements Objet {
 		if (listeTeleporteur==null){
 			listeTeleporteur=l;
 		}
-		vienDApparaitre=false;		if (!listeTeleporteur.contains(this))
+		vienDApparaitre=false;		
+		if (!listeTeleporteur.contains(this))
 			listeTeleporteur.add(this);
 		
 		numTeleporteur=nombreTeleporteur;
 		nombreTeleporteur++;
 		for(int i = 0; i<nombreTeleporteur;i++){
 			listeTeleporteur.get(i).majListeTeleporteur(this);
-			
 		}
-		
 	}
 
 	@Override
@@ -42,7 +47,6 @@ public abstract class Teleporteur implements Objet {
 			if(this.x!=mj.getPj().getX() || this.y!=mj.getPj().getY() ){
 				vienDApparaitre= false;
 			}
-
 		}
 	}
 
@@ -64,18 +68,24 @@ public abstract class Teleporteur implements Objet {
 	public int getX() {
 		return x;
 	}
-
 	
 	@Override
 	public boolean isPasTrouve() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 	
+	/**
+	 * Lie le teleporteur
+	 * @param t numero symbolisant le lien
+	 */
 	public void addLien(int t){
 		this.lien=t;
 	}
 	
+	/**
+	 * Met a jour la liste des teleporteurs
+	 * @param t teleporteur a potentiellement rajouter a la liste
+	 */
 	private void majListeTeleporteur(Teleporteur t){
 		if (!listeTeleporteur.contains(t))
 		listeTeleporteur.add(t);
