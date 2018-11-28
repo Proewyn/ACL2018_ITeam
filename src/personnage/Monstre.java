@@ -55,4 +55,8 @@ public abstract class Monstre implements Personnage {
 		return this.Hp;
 	}
 
+	public boolean collision(int x2, int y2) {
+		return x==x2 && y==y2;
+	}
+
 }

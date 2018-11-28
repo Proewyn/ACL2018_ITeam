@@ -1,15 +1,14 @@
 package monJeu;
 
-import ia.DeplacementMiroir;
-import ia.DeplacementMonstre;
-import ia.DeplacementPathfinding;
-import ia.DeplacementNaif;
+import ia.*;
 
 import java.awt.Point;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Random;
+
+import attaque.LesAttaques;
 
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
@@ -32,14 +31,14 @@ public class MonJeu extends Observable implements Jeu {
 	private Plateau plateau;
 	private ArrayList<Monstre> monstres;
 	private Objets listeDObjets;
-	
-	/**
-	 * boolean pour savoir si on peut voir tout le pateau
-	 */
+	private LesAttaques attaques;
 	private boolean voirPlateauEntier;
 	private boolean gagne;
 	private boolean newJeu;
 	
+	/**
+	 * Constructeur par défaut 
+	 */
 	public MonJeu() {		
 		this.plateau=new Plateau();
 		this.monstres = new ArrayList<>(); //initialise la liste de monstre
@@ -52,6 +51,10 @@ public class MonJeu extends Observable implements Jeu {
 		newJeu = false;
 	}
 	
+	/**
+	 * Constructeur avec un plateau donnée
+	 * @param plateau donnée en entrée pour initialiser le labyrinthe
+	 */
 	public MonJeu(Plateau plateau) {	
 		this.plateau=plateau;
 		this.monstres = new ArrayList<>(); //initialise la liste de monstre
@@ -64,17 +67,8 @@ public class MonJeu extends Observable implements Jeu {
 	}
 
 	/**
-	 * surcharge toString
-	 */
-	public String toString() {
-		return ("" + this.getPj());
-	}
-
-	/**
-	 * demande a deplacer le personnage
-	 * 
-	 * @param commande
-	 *            chaine qui donne ordre
+	 * Fait avancer le jeu, déplace les personnages, monstres
+	 * @param commande chaine qui donne le déplacement du héro
 	 */
 	public void evoluer(Commande commande) {
 		int x= pj.getX();
@@ -105,6 +99,9 @@ public class MonJeu extends Observable implements Jeu {
 		this.maj();
 	}
 	
+	/**
+	 * Ajoute différent type de monstres
+	 */
 	private void ajoutMonstre() {
 		Random r = new Random();
 		double rand = r.nextDouble();
@@ -121,6 +118,13 @@ public class MonJeu extends Observable implements Jeu {
 		
 	}
 	
+	/**
+	 * Déplace les monstres en fonction d'une IA
+	 * @param iaZombi générant le prochain déplacement des zombis
+	 * @param iaFantome générant le prochain déplacement des fantomes
+	 * @param m le monstre à déplacer
+	 * @param c la dernière commande effectué par le héro
+	 */
 	public void deplacerMonstre(DeplacementMonstre iaZombi,
 			DeplacementMonstre iaFantome, Monstre m, Commande c) {
 		Point p = iaZombi.deplacer(this, m, c);
@@ -148,14 +152,9 @@ public class MonJeu extends Observable implements Jeu {
 
 	@Override
 	public boolean etreFini() {
-		return (this.getPj().getHp() <= 0)||gagne;
+		return (this.getPj().getHp() <= 0) || gagne;
 	}
 
-	/**
-	 * getter pour l'affichage
-	 * 
-	 * @return personnage du jeu
-	 */
 	public Hero getPj() {
 		return pj;
 	}
@@ -164,7 +163,15 @@ public class MonJeu extends Observable implements Jeu {
 		return this.monstres;
 	}
 	
+
 	//Si l'entité touche un monstre
+	/**
+	 * Détecte la colision entre l'entité et un monstre
+	 * @param x coordonnée en X
+	 * @param y coordonnée en Y
+	 * @param estMonstre Si on teste la colision par un monstre
+	 * @return s'il y a ou non colision
+	 */
 	private boolean collisionMonstre(int x, int y, boolean estMonstre) {
 		boolean b = false;
 		for (Monstre m : this.monstres) {
@@ -178,7 +185,12 @@ public class MonJeu extends Observable implements Jeu {
 		return b;
 	}
 	
-	//Si l'entité touche un hero
+	/**
+	 * Détecte la colision entre l'entité et un héro
+	 * @param x coordonnée en X
+	 * @param y coordonnée en Y
+	 * @return s'il y a ou non colision
+	 */
 	private boolean collisionHero(int x, int y) {
 		boolean b = false;
 		if(this.getPj().getX() == x && this.getPj().getY() == y) {
@@ -192,6 +204,11 @@ public class MonJeu extends Observable implements Jeu {
 		return plateau;
 	}
 
+	/**
+	 * Initialise un labyrinthe à partir d'un fichier
+	 * @throws FileNotFoundException
+	 * @throws InterruptedException
+	 */
 	public void initLabyFichier() throws FileNotFoundException, InterruptedException {
 		// TODO Auto-generated method stub
 		plateau.initLabyFichier(this);
@@ -213,14 +230,17 @@ public class MonJeu extends Observable implements Jeu {
 		this.newJeu = newJeu;
 	}
 
+	/**
+	 * Ajoute un monstre à la liste des monstre
+	 * @param m monstre à ajouter
+	 */
 	public void addMonstres(Monstre m) {
 		this.monstres.add(m);
 	}
 
 	/**
-	 * 
+	 * Donne un point aléa dans le plateau
 	 * @return un point aleatoire sur le plateau en dehors des murs
-	 * 
 	 */
 	private Point pointAlea() {
 		Point alea = new Point();
@@ -236,6 +256,10 @@ public class MonJeu extends Observable implements Jeu {
 		return alea;
 	}
 
+	/**
+	 * Ajoute un monstre qui est placé aléatoirement sur le plateau
+	 * @param m le monstre à placer
+	 */
 	public void addMonstreRand(Monstre m) {
 		Point alea = pointAlea();
 		m.deplacer((int)alea.getX(), (int)alea.getY());
@@ -254,17 +278,28 @@ public class MonJeu extends Observable implements Jeu {
 		return listeDObjets;
 	}
 	
+	/**
+	 * Met à jour les vues
+	 */
 	public void maj()
 	{
 		setChanged();
 		notifyObservers(true);
 	}
 	
+	/**
+	 * Inflige les dégats lié à la colision
+	 * @param monster monstre ayant subi/provoqué la colision
+	 */
 	private void dommageCollision(Monstre monster) {
 		monster.setHp(monster.getHp()-1);
 		this.getPj().setHp(this.getPj().getHp()-1);
 	}
 	
+	/**
+	 * Efface les monstres morts de la liste des monstres
+	 * @param lm liste contenant les monstres
+	 */
 	private void cleanMonstre(ArrayList<Monstre> lm) {
 		int i = 0;
 		while (i < lm.size()) {
@@ -277,4 +312,10 @@ public class MonJeu extends Observable implements Jeu {
 		}
 	}
 
+	/**
+	 * surcharge toString
+	 */
+	public String toString() {
+		return ("" + this.getPj());
+	}
 }
