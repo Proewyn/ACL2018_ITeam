@@ -1,13 +1,7 @@
-/**
- * 
- */
 package sprite.spriteCase;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.io.File;
-
 import monJeu.Bibliotheque;
 
 import plateau.Case;
@@ -19,12 +13,12 @@ import plateau.Case;
 public class DessinSol extends DessinCase {
 
 	/**
-	 * @param c
-	 * @param dessinMur
+	 * Constructeur pour dessiner le sol
+	 * @param c a dessiner
+	 * @param dessinSol pour le sol
 	 */
 	public DessinSol(Case c,Image dessinSol) {
 		super(c, dessinSol);
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override

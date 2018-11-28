@@ -24,6 +24,14 @@ public class DeplacementNaif implements DeplacementMonstre {
 		
 	}
 
+	
+	
+	/**
+	 * @param jeu : le jeu dans lequel on utilise le deplacement
+	 * @param m : le monstre que l'on veut deplacer
+	 * @param c : inutilise
+	 * @return p : point ou l'on souhaite deplacer le monstre
+	 */
 	public Point deplacer(MonJeu jeu,Monstre m, Commande c) {
 		Point p = new Point();
 		Random r = new Random();

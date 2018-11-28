@@ -12,8 +12,8 @@ public class GenerateurCancer extends AbstractGenerateur{
 	private int[][] proba;
 	private static final int DIAG        = 5;
 	private static final int DROIT       = 16; 
-	private static final int NBITERATION = 10; 
-	private static final int NBVIRUS     = 40; 
+	private static final int NBITERATION = 5; 
+	private static final int NBVIRUS     = 20; 
 
 	public GenerateurCancer() {
 		super();

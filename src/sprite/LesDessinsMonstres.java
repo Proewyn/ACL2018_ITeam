@@ -1,6 +1,3 @@
-/**
- * 
- */
 package sprite;
 
 import java.awt.Graphics2D;
@@ -22,29 +19,19 @@ public class LesDessinsMonstres{
 	private List<DessinMonstre> dessinsMonstres;
 	
 	/**
-	 * 
+	 * Constructeur pour dessiner les monstres
+	 * @param dessinsMonstres dessin pour les monstres
 	 */
 	public LesDessinsMonstres(List<DessinMonstre> dessinsMonstres) {
 		this.dessinsMonstres = dessinsMonstres;
 	}
-	
-	public void dessiner(Graphics2D crayon) {
-		
-		for(DessinMonstre dm : this.dessinsMonstres) {
-			
-			dm.dessiner(crayon);
-		}
-		
-	}
 
-	public void dessinerVision(Hero hero,Graphics2D crayon) {
-		
-		for(DessinMonstre dm : this.dessinsMonstres) {
-			
-			dm.dessinerVision(hero,crayon);
-		}
-	}
 
+	/**
+	 * Dessine les monstres dans toute la portee du hero
+	 * @param hero avec sa portee
+	 * @param crayon qui dessine
+	 */
 	public void dessinerPortee(Hero hero, Graphics2D crayon) {
 		for(DessinMonstre dm : this.dessinsMonstres) {
 			if (dm.getMonstre().getX() >= hero.getXVue() && dm.getMonstre().getX() < Bibliotheque.VUE_LARGEUR + hero.getXVue()) {
@@ -55,6 +42,11 @@ public class LesDessinsMonstres{
 		}
 	}
 
+	/**
+	 * Dessine les monstres dans toute la portee du hero
+	 * @param hero avec sa portee et vision
+	 * @param crayon qui dessine
+	 */
 	public void dessinerPorteeVision(Hero hero, Graphics2D crayon) {
 		for(DessinMonstre dm : this.dessinsMonstres) {
 			if (dm.getMonstre().getX() >= hero.getXVue() && dm.getMonstre().getX() < Bibliotheque.VUE_LARGEUR + hero.getXVue()) {
@@ -65,6 +57,4 @@ public class LesDessinsMonstres{
 		}
 	}
 	
-
-
 }
