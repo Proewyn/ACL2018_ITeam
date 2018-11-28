@@ -50,8 +50,10 @@ public abstract class AttaqueADistance {
 			y--;
 		if (direction.bas)
 			y++;
+		collision(mj);
+	}
 		
-		
+	public void collision(MonJeu mj){
 		if (mj.getPlateau().collision(x, y)){
 			aToucher = true;
 		}else{

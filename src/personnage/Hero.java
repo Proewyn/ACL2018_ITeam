@@ -22,7 +22,7 @@ public class Hero implements Personnage {
 		this.y = 1;
 		this.x_vue = 0;
 		this.y_vue = 0;
-		this.hp = 10;
+		this.hp = Bibliotheque.POINTDEVIEBASEHERO;
 		this.vision = 5;
 		
 	}
@@ -38,7 +38,7 @@ public class Hero implements Personnage {
 		this.x_vue = 0;
 		this.y_vue = 0;
 		this.deplacer(x, y);
-		this.hp = 10;
+		this.hp = Bibliotheque.POINTDEVIEBASEHERO;
 		this.vision = 5;
 	}
 

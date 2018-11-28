@@ -43,7 +43,7 @@ public class MoteurGraphique {
 			// affiche le jeu
 			this.gui.dessiner();
 			// met en attente
-			Thread.sleep(200);
+			Thread.sleep(Bibliotheque.TIMERRAFRAICHISSEMENTMS);
 		}
 	}
 
