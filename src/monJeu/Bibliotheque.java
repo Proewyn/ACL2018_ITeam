@@ -29,7 +29,7 @@ public class Bibliotheque {
 	//donnée physique
 	public static int TAILLE_TABLEAUX = 101;	
 	public static int TAILLE_TABLEAUY = 101;	
-	public static final int NBMONSTRE = 30;
+	public static final int NBMONSTRE = 300;
 	public static final int NBOBJET = 50;
 	public static final int DISTANCEVUEMONSTRE = 10;
 	public static int VUE_LARGEUR = 21;

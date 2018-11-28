@@ -41,4 +41,11 @@ public class LesAttaques {
 		return attaques;
 	}
 
+	public void collision(MonJeu mj) {
+		for (AttaqueADistance a : attaques){
+			a.collision(mj);
+		}
+		
+	}
+
 }

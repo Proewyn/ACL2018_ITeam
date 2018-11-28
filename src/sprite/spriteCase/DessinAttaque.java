@@ -38,6 +38,7 @@ public class DessinAttaque {
 				* Bibliotheque.TAILLE_CASE, Bibliotheque.TAILLE_CASE,
 				Bibliotheque.TAILLE_CASE, null);
 
+
 	}
 	
 	public void dessinerVision(Hero hero, Graphics2D crayon,AttaqueADistance attaque) {

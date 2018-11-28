@@ -2,6 +2,7 @@ package attaque.aDistance;
 
 import moteurJeu.Commande;
 import personnage.Monstre;
+import personnage.Personnage;
 
 public class Flamme extends AttaqueADistance {
 
@@ -10,7 +11,7 @@ public class Flamme extends AttaqueADistance {
 	}
 
 	@Override
-	protected void degat(Monstre m) {
+	protected void degat(Personnage m) {
 		m.setHp(m.getHp()-1);
 
 	}
