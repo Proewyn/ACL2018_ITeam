@@ -9,6 +9,10 @@ import monJeu.MonJeu;
 @SuppressWarnings("serial")
 public class Menu extends JMenuBar {
 	
+	/**
+	 * Constructeur du menu
+	 * @param mj jeu dans lequel le menu se cree
+	 */
 	public Menu(MonJeu mj) {
 		JMenu menu = new JMenu("Fichier");
 		JMenuItem jmopen = new JMenuItem("Ouvrir fichier");

@@ -9,6 +9,11 @@ public abstract class Torche implements Objet {
 	protected int y;
 	protected boolean pasTrouve;
 	
+	/**
+	 * Cree une torche
+	 * @param x position en X
+	 * @param y position en Y
+	 */
 	public Torche(int x,int y) {
 		this.x=x;
 		this.y=y;
@@ -21,7 +26,6 @@ public abstract class Torche implements Objet {
 			this.action(mj);
 	}
 
-	
 	public boolean isPasTrouve() {
 		return pasTrouve;
 	}
@@ -39,7 +43,5 @@ public abstract class Torche implements Objet {
 	public int getX() {
 		return x;
 	}
-	
-
 
 }

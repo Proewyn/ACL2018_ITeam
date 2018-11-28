@@ -9,6 +9,11 @@ public abstract class Coffre implements Objet {
 	protected int y;
 	protected boolean pasTrouve;
 	
+	/**
+	 * Cree un coffre
+	 * @param x position en X
+	 * @param y position en Y
+	 */
 	public Coffre(int x,int y) {
 		this.x=x;
 		this.y=y;

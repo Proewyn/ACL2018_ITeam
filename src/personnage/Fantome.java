@@ -1,6 +1,3 @@
-/**
- * 
- */
 package personnage;
 
 import monJeu.Bibliotheque;
@@ -12,27 +9,23 @@ import monJeu.Bibliotheque;
 public class Fantome extends Monstre {
 
 	/**
-	 * 
+	 * Constructeur par defaut
 	 */
 	public Fantome() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	/**
-	 * @param x
-	 * @param y
+	 * Constructeur avec position
+	 * @param x position en X
+	 * @param y psoition en Y
 	 */
 	public Fantome(int x, int y) {
 		super(x, y);
-		// TODO Auto-generated constructor stub
 	}
 
-	/* (non-Javadoc)
-	 * @see personnage.Personnage#getId()
-	 */
 	@Override
 	public int getId() {
-		// TODO Auto-generated method stub
 		return Bibliotheque.FANTOME;
 	}
 

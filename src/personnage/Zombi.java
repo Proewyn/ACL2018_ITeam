@@ -1,6 +1,3 @@
-/**
- * 
- */
 package personnage;
 
 import monJeu.Bibliotheque;
@@ -12,21 +9,23 @@ import monJeu.Bibliotheque;
 public class Zombi extends Monstre {
 
 	/**
-	 * @param x
-	 * @param y
+	 * Constructeur par defaut
+	 */
+	public Zombi() {
+		super();
+	}
+	
+	/**
+	 * Constructeur avec une position
+	 * @param x position en X
+	 * @param y position en Y
 	 */
 	public Zombi(int x, int y) {
 		super(x, y);
 	}
 
-	public Zombi() {
-		// TODO Auto-generated constructor stub
-		super();
-	}
-
 	@Override
 	public int getId() {
-		// TODO Auto-generated method stub
 		return Bibliotheque.ZOMBI;
 	}
 

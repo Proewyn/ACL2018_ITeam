@@ -5,31 +5,18 @@ import monJeu.MonJeu;
 
 /**
  * classe MoteurGraphique represente un moteur de jeu generique.
- * 
  * On lui passe un jeu et un afficheur et il permet d'executer un jeu.
  */
 public class MoteurGraphique {
 
-	/**
-	 * le jeu a executer
-	 */
 	private MonJeu jeu;
-	/**
-	 * l'interface graphique
-	 */
 	private InterfaceGraphique gui;
-	/**
-	 * l'afficheur a utiliser pour le rendu
-	 */
 	private DessinJeu dessin;
 
 	/**
 	 * construit un moteur
-	 * 
-	 * @param pJeu
-	 *            jeu a lancer
-	 * @param pAffiche
-	 *            afficheur a utiliser
+	 * @param pJeu jeu a lancer
+	 * @param pAffiche afficheur a utiliser
 	 */
 	public MoteurGraphique(MonJeu pJeu, DessinJeu pAffiche) {
 		// creation du jeu
@@ -38,7 +25,8 @@ public class MoteurGraphique {
 	}
 
 	/**
-	 * permet de lancer le jeu
+	 * Lance le jeu
+	 * @throws InterruptedException
 	 */
 	public void lancerJeu() throws InterruptedException {
 

@@ -5,24 +5,16 @@ import java.awt.event.KeyListener;
 
 /**
  * classe qui represente un controleur en lien avec un KeyListener
- * 
  * @author vthomas
- * 
  */
 public class Controleur implements KeyListener {
 
-	/**
-	 * commande en cours
-	 */
 	private Commande commandeEnCours;
-	/**
-	 * commande a retourner la difference avec la commandeencours vient du fait
-	 * qu'on veut memoriser une touche appuyee
-	 */
-	private  Commande commandeARetourner;
+	private  Commande commandeARetourner; //la difference avec la commandeEnCours vient du fait qu'on veut memoriser une touche appuyee
 
 	/**
-	 * construction du controleur par defaut le controleur n'a pas de commande
+	 * construction du controleur par defaut
+	 * le controleur n'a pas de commande
 	 */
 	public Controleur() {
 		this.commandeEnCours = new Commande();
@@ -30,9 +22,7 @@ public class Controleur implements KeyListener {
 	}
 
 	/**
-	 * quand on demande les commandes, le controleur retourne la commande en
-	 * cours
-	 * 
+	 * quand on demande les commandes, le controleur retourne la commande en cours
 	 * @return commande faite par le joueur
 	 */
 	public Commande getCommande() {
@@ -42,9 +32,6 @@ public class Controleur implements KeyListener {
 	}
 
 	@Override
-	/**
-	 * met a jour les commandes en fonctions des touches appuyees
-	 */
 	public void keyPressed(KeyEvent e) {
 
 		commandeEnCours.gauche = false;
@@ -89,9 +76,6 @@ public class Controleur implements KeyListener {
 	}
 
 	@Override
-	/**
-	 * met a jour les commandes quand le joueur relache une touche
-	 */
 	public void keyReleased(KeyEvent e) {		
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_Q:		
@@ -114,9 +98,6 @@ public class Controleur implements KeyListener {
 	}
 
 	@Override
-	/**
-	 * ne fait rien
-	 */
 	public void keyTyped(KeyEvent e) {
 
 	}

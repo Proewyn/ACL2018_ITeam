@@ -8,9 +8,14 @@ import monJeu.MonJeu;
 
 public class TeleporteurFixe extends Teleporteur {
 
+	/**
+	 * Cree un teleporteur lie
+	 * @param l liste des teleporteurs
+	 * @param x position en X
+	 * @param y position en Y
+	 */
 	public TeleporteurFixe(List<Teleporteur> l, int x, int y) {
 		super(l, x, y);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -20,7 +25,6 @@ public class TeleporteurFixe extends Teleporteur {
 			h.deplacer(listeTeleporteur.get(lien).getX(), listeTeleporteur.get(lien).getY());
 			listeTeleporteur.get(lien).setVienDApparaitre(true);
 		}
-		
 	}
 
 	
