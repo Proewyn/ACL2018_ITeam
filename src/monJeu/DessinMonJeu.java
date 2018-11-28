@@ -2,17 +2,9 @@ package monJeu;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-
 import moteurJeu.DessinJeu;
-import objet.Objet;
-import objet.Objets;
 import personnage.Hero;
-import personnage.Monstre;
-import plateau.Case;
-import plateau.Plateau;
 import sprite.LesDessins;
 
 /**
@@ -30,16 +22,12 @@ public class DessinMonJeu implements DessinJeu {
 
 	/**
 	 * appelle constructeur parent
-	 * 
-	 * @param j
-	 *            le jeutest a afficher
+	 * @param j le jeutest a afficher
 	 */
 	public DessinMonJeu(MonJeu j) {
 		this.jeu = j;
 		this.dessins = new LesDessins(j.getListeDObjets(), j.getPlateau(), j.getPj(), j.getMonstre());
 	}
-
-	
 
 	/**
 	 * methode dessiner redefinie de Afficheur retourne une image du jeu
@@ -52,7 +40,6 @@ public class DessinMonJeu implements DessinJeu {
 		MonJeu j = (MonJeu) jeu;
 		if (j.etreFini()) {
 			dessins.dessinerWin(j.isGagne(), im);
-
 		} else {
 			Hero pj = j.getPj();
 			if (j.getVoirPlateauEntier()) {
@@ -62,6 +49,4 @@ public class DessinMonJeu implements DessinJeu {
 			}
 		}
 	}
-
-
 }
