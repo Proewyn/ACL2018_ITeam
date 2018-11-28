@@ -169,6 +169,7 @@ public class LesDessins {
 		}
 		
 	}
+	/*
 	public void dessiner(Graphics2D crayon) {
 		
 		this.dessinCases.dessiner(crayon);
@@ -180,7 +181,7 @@ public class LesDessins {
 		this.dessinCases.dessinerVision(hero,crayon);
 		this.dessinObjets.dessinerVision(hero,crayon);
 		this.dessinPerso.dessinerVision(hero,crayon);
-	}
+	}*/
 	
 	public void dessinerPortee(Hero hero, Graphics2D crayon ,LesAttaques attaques){
 		this.dessinCases.dessinerPortee(hero, crayon);
@@ -206,8 +207,6 @@ public class LesDessins {
 		
 		
 	}
-
-
 
 	public void dessinerPorteeVision(Hero pj, Graphics2D crayon, LesAttaques attaques) {
 		
