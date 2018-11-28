@@ -11,23 +11,15 @@ import monJeu.DessinMonJeu;
 import monJeu.MonJeu;
 import moteurJeu.Menu;
 
-
 /**
  * cree une interface graphique avec son controleur et son afficheur
  * @author Graou
- *
  */
 public class InterfaceGraphique implements Observer {
 
 	private MonJeu jeu;
-	/**
-	 * le Panel lie a la JFrame
-	 */
 	private PanelDessin panel;
 	private PanelStat stat;
-	/**
-	 * le controleur lie a la JFrame
-	 */
 	private Controleur controleur;
 	
 	/**
@@ -38,12 +30,19 @@ public class InterfaceGraphique implements Observer {
 	 * @param afficheurUtil l'afficheur a utiliser dans le moteur
 	 * 
 	 */
+	/**
+	 * Constructeur de l'Interface Graphique
+	 * @param afficheurUtil l'afficheur a utiliser dans le moteur
+	 * @param x taille en X
+	 * @param y taille en Y
+	 * @param mj jeu a afficher
+	 */
 	public InterfaceGraphique(DessinJeu afficheurUtil,int x,int y, MonJeu mj)
 	{
 		jeu = mj;
 		
 		//creation JFrame
-		JFrame f = new JFrame();
+		JFrame f = new JFrame("Escaping the Maze");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setResizable( false );
 		
@@ -51,8 +50,6 @@ public class InterfaceGraphique implements Observer {
 		JPanel fenetre = new JPanel();
 		
 		this.panel = new PanelDessin(x, y,afficheurUtil);
-		//f.setContentPane(this.panel);
-		
 		this.stat = new PanelStat(jeu);
 		
 		fenetre.add(panel, BorderLayout.WEST);
@@ -77,10 +74,6 @@ public class InterfaceGraphique implements Observer {
 		jeu.addObserver(this);
 	}
 	
-	/**
-	 * retourne le controleur de l'affichage construit
-	 * @return
-	 */
 	public Controleur getControleur() {
 		return controleur;
 	}
@@ -93,8 +86,10 @@ public class InterfaceGraphique implements Observer {
 	}
 
 	@Override
+	/**
+	 * met a jour l'affichage
+	 */
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 		if (jeu.isNewJeu()) {
 			this.reset();
 		}
@@ -103,10 +98,11 @@ public class InterfaceGraphique implements Observer {
 		}
 	}
 
+	/**
+	 * Reinitialise le jeu et l'affichage
+	 */
 	private void reset() {
-		this.panel = new PanelDessin(panel.getWidth(), panel.getHeight(),new DessinMonJeu(jeu));
-		//f.setContentPane(this.panel);
-		
+		this.panel = new PanelDessin(panel.getWidth(), panel.getHeight(),new DessinMonJeu(jeu));		
 		this.stat = new PanelStat(jeu);	
 	}
 

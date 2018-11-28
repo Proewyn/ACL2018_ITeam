@@ -9,10 +9,8 @@ package moteurJeu;
 public interface Jeu {
 
 	/**
-	 * methode qui contient l'evolution du jeu en fonction de la commande
-	 * 
-	 * @param commandeUser
-	 *            commande utilisateur
+	 * Fait avancer le jeu, deplace les personnages, monstres
+	 * @param commandeUser Donne le deplacement du héro
 	 */
 	public void evoluer(Commande commandeUser);
 	

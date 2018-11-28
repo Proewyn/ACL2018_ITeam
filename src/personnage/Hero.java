@@ -15,7 +15,7 @@ public class Hero implements Personnage {
 	private int vision; 
 	
 	/**
-	 * constructeur vide
+	 * constructeur par defaut
 	 */
 	public Hero() {
 		this.x = 1;
@@ -27,6 +27,11 @@ public class Hero implements Personnage {
 		
 	}
 	
+	/**
+	 * Cree un hero avec une certaine position
+	 * @param x position en X
+	 * @param y position en Y
+	 */
 	public Hero(int x , int y) {
 		this.x = 0;
 		this.y = 0;
@@ -37,42 +42,70 @@ public class Hero implements Personnage {
 		this.vision = 5;
 	}
 
+	@Override
 	public int getX() {
 		return x;
 	}
 
+	@Override
 	public int getY() {
 		return y;
 	}
 
+	/**
+	 * Place le hero sur une colonne donnee
+	 * @param x position en X
+	 */
 	private void setX(int x) {
 		this.x = x;
 	}
 	
+	/**
+	 * Place le hero sur une ligne donnee
+	 * @param y position en Y
+	 */
 	private void setY(int y) {
 		this.y = y;
 	}
 	
+	/**
+	 * Recupere la valeur de x_vue
+	 * @return la valeur de x_vue
+	 */
 	public int getXVue() {
 		return x_vue;
 	}
 
+	/**
+	 * Recupere la valeur de y_vue
+	 * @return la valeur de y_vue
+	 */
 	public int getYVue() {
 		return y_vue;
 	}
 	
+	@Override
 	public int getHp() {
 		return hp;
 	}
 	
+	@Override
 	public void setHp(int hp) {
 		this.hp = hp;
 	}
 		
+	/**
+	 * Recupere la valeur de vision
+	 * @return la valeur de vision
+	 */
 	public int getVision() {
 		return vision;
 	}
 	
+	/**
+	 * Donne a la vision une valeur
+	 * @param vision nouvelle valeur de vision
+	 */
 	public void setVision(int vision) {
 		this.vision = vision;
 	}
@@ -82,12 +115,18 @@ public class Hero implements Personnage {
 		return Bibliotheque.JOUEUR;
 	}
 	
+	@Override
 	public void deplacer(int x2, int y2) {
 		this.setX(x2);
 		this.setY(y2);
 		deplacerVue(x2, y2);
 	}
 	
+	/**
+	 * Deplace la vision du personnage
+	 * @param x2 X ou mettre la vision
+	 * @param y2 Y ou mettre la vision
+	 */
 	public void deplacerVue(int x2, int y2) {
 		//Vers la gauche
 		while 	((x - x_vue > (Bibliotheque.VUE_LARGEUR/2) && !(x_vue+Bibliotheque.VUE_LARGEUR == Bibliotheque.TAILLE_TABLEAUX)) ||
@@ -124,6 +163,7 @@ public class Hero implements Personnage {
 		}
 	}
 	
+	@Override
 	public String toString() {
 		return ("(" + this.x+","+this.y+")");
 	}

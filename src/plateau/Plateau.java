@@ -16,17 +16,17 @@ import monJeu.DessinMonJeu;
 import monJeu.MonJeu;
 import moteurJeu.MoteurGraphique;
 
-
 public class Plateau {
 
 	private Case[][] laby;
 	
+	/**
+	 * Constructeur par defaut
+	 */
 	public Plateau (){
 		initLabyGenerateur();
 	}
 	
-	
-
 	public Point getSpawn(){
 		Point p = new Point(10,10);
 		for (int i = 0; i < laby.length; i++) {
@@ -36,7 +36,6 @@ public class Plateau {
 				}
 			}
 		}
-		
 		return p;
 	}
 	
@@ -48,28 +47,31 @@ public class Plateau {
 		this.laby = laby;
 	}
 
+	/**
+	 * Detecte s'il est possible d'aller sur un case
+	 * @param x position en X
+	 * @param y position en Y
+	 * @return s'il y a colision ou non
+	 */
 	public boolean collision(int x, int y) {
 		if(x < 0 || y < 0)
 			return false;
 		return !laby[x][y].isTraversable();
 	}
-
-	public int taillePlateaux() {
-		// TODO Auto-generated method stub
-		return laby.length;
-	}
-
-	public int taillePlateauy() {
-		// TODO Auto-generated method stub
-		return laby[0].length;
-	}
-
+	
+	/**
+	 * Regarde si la case est un mur
+	 * @param i position en Y
+	 * @param j position en X
+	 * @return si la case est un mur ou non
+	 */
 	public boolean isMur(int i, int j) {
-		// TODO Auto-generated method stub
-		
 		return laby[i][j].getId() == Bibliotheque.MUR;
 	}
 	
+	/**
+	 * Affiche le labyrinthe en texte
+	 */
 	public void printLab(){
 		for (int i = 0; i < laby.length; i++) {
 			for (int j = 0; j < laby[0].length; j++) {
@@ -79,6 +81,12 @@ public class Plateau {
 		}
 	}
 	
+	/**
+	 * Initialise un labyrinthe a partir d'un fichier
+	 * @param jeu le jeu contenant le plateau
+	 * @throws FileNotFoundException
+	 * @throws InterruptedException
+	 */
 	public void initLabyFichier(MonJeu jeu) throws FileNotFoundException, InterruptedException {
 		int pos = 0, colonne = -1, ligne = 0;
 		boolean correct = true;
@@ -142,6 +150,9 @@ public class Plateau {
 		moteur.lancerJeu();
 	}
 	
+	/**
+	 * Initialise un labyrinthe a partir d'un generateur
+	 */
 	public void initLabyGenerateur() {
 		AbstractGenerateur gen;
 		switch (Bibliotheque.GENERATEUR) {

@@ -4,6 +4,11 @@ import monJeu.MonJeu;
 
 public class TorchePlus2 extends Torche {
 	
+	/**
+	 * Cree une torche qui augmente la vision de 2
+	 * @param x position en X
+	 * @param y psoition en Y
+	 */
 	public TorchePlus2(int x,int y) {
 		super(x,y);
 	}

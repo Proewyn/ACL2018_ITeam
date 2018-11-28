@@ -1,13 +1,12 @@
 /**
  * 
  */
-package sprite;
+package sprite.spritePersonnage;
 
 import java.awt.Image;
 import java.io.File;
 
 import personnage.Monstre;
-import sprite.spritePersonnage.DessinMonstre;
 
 /**
  * @author damien

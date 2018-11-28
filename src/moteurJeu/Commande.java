@@ -2,9 +2,7 @@ package moteurJeu;
 
 /**
  * permet de representer une commande de l'utilisateur
- * 
  * @author vthomas
- *
  */
 public class Commande {
 
@@ -15,7 +13,8 @@ public class Commande {
 	public boolean droite;
 	public boolean haut;
 	public boolean bas; 
-
+	public boolean attaque;
+	
 	public Commande()
 	{
 		
@@ -31,7 +30,8 @@ public class Commande {
 		this.bas=commandeACopier.bas;
 		this.haut=commandeACopier.haut;
 		this.gauche=commandeACopier.gauche;
-		this.droite=commandeACopier.droite;		
+		this.droite=commandeACopier.droite;
+		this.attaque = commandeACopier.attaque;
 	}
 	
 }

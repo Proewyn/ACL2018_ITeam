@@ -10,6 +10,9 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import attaque.LesAttaques;
+import attaque.aDistance.AttaqueADistance;
+
 import monJeu.Bibliotheque;
 import objet.Objet;
 import objet.Objets;
@@ -17,6 +20,7 @@ import personnage.Hero;
 import personnage.Monstre;
 import plateau.Case;
 import plateau.Plateau;
+import sprite.spriteCase.DessinAttaque;
 import sprite.spriteCase.DessinCase;
 import sprite.spriteCase.DessinMur;
 import sprite.spriteCase.DessinSol;
@@ -27,6 +31,7 @@ import sprite.spriteObjet.DessinObjet;
 import sprite.spriteObjet.DessinPorte;
 import sprite.spriteObjet.DessinTeleporteur;
 import sprite.spriteObjet.DessinTorche;
+import sprite.spritePersonnage.DessinFantome;
 import sprite.spritePersonnage.DessinHero;
 import sprite.spritePersonnage.DessinMonstre;
 import sprite.spritePersonnage.DessinZombie;
@@ -35,6 +40,8 @@ public class LesDessins {
 	private LesDessinsObjets dessinObjets;
 	private LesDessinsCases dessinCases;
 	private LesDessinsPersonnages dessinPerso;
+	private DessinAttaque dessinAttaque;
+		
 	private Image dessinTorche;
 	private Image dessinTeleporteur;
 	private Image dessinCoffre;
@@ -48,6 +55,7 @@ public class LesDessins {
 	private Image dessinGameOver;
 	private Image dessinWin;
 	private Image dessinTorcheSuppreme;
+	private Image dessinFlamme;
 	
 	
 	public LesDessins(Objets o, Plateau p , Hero hero, List<Monstre>monstre) {
@@ -122,12 +130,21 @@ public class LesDessins {
 				break;
 			}
 		}
+		
+
+		this.dessinAttaque = new DessinAttaque(dessinFlamme);
+		
 		this.dessinPerso = new LesDessinsPersonnages(new DessinHero(hero, dessinHero), new LesDessinsMonstres(dm));
+		
+		
 		
 		
 	
 	}
 
+
+	
+	
 
 	
 	private void initDessin() {
@@ -143,8 +160,9 @@ public class LesDessins {
 			this.dessinSol = ImageIO.read(new File("sprites/herbre.png"));
 			this.dessinCoffreDeClef = ImageIO.read(new File("sprites/coffreSupprem.png"));
 			this.dessinTorcheSuppreme = ImageIO.read(new File("sprites/torche_suppreme.png"));
-			//this.dessinGameOver = ImageIO.read(input);
-			//this.dessinWin = ImageIO.read(input);
+			this.dessinFlamme = ImageIO.read(new File("sprites/flamme.png"));
+			this.dessinGameOver = dessinMur;
+			this.dessinWin = dessinTorche;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -164,21 +182,25 @@ public class LesDessins {
 		this.dessinPerso.dessinerVision(hero,crayon);
 	}
 	
-	public void dessinerPortee(Hero hero, Graphics2D crayon){
+	public void dessinerPortee(Hero hero, Graphics2D crayon ,LesAttaques attaques){
 		this.dessinCases.dessinerPortee(hero, crayon);
 		this.dessinObjets.dessinerPortee(hero,crayon);
 		this.dessinPerso.dessinerPortee(hero,crayon);
+		for(AttaqueADistance a : attaques.getAttaques()){
+			this.dessinAttaque.dessinerPortee(hero, crayon, a);
+		}
 	}
+	
 	
 	public void dessinerWin(Boolean b,BufferedImage im){
 		if(b){
 			DessinWin dessinWin;
-			dessinWin = new DessinWin(dessinTorche);
+			dessinWin = new DessinWin(this.dessinWin);
 			dessinWin.dessiner(im);
 			
 		}else{
 			DessinGameOver dessinGameOver;
-			dessinGameOver = new DessinGameOver(dessinMur);
+			dessinGameOver = new DessinGameOver(this.dessinGameOver);
 			dessinGameOver.dessiner(im);
 		}
 		
@@ -187,11 +209,14 @@ public class LesDessins {
 
 
 
-	public void dessinerPorteeVision(Hero pj, Graphics2D crayon) {
+	public void dessinerPorteeVision(Hero pj, Graphics2D crayon, LesAttaques attaques) {
 		
 		this.dessinCases.dessinerPorteeVision(pj, crayon);
 		this.dessinObjets.dessinerPorteeVision(pj,crayon);
 		this.dessinPerso.dessinerPorteeVision(pj,crayon);
+		for(AttaqueADistance a : attaques.getAttaques()){
+			this.dessinAttaque.dessinerPorteeVision(pj, crayon, a);
+		}
 		
 	}
 

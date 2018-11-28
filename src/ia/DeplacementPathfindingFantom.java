@@ -18,36 +18,40 @@ public class DeplacementPathfindingFantom implements DeplacementMonstre{
 		Point arriver = new Point(pj.getX(),pj.getY());
 		Point p = depart;
 		PointComp pc = new PointComp(arriver);
-		double d = Double.MAX_VALUE;
-		double dd = Double.MAX_VALUE;
+		if(pc.DistanceArriver(depart) < Bibliotheque.DISTANCEVUEMONSTRE) {
+			double d = Double.MAX_VALUE;
+			double dd = Double.MAX_VALUE;
 
-		if(depart.x+1 < Bibliotheque.TAILLE_TABLEAUX) {
-			dd = pc.DistanceArriver(p = new Point(depart.x+1, depart.y));
-			if( dd  < d) {
-				d = dd;
-				retour = p;
+			if(depart.x+1 < Bibliotheque.TAILLE_TABLEAUX) {
+				dd = pc.DistanceArriver(p = new Point(depart.x+1, depart.y));
+				if( dd  < d) {
+					d = dd;
+					retour = p;
+				}
 			}
-		}
-		if(depart.x-1 > 0 ) {
-			dd = pc.DistanceArriver(p = new Point(depart.x-1, depart.y));
-			if(dd < d) {
-				d = dd;
-				retour = p;
+			if(depart.x-1 > 0 ) {
+				dd = pc.DistanceArriver(p = new Point(depart.x-1, depart.y));
+				if(dd < d) {
+					d = dd;
+					retour = p;
+				}
 			}
-		}
-		if(depart.y-1 > 0 ) {
-			dd = pc.DistanceArriver(p = new Point(depart.x, depart.y-1));
-			if(dd < d) {
-				d = dd;
-				retour = p;
+			if(depart.y-1 > 0 ) {
+				dd = pc.DistanceArriver(p = new Point(depart.x, depart.y-1));
+				if(dd < d) {
+					d = dd;
+					retour = p;
+				}
 			}
-		}
-		if(depart.y+1 < Bibliotheque.TAILLE_TABLEAUY) {
-			dd = pc.DistanceArriver(p = new Point(depart.x, depart.y+1)); 
-			if(dd < d) {
-				d = dd;
-				retour = p;
+			if(depart.y+1 < Bibliotheque.TAILLE_TABLEAUY) {
+				dd = pc.DistanceArriver(p = new Point(depart.x, depart.y+1)); 
+				if(dd < d) {
+					d = dd;
+					retour = p;
+				}
 			}
+		} else {
+			retour = new DeplacementNaif().deplacer(jeu, m, c);
 		}
 		return retour;
 	}
