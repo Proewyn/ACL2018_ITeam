@@ -45,7 +45,7 @@ public class DessinMonJeu implements DessinJeu {
 			if (j.getVoirPlateauEntier()) {
 				dessins.dessinerPortee(pj, crayon);
 			} else {
-				dessins.dessinerPorteeVision(pj, crayon);
+				dessins.dessinerPorteeVision(pj, crayon , j.getAttaques());
 			}
 		}
 	}

@@ -11,6 +11,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import attaque.LesAttaques;
+import attaque.aDistance.AttaqueADistance;
 
 import monJeu.Bibliotheque;
 import objet.Objet;
@@ -19,6 +20,7 @@ import personnage.Hero;
 import personnage.Monstre;
 import plateau.Case;
 import plateau.Plateau;
+import sprite.spriteCase.DessinAttaque;
 import sprite.spriteCase.DessinCase;
 import sprite.spriteCase.DessinMur;
 import sprite.spriteCase.DessinSol;
@@ -38,6 +40,8 @@ public class LesDessins {
 	private LesDessinsObjets dessinObjets;
 	private LesDessinsCases dessinCases;
 	private LesDessinsPersonnages dessinPerso;
+	private DessinAttaque dessinAttaque;
+		
 	private Image dessinTorche;
 	private Image dessinTeleporteur;
 	private Image dessinCoffre;
@@ -53,7 +57,7 @@ public class LesDessins {
 	private Image dessinTorcheSuppreme;
 	
 	
-	public LesDessins(Objets o, Plateau p , Hero hero, List<Monstre>monstre, LesAttaques attaques) {
+	public LesDessins(Objets o, Plateau p , Hero hero, List<Monstre>monstre) {
 		this.initDessin();
 		ArrayList<DessinObjet> dessinObjet = new ArrayList<>();
 		int id = 0;
@@ -125,12 +129,21 @@ public class LesDessins {
 				break;
 			}
 		}
+		
+
+		this.dessinAttaque = new DessinAttaque(dessinWin);
+		
 		this.dessinPerso = new LesDessinsPersonnages(new DessinHero(hero, dessinHero), new LesDessinsMonstres(dm));
+		
+		
 		
 		
 	
 	}
 
+
+	
+	
 
 	
 	private void initDessin() {
@@ -190,11 +203,14 @@ public class LesDessins {
 
 
 
-	public void dessinerPorteeVision(Hero pj, Graphics2D crayon) {
+	public void dessinerPorteeVision(Hero pj, Graphics2D crayon, LesAttaques attaques) {
 		
 		this.dessinCases.dessinerPorteeVision(pj, crayon);
 		this.dessinObjets.dessinerPorteeVision(pj,crayon);
 		this.dessinPerso.dessinerPorteeVision(pj,crayon);
+		for(AttaqueADistance a : attaques.getAttaques()){
+			this.dessinAttaque.dessinerPorteeVision(pj, crayon, a);
+		}
 		
 	}
 

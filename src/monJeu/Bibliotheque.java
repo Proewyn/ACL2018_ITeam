@@ -16,6 +16,9 @@ public class Bibliotheque {
 	public static final int PORTE = 24;
 	public static final int TORCHESUPPREME = 25;
 	public static final int COFFRECLE = 26;
+
+	//id attaques
+	public static final int ATTAQUE = 27;
 	
 	//parametre graphique
 	public static final int TAILLE_CASE = 35;

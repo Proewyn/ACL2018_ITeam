@@ -1,6 +1,7 @@
 package attaque.aDistance;
 
 import personnage.Monstre;
+import monJeu.Bibliotheque;
 import monJeu.MonJeu;
 import moteurJeu.Commande;
 
@@ -63,6 +64,9 @@ public abstract class AttaqueADistance {
 		}
 	}
 
+	public int getId(){
+		return Bibliotheque.ATTAQUE;
+	}
 
 	protected abstract void degat(Monstre m);
 	
