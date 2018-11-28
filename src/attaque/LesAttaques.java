@@ -37,5 +37,8 @@ public class LesAttaques {
 	public void addAttaque(AttaqueADistance a){
 		attaques.add(a);
 	}
+	public List<AttaqueADistance> getAttaques(){
+		return attaques;
+	}
 
 }

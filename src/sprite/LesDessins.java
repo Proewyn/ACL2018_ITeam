@@ -10,6 +10,8 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import attaque.LesAttaques;
+
 import monJeu.Bibliotheque;
 import objet.Objet;
 import objet.Objets;
@@ -27,6 +29,7 @@ import sprite.spriteObjet.DessinObjet;
 import sprite.spriteObjet.DessinPorte;
 import sprite.spriteObjet.DessinTeleporteur;
 import sprite.spriteObjet.DessinTorche;
+import sprite.spritePersonnage.DessinFantome;
 import sprite.spritePersonnage.DessinHero;
 import sprite.spritePersonnage.DessinMonstre;
 import sprite.spritePersonnage.DessinZombie;
@@ -50,7 +53,7 @@ public class LesDessins {
 	private Image dessinTorcheSuppreme;
 	
 	
-	public LesDessins(Objets o, Plateau p , Hero hero, List<Monstre>monstre) {
+	public LesDessins(Objets o, Plateau p , Hero hero, List<Monstre>monstre, LesAttaques attaques) {
 		this.initDessin();
 		ArrayList<DessinObjet> dessinObjet = new ArrayList<>();
 		int id = 0;
