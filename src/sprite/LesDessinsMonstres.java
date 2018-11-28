@@ -27,16 +27,16 @@ public class LesDessinsMonstres{
 	public LesDessinsMonstres(List<DessinMonstre> dessinsMonstres) {
 		this.dessinsMonstres = dessinsMonstres;
 	}
-	
+	/*
 	public void dessiner(Graphics2D crayon) {
 		
 		for(DessinMonstre dm : this.dessinsMonstres) {
 			
-			dm.dessiner(crayon);
+			//dm.dessiner(crayon);
 		}
 		
 	}
-
+*/
 	public void dessinerVision(Hero hero,Graphics2D crayon) {
 		
 		for(DessinMonstre dm : this.dessinsMonstres) {

@@ -23,12 +23,12 @@ public class LesDessinsPersonnages {
 		this.dessinHero = dessinHero;
 		this.dessinsMonstres = dessinsMonstres;
 	}
-	
+	/*
 	public void dessiner(Graphics2D crayon) {
 		this.dessinHero.dessiner(crayon);
 		this.dessinsMonstres.dessiner(crayon);
 		
-	}
+	}*/
 
 	public void dessinerVision(Hero hero, Graphics2D crayon) {
 		this.dessinHero.dessiner(crayon);

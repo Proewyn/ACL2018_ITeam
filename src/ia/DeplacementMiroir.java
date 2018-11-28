@@ -21,8 +21,12 @@ public class DeplacementMiroir implements DeplacementMonstre {
 		d = new DeplacementNaif();
 	}
 
-	/* (non-Javadoc)
-	 * @see monJeu.DeplacementMonstre#deplacer(monJeu.Monstre, moteurJeu.Commande)
+	
+	/**
+	 * @param jeu : le jeu dans lequel on utilise le deplacement
+	 * @param m : le monstre que l'on veut deplacer
+	 * @param c : commande du monstre
+	 * @return p : point ou l'on souhaite deplacer le monstre
 	 */
 	@Override
 	public Point deplacer(MonJeu jeu, Monstre m, Commande commande) {

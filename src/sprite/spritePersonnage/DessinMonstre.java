@@ -33,7 +33,7 @@ public abstract class DessinMonstre {
 	}
 	
 
-
+/*
 	public void dessiner(Graphics2D crayon) {
 		if(m.getHp()>0){
 		crayon.drawImage(
@@ -46,7 +46,7 @@ public abstract class DessinMonstre {
 		
 		
 	}
-
+*/
 	public Monstre getMonstre() {
 		return m;
 	}
