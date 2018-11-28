@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Random;
 
+import attaque.LesAttaques;
+
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
 import objet.Objet;
@@ -32,7 +34,7 @@ public class MonJeu extends Observable implements Jeu {
 	private Plateau plateau;
 	private ArrayList<Monstre> monstres;
 	private Objets listeDObjets;
-	
+	private LesAttaques attaques;
 	/**
 	 * boolean pour savoir si on peut voir tout le pateau
 	 */
