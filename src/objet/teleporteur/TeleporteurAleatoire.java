@@ -9,19 +9,22 @@ import monJeu.MonJeu;
 
 public class TeleporteurAleatoire extends Teleporteur {
 	
+	/**
+	 * Cree un teleporteur non lie
+	 * @param l liste des teleporteurs
+	 * @param x position en X
+	 * @param y position en Y
+	 */
 	public TeleporteurAleatoire(List<Teleporteur> l, int x, int y) {
 		super(l, x, y);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void action(MonJeu mj) {
-		// TODO Auto-generated method stub
 		Hero h= mj.getPj();
 		Random r = new Random();
 		int vers ;
 		do{
-
 			vers = r.nextInt(nombreTeleporteur);
 		}while (vers==getNumeroDeTeleporteur());
 		h.deplacer(listeTeleporteur.get(vers).getX(), listeTeleporteur.get(vers).getY());

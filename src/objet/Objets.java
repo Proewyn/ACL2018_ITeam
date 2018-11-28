@@ -3,6 +3,8 @@ package objet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import monJeu.Bibliotheque;
 import monJeu.MonJeu;
 import objet.coffre.CoffreDeClef;
 import objet.coffre.CoffreTeleporteur;
@@ -25,13 +27,23 @@ public class Objets {
 	private List<Objet> listeObjets;
 	private int popTSPourcent;
 	
+	/**
+	 * Construit une liste d'objets
+	 * @param lO
+	 * @param nbObjet nombre d'objet a creer
+	 * @param p plateau dans lequel mettre les objets
+	 */
 	public Objets(List<Objet> lO, int nbObjet, Plateau p) {
 		this.listeObjets=lO;
 		popTSPourcent= 10;
 		generationDObjets(nbObjet,p);
 	}
 	
-	
+	/**
+	 * Genere les objets
+	 * @param nbObjet nombre d'objet a generer
+	 * @param p plateau dans lequel mettre les objets
+	 */
 	private void generationDObjets(int nbObjet, Plateau p) {
 		Random r= new Random();
 		Objet o ;
@@ -93,32 +105,50 @@ public class Objets {
 		}
 	}
 	
-	public List<Objet> getObjets(){
+	public List<Objet> getObjets() {
 		return listeObjets;
 	}
 	
-	public void collision(MonJeu mj, int x, int y){
+	/**
+	 * Regarde pour chaque objet s'il y a colision avec le hero, lance l'action de l'objet si c'est le cas
+	 * @param mj jeu dans lequel
+	 * @param x position en X
+	 * @param y position en Y
+	 */
+	public void collision(MonJeu mj, int x, int y) {
 		for (Objet o :listeObjets){
 			o.Collision(mj, x, y);
 		}
 	}
 	
-	public boolean collision( int x, int y){
+	/**
+	 * Detecte la colision avec un objet et le personnage
+	 * @param x position en X
+	 * @param y position en Y
+	 * @return s'il y a colision ou non
+	 */
+	public boolean collision(int x, int y) {
 		boolean col= false;
 		for(Objet o: listeObjets){
-			if (o.getX()==x && o.getY()==y)
+			if (o.getX()==x && o.getY()==y) {
 				col=true;
+			}
 		}
 		return col;
 	}
 
-	private int[] randPosition(Plateau p){
+	/**
+	 * Donne une position dans le plateau aletoirement
+	 * @param p plateau où chercher une position
+	 * @return la position genere aleatoirement (couple de X;Y)
+	 */
+	private int[] randPosition(Plateau p) {
 		int x,y;
 		Random r= new Random();
 		do{
-		x=r.nextInt(p.taillePlateaux());
-		y= r.nextInt(p.taillePlateauy());
-		}while (p.collision(x, y) || collision(x, y) || (p.getSpawn().x == x && p.getSpawn().y == y) );
+		x=r.nextInt(Bibliotheque.TAILLE_TABLEAUX);
+		y= r.nextInt(Bibliotheque.TAILLE_TABLEAUY);
+		}while (p.collision(x, y) || collision(x, y) || (p.getSpawn().x == x && p.getSpawn().y == y));
 		int i[] = {x,y};
 		return i;
 	}

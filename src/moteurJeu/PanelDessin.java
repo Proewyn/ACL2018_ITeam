@@ -9,32 +9,17 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class PanelDessin extends JPanel {
 
-	/**
-	 * la clase chargee de Dessiner
-	 */
 	private DessinJeu dessin;
-	/**
-	 * image suivante est l'image cachee sur laquelle dessiner
-	 */
 	private BufferedImage imageSuivante;
-	/**
-	 * image en cours est l'image entrain d'etre affichee
-	 */
 	private BufferedImage imageEnCours;
-	/**
-	 * la taille des images
-	 */
 	private int width, height;
 
 	/**
-	 * constructeur Il construit les images pour doublebuffering ainsi que le
-	 * Panel associe. Les images stockent le dessin et on demande au panel la
-	 * mise a jour quand le dessin est fini
-	 * 
-	 * @param width
-	 *            largeur de l'image
-	 * @param height
-	 *            hauteur de l'image
+	 * Construit les images pour doublebuffering ainsi que le Panel associe
+	 * Les images stockent le dessin et on demande au panel la mise a jour quand le dessin est fini
+	 * @param x largeur de l'image
+	 * @param y hauteur de l'image
+	 * @param affiche le jeu a dessiner
 	 */
 	public PanelDessin(int x, int y, DessinJeu affiche) {
 		super();
@@ -49,8 +34,8 @@ public class PanelDessin extends JPanel {
 	}
 
 	/**
-	 * demande de mettre a jour le rendu de l'image sur le Panel. Creer une
-	 * nouvelle image vide sur laquelle dessiner
+	 * demande de mettre a jour le rendu de l'image sur le Panel
+	 * Creer une nouvelle image vide sur laquelle dessiner
 	 */
 	public void dessinerJeu() {
 		// generer la nouvelle image
@@ -68,9 +53,7 @@ public class PanelDessin extends JPanel {
 
 	/**
 	 * redefinit la methode paint consiste a dessiner l'image en cours
-	 * 
-	 * @param g
-	 *            graphics pour dessiner
+	 * @param g graphics pour dessiner
 	 */
 	public void paint(Graphics g) {
 		super.paint(g);

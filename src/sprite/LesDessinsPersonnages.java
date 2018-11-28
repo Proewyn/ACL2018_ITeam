@@ -1,6 +1,3 @@
-/**
- * 
- */
 package sprite;
 
 import java.awt.Graphics2D;
