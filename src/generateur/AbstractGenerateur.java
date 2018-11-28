@@ -6,23 +6,40 @@ import monJeu.Bibliotheque;
 
 public abstract class AbstractGenerateur {
 
-	
+	/**
+	 * lab : tableau de case correspondant au futur plateau de jeux
+	 *  x  : coordonnee x du spawn
+	 *  y  : coordonnee y du spawn 
+	 */
 	protected Case[][] lab;
 	protected int x;
 	protected int y;
 	
+	/**
+	 * Constructeur par defaut initialise lab de la taille du plateau
+	 */
 	public AbstractGenerateur() {
 		lab = new Case[Bibliotheque.TAILLE_TABLEAUX-2][Bibliotheque.TAILLE_TABLEAUY-2];
 	}
 	
+	/**
+	 * Genere et ajoute les bordure au plateau 
+	 * @return un plateau generer aleatoirement
+	 */
 	public Case[][] getLab(){
 		generer();
 		addBordure();
 		return lab;
 	}
 	
+	/**
+	 * Methode de generation du labyrinthe
+	 */
 	public abstract void generer();
 	
+	/**
+	 * Ajoute les bordure au lab
+	 */
 	public void addBordure(){
 		Case[][] lab2 = new Case[lab.length+2][lab[0].length+2];
 		for (int i = 0; i < lab.length; i++) {

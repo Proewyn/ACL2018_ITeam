@@ -23,7 +23,7 @@ public class Bibliotheque {
 	//parametre graphique
 	public static final int TAILLE_CASE = 35;
 	public static final int TAILLE_OBJET = TAILLE_CASE/2 ;
-	public static boolean VUEPLATEAUENTIERDEFAULT = true;
+	public static boolean VUEPLATEAUENTIERDEFAULT = false;
 	public static int TIMERRAFRAICHISSEMENTMS = 100;
 	
 	//donnée physique
@@ -35,7 +35,7 @@ public class Bibliotheque {
 	public static int VUE_LARGEUR = 21;
 	public static int VUE_HAUTEUR = 21;
 	public static double POURCENTFANTOM  = 50;
-	public static int POINTDEVIEBASEHERO = 10000;
+	public static int POINTDEVIEBASEHERO = 10;
 	
 	/**
 	 * 1 : Generateur WormHole

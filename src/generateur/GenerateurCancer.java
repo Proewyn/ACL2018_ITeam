@@ -15,6 +15,9 @@ public class GenerateurCancer extends AbstractGenerateur{
 	private static final int NBITERATION = 10; 
 	private static final int NBVIRUS     = 40; 
 
+	/**
+	 * Constructeur 
+	 */
 	public GenerateurCancer() {
 		super();
 		proba = new int[Bibliotheque.TAILLE_TABLEAUX-2][Bibliotheque.TAILLE_TABLEAUY-2];
@@ -32,6 +35,9 @@ public class GenerateurCancer extends AbstractGenerateur{
 		lab[x][y] = new Spawn();
 	}
 
+	/*
+	 * Generer un plateau avec un systeme de jeu de la vie
+	 */
 	@Override
 	public void generer() {
 		Random r = new Random();
@@ -45,6 +51,9 @@ public class GenerateurCancer extends AbstractGenerateur{
 
 	}
 
+	/**
+	 * Met a jour le tableau des probabilite de propagation des murs
+	 */
 	public void majProba(){
 		for (int i = 0; i < proba.length; i++) {
 			for (int j = 0; j < proba[0].length; j++) {
@@ -81,6 +90,9 @@ public class GenerateurCancer extends AbstractGenerateur{
 		}
 	}
 
+	/**
+	 * Contamine le plateau de murs
+	 */
 	public void contaminer(){
 		Random r = new Random();
 		for (int i = 0; i < proba.length; i++) {

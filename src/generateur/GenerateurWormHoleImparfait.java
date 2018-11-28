@@ -10,10 +10,16 @@ public class GenerateurWormHoleImparfait extends GenerateurWormHole{
 
 	private int POURCENTNBTROU = 20;
 
+	/**
+	 * Constructeur 
+	 */
 	public GenerateurWormHoleImparfait() {
 		super();
 	}
 
+	/**
+	 * Utilise le generateur de labyrinthe parfait et creuse des trous aleatoirement 
+	 */
 	@Override
 	public void generer() {
 		super.generer();

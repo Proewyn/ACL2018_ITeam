@@ -8,6 +8,9 @@ import plateau.Spawn;;
 
 public class GenerateurFusion extends AbstractGenerateur{
 
+	/**
+	 * Constructeur : Initialise un plateau avec un mur toute les 2 cases;
+	 */
 	public GenerateurFusion() {
 		super();
 		for (int i = 0; i < lab.length; i++) {
@@ -21,6 +24,10 @@ public class GenerateurFusion extends AbstractGenerateur{
 		}
 	}
 
+	
+	/*
+	 *Fusionne aleatoirement 2 murs en ajoutant un mur au milieu
+	 */
 	@Override
 	public void generer() {
 		Random r = new Random();

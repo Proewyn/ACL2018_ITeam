@@ -13,12 +13,17 @@ public class GenerateurWormHole extends AbstractGenerateur {
 
 	private boolean[][] traverser;
 
+	/*
+	 * 
+	 */
 	public GenerateurWormHole() {
 		super();
 		traverser = new boolean[Bibliotheque.TAILLE_TABLEAUX-2][Bibliotheque.TAILLE_TABLEAUY-2];
 	}
 
-	
+	/*
+	 * Genere un labyrinthe parfait (Algorithme Exhaustif)
+	 */
 	public void generer() {
 		Random r = new Random();
 		x = (r.nextInt(lab.length)/2)*2;
@@ -44,6 +49,9 @@ public class GenerateurWormHole extends AbstractGenerateur {
 		}
 	}
 
+	/**
+	 * Genere un chemin dans le plateau
+	 */
 	public void genererRetour() {
 		ArrayList<Integer> list = new ArrayList<>();
 		Random rand = new Random();
