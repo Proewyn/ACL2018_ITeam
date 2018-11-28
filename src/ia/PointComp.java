@@ -14,16 +14,21 @@ public class PointComp implements Comparator<Point> {
 
 	@Override
 	public int compare(Point p1, Point p2) {
-		if( Distance(p1.x, p1.y, arriver.x, arriver.y) <  Distance(p2.x, p2.y, arriver.x, arriver.y)){
-			return 1;
-		} else {
+		if( Distance(p1, arriver) <  Distance(p2, arriver)){
 			return -1;
+		} else {
+			return 1;
 		}
 	}
 
-	public double Distance(double x1, double y1, double x2, double y2) {
-		return Math.abs(x1- x2) + Math.abs( y1- y2);    
-		//return Math.sqrt(Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2));
+	public double Distance(Point p1, Point p2) {
+		//return Math.abs(x1- x2) + Math.abs( y1- y2);    
+		return Math.sqrt(Math.pow(p2.y - p1.y, 2) + Math.pow(p2.x - p1.x, 2));
+	} 
+	
+	public double DistanceArriver(Point depart) {
+		//return Math.abs(x1- x2) + Math.abs( y1- y2);    
+		return Math.sqrt(Math.pow(arriver.y - depart.y, 2) + Math.pow(arriver.x - depart.x, 2));
 	} 
 
 

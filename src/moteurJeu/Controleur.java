@@ -34,16 +34,16 @@ public class Controleur implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 
-		commandeEnCours.gauche = false;
-		commandeEnCours.droite = false;
-		commandeEnCours.haut   = false;
-		commandeEnCours.bas    = false;
-		commandeEnCours.attaque= false;
+		
 		
 		switch (e.getKeyCode()) {
 		// si on appuie sur 'q',commande joueur est gauche
 		case KeyEvent.VK_Q:	
 		case KeyEvent.VK_LEFT:
+			commandeEnCours.gauche = false;
+			commandeEnCours.droite = false;
+			commandeEnCours.haut   = false;
+			commandeEnCours.bas    = false;
 			this.commandeEnCours.gauche = true;
 			this.commandeARetourner.gauche = true;
 			this.commandeARetourner.haut = false;
@@ -52,6 +52,10 @@ public class Controleur implements KeyListener {
 		// si on appuie sur 'd',commande joueur est droite
 		case KeyEvent.VK_D:
 		case KeyEvent.VK_RIGHT:
+			commandeEnCours.gauche = false;
+			commandeEnCours.droite = false;
+			commandeEnCours.haut   = false;
+			commandeEnCours.bas    = false;
 			this.commandeEnCours.droite = true;
 			this.commandeARetourner.droite = true;
 			this.commandeARetourner.haut = false;
@@ -60,6 +64,10 @@ public class Controleur implements KeyListener {
 		// si on appuie sur 'z',commande joueur est haut
 		case KeyEvent.VK_Z:
 		case KeyEvent.VK_UP:
+			commandeEnCours.gauche = false;
+			commandeEnCours.droite = false;
+			commandeEnCours.haut   = false;
+			commandeEnCours.bas    = false;
 			this.commandeEnCours.haut = true;
 			this.commandeARetourner.haut = true;
 			this.commandeARetourner.gauche = false;
@@ -68,6 +76,10 @@ public class Controleur implements KeyListener {
 		// si on appuie sur 's',commande joueur est bas
 		case KeyEvent.VK_S:
 		case KeyEvent.VK_DOWN:
+			commandeEnCours.gauche = false;
+			commandeEnCours.droite = false;
+			commandeEnCours.haut   = false;
+			commandeEnCours.bas    = false;
 			this.commandeEnCours.bas = true;
 			this.commandeARetourner.bas = true;
 			this.commandeARetourner.gauche = false;

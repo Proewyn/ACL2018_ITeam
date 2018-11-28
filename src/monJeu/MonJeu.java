@@ -45,7 +45,7 @@ public class MonJeu extends Observable implements Jeu {
 		this.ajoutMonstre();
 		Point p = plateau.getSpawn();
 		this.pj = new Hero(p.x, p.y);
-		voirPlateauEntier= false;
+		voirPlateauEntier= Bibliotheque.VUEPLATEAUENTIERDEFAULT;
 		this.listeDObjets= new Objets(new ArrayList<Objet>(), Bibliotheque.NBOBJET, plateau);
 		gagne = false;
 		newJeu = false;
@@ -64,7 +64,7 @@ public class MonJeu extends Observable implements Jeu {
 		this.ajoutMonstre();
 		Point p = plateau.getSpawn();
 		this.pj = new Hero(p.x, p.y);
-		voirPlateauEntier= false;
+		voirPlateauEntier= Bibliotheque.VUEPLATEAUENTIERDEFAULT;
 		this.listeDObjets= new Objets(new ArrayList<Objet>(), Bibliotheque.NBOBJET, plateau);
 		gagne = false;
 	}
@@ -76,6 +76,7 @@ public class MonJeu extends Observable implements Jeu {
 	public void evoluer(Commande commande) {
 		int x= pj.getX();
 		int y= pj.getY();
+		this.attaques.deplacement(this);
 		if (commande.gauche) {
 			x--;
 		}
@@ -88,24 +89,78 @@ public class MonJeu extends Observable implements Jeu {
 		if(commande.bas) {
 			y++;
 		}
+
 		
-		if(commande.attaque) {
-			attaques.addAttaque(new Flamme(x, y, commande));
-		}
+		
 		if ((commande.gauche||commande.droite||commande.haut||commande.bas)&&!plateau.collision(x, y)) {
 			if(!this.collisionMonstre(x, y, false)) {
 				this.getPj().deplacer(x,y);
 			}
-			if(commande.attaque) {
-				attaques.addAttaque(new Flamme(x, y, commande));
+			if (commande.gauche) {
+				if(commande.attaque&& !plateau.collision(x-1, y)) {
+					attaques.addAttaque(new Flamme(x-1, y, commande));
+				}
+			}
+			if (commande.droite) {
+				if(commande.attaque && !plateau.collision(x+1, y)) {
+					attaques.addAttaque(new Flamme(x+1, y, commande));
+				}
+			}
+			if(commande.haut) {
+				if(commande.attaque && !plateau.collision(x, y-1)) {
+					attaques.addAttaque(new Flamme(x, y-1, commande));
+				}
+			}
+			if(commande.bas) {
+				if(commande.attaque&& !plateau.collision(x, y+1)) {
+					attaques.addAttaque(new Flamme(x, y+1, commande));
+				}
 			}
 		}
 		listeDObjets.collision(this, x, y);
 		//fait deplacer les monstre
 		for(Monstre m : this.getMonstre()) {
-			this.deplacerMonstre(new DeplacementMiroir(), new DeplacementNaif(), m, commande);
+			this.deplacerMonstre(new DeplacementPathfinding(), new DeplacementPathfindingFantom(), m, commande);
 		}
-		this.attaques.deplacement(this);
+		if (!(commande.gauche||commande.droite||commande.haut||commande.bas)&& commande.attaque){
+			Commande cg = new Commande();
+			Commande cd = new Commande();
+			Commande ch = new Commande();
+			Commande cb = new Commande();
+				if(!plateau.collision(x-1, y)) {
+					cg.gauche=true;
+					cg.droite=false;
+					cg.haut=false;
+					cg.bas=false;
+					attaques.addAttaque(new Flamme(x-1, y,cg ));
+				}
+			
+				if(!plateau.collision(x+1, y)) {
+					cd.gauche=false;
+					cd.droite=true;
+					cd.haut=false;
+					cd.bas=false;
+					attaques.addAttaque(new Flamme(x+1, y, cd));
+				}
+			
+				if( !plateau.collision(x, y-1)) {
+					ch.gauche=false;
+					ch.droite=false;
+					ch.haut=true;
+					ch.bas=false;
+					attaques.addAttaque(new Flamme(x, y-1, ch));
+				}
+			
+				if( !plateau.collision(x, y+1)) {
+					cb.gauche=false;
+					cb.droite=false;
+					cb.haut=false;
+					cb.bas=true;
+					attaques.addAttaque(new Flamme(x, y+1, cb));
+				}
+			
+		}
+		attaques.collision(this);
 		this.cleanMonstre(this.getMonstre());
 		this.maj();
 	}
@@ -115,12 +170,10 @@ public class MonJeu extends Observable implements Jeu {
 	 */
 	private void ajoutMonstre() {
 		Random r = new Random();
-		double rand = r.nextDouble();
-		double nbFantome = 0.4;
-		
+		int rand;
 		for(int i = 0 ; i < Bibliotheque.NBMONSTRE ; i++) {
-			rand = r.nextDouble();
-			if(rand < (nbFantome)){
+			rand = r.nextInt(100);
+			if(rand < Bibliotheque.POURCENTFANTOM){
 				this.addMonstreRand(new Fantome()); //ajout de fantome
 			}else{
 				this.addMonstreRand(new Zombi()); // ajout de zombi
@@ -138,9 +191,9 @@ public class MonJeu extends Observable implements Jeu {
 	 */
 	public void deplacerMonstre(DeplacementMonstre iaZombi,
 			DeplacementMonstre iaFantome, Monstre m, Commande c) {
-		Point p = iaZombi.deplacer(this, m, c);
-		int x = (int) p.getX();
-		int y = (int) p.getY();
+		
+		Point p;
+		int x,y;
 		if (m.getId() == Bibliotheque.FANTOME) {
 			p = iaFantome.deplacer(this, m, c);
 			x = (int) p.getX();
@@ -151,6 +204,9 @@ public class MonJeu extends Observable implements Jeu {
 				m.deplacer(x, y);
 			}
 		} else {
+			p = iaZombi.deplacer(this, m, c);
+			x = (int) p.getX();
+			y = (int) p.getY();
 			if ((!plateau.collision(x, y)) && (!this.collisionHero(x, y))
 					&& (!this.collisionMonstre(x, y, true))) {
 				m.deplacer(x, y);

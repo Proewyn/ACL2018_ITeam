@@ -22,7 +22,7 @@ public class Hero implements Personnage {
 		this.y = 1;
 		this.x_vue = 0;
 		this.y_vue = 0;
-		this.hp = 10;
+		this.hp = Bibliotheque.POINTDEVIEBASEHERO;
 		this.vision = 5;
 		
 	}
@@ -38,7 +38,7 @@ public class Hero implements Personnage {
 		this.x_vue = 0;
 		this.y_vue = 0;
 		this.deplacer(x, y);
-		this.hp = 10;
+		this.hp = Bibliotheque.POINTDEVIEBASEHERO;
 		this.vision = 5;
 	}
 
@@ -166,6 +166,13 @@ public class Hero implements Personnage {
 	@Override
 	public String toString() {
 		return ("(" + this.x+","+this.y+")");
+	}
+
+	@Override
+	public boolean collision(int x2, int y2) {
+		// TODO Auto-generated method stub
+		return x==x2 && y==y2;
+		
 	}
 
 }

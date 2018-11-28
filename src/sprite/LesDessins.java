@@ -158,7 +158,7 @@ public class LesDessins {
 			e.printStackTrace();
 		}
 	}
-
+	
 	/**
 	 * Dessine les elements dans toute la portee du hero
 	 * @param hero avec sa portee
