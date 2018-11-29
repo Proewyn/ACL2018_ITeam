@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 import monJeu.Bibliotheque;
 import monJeu.DessinMonJeu;
@@ -19,14 +20,34 @@ import moteurJeu.MoteurGraphique;
 public class Plateau {
 
 	private Case[][] laby;
-	
+
 	/**
 	 * Constructeur par defaut
 	 */
 	public Plateau (){
-		initLabyGenerateur();
+		String[] choices = { "Lab", "LabImp", "Fusion"};
+		String input = (String) JOptionPane.showInputDialog(null, "Choisir generateur Map",
+				"", JOptionPane.QUESTION_MESSAGE, null, 
+				choices, // Array of choices
+				choices[1]); // Initial choice
+		System.out.println(input);
+		int g;
+		switch(input) {
+			case "Lab":
+				g =1;
+				break;
+			case "LabImp":
+				g = 2;
+				break;
+			case "Fusion" :
+				g = 4;
+				break;
+			default :
+				g = Bibliotheque.GENERATEUR;
+		}
+		initLabyGenerateur(g);
 	}
-	
+
 	public Point getSpawn(){
 		Point p = new Point(10,10);
 		for (int i = 0; i < laby.length; i++) {
@@ -38,11 +59,11 @@ public class Plateau {
 		}
 		return p;
 	}
-	
+
 	public Case[][] getLaby(){
 		return laby;
 	}
-		
+
 	public void setLaby(Case[][] laby) {
 		this.laby = laby;
 	}
@@ -58,7 +79,7 @@ public class Plateau {
 			return false;
 		return !laby[x][y].isTraversable();
 	}
-	
+
 	/**
 	 * Regarde si la case est un mur
 	 * @param i position en Y
@@ -68,7 +89,7 @@ public class Plateau {
 	public boolean isMur(int i, int j) {
 		return laby[i][j].getId() == Bibliotheque.MUR;
 	}
-	
+
 	/**
 	 * Affiche le labyrinthe en texte
 	 */
@@ -80,7 +101,7 @@ public class Plateau {
 			System.out.println();
 		}
 	}
-	
+
 	/**
 	 * Initialise un labyrinthe a partir d'un fichier
 	 * @param jeu le jeu contenant le plateau
@@ -149,13 +170,13 @@ public class Plateau {
 		MoteurGraphique moteur = new MoteurGraphique(jeu, dessinJeu);
 		moteur.lancerJeu();
 	}
-	
+
 	/**
 	 * Initialise un labyrinthe a partir d'un generateur
 	 */
-	public void initLabyGenerateur() {
+	public void initLabyGenerateur(int i) {
 		AbstractGenerateur gen;
-		switch (Bibliotheque.GENERATEUR) {
+		switch (i) {
 		case 1:
 			gen = new GenerateurWormHole();
 			break;
@@ -174,5 +195,5 @@ public class Plateau {
 		}
 		laby = gen.getLab();
 	}
-	
+
 }
