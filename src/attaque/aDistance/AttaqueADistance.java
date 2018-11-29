@@ -4,7 +4,6 @@ import personnage.Monstre;
 import personnage.Personnage;
 import monJeu.Bibliotheque;
 import monJeu.MonJeu;
-import moteurJeu.Commande;
 
 public abstract class AttaqueADistance {
 	public static final int GAUCHE=0;
@@ -18,36 +17,38 @@ public abstract class AttaqueADistance {
 	
 	protected int direction;
 	
-	
+	/**
+	 * Cree un projectile
+	 * @param x position en X
+	 * @param y position en Y
+	 * @param dir direction dans laquelle va le projectile
+	 */
 	public AttaqueADistance(int x,int y,int dir) {
 		this.x=x;
 		this.y=y;
 		this.direction=dir;
-		
-		
 	}
-
 
 	public boolean isaToucher() {
 		return aToucher;
 	}
 
-
 	public void setaToucher(boolean aToucher) {
 		this.aToucher = aToucher;
 	}
-
 
 	public int getX() {
 		return x;
 	}
 
-
 	public int getY() {
 		return y;
 	}
 
-
+	/**
+	 * Deplace le projectile
+	 * @param mj jeu dans lequel se deplace les projectiles
+	 */
 	public void deplacement(MonJeu mj) {
 		if (direction == GAUCHE)
 			x--;
@@ -61,6 +62,10 @@ public abstract class AttaqueADistance {
 		collision(mj);
 	}
 		
+	/**
+	 * Effectue les collision pour chaque projectile
+	 * @param mj jeu dans lequel se deplace les projectiles
+	 */
 	public void collision(MonJeu mj){
 		if (mj.getPlateau().collision(x, y)){
 			aToucher = true;
@@ -82,8 +87,10 @@ public abstract class AttaqueADistance {
 		return Bibliotheque.ATTAQUE;
 	}
 
+	/**
+	 * Effectue les degats du projectile
+	 * @param m personnage subissant les degats
+	 */
 	protected abstract void degat(Personnage m);
 	
-	
-
 }
