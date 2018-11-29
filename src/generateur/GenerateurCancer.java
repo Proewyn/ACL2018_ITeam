@@ -16,11 +16,7 @@ public class GenerateurCancer extends AbstractGenerateur{
 	private static final int NBVIRUS     = 20; 
 
 	/**
-<<<<<<< HEAD
 	 * Constructeur 
-=======
-	 * Constructeur par defaut
->>>>>>> 3a0b079a7ac8f5b4fdc118c24009ba022731d1c4
 	 */
 	public GenerateurCancer() {
 		super();
@@ -57,11 +53,7 @@ public class GenerateurCancer extends AbstractGenerateur{
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Met a jour le tableau des probabilite de propagation des murs
-=======
-	 * Met a jour les probabilites de s'etendre
->>>>>>> 3a0b079a7ac8f5b4fdc118c24009ba022731d1c4
 	 */
 	public void majProba(){
 		for (int i = 0; i < proba.length; i++) {
@@ -100,11 +92,7 @@ public class GenerateurCancer extends AbstractGenerateur{
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Contamine le plateau de murs
-=======
 	 * S'etend sur les cases adjacentes
->>>>>>> 3a0b079a7ac8f5b4fdc118c24009ba022731d1c4
 	 */
 	public void contaminer(){
 		Random r = new Random();

@@ -124,8 +124,7 @@ public class MonJeu extends Observable implements Jeu {
 			listeDObjets.collision(this, x, y);
 			// fait deplacer les monstre
 			for (Monstre m : this.getMonstre()) {
-				this.deplacerMonstre(new DeplacementPathfinding(),
-						new DeplacementPathfindingFantom(), m, commande);
+				this.deplacerMonstre(m, commande);
 			}
 			if (!(commande.gauche || commande.droite || commande.haut || commande.bas)
 					&& commande.attaque) {
@@ -163,9 +162,9 @@ public class MonJeu extends Observable implements Jeu {
 		for(int i = 0 ; i < Bibliotheque.NBMONSTRE ; i++) {
 			rand = r.nextInt(100);
 			if(rand < Bibliotheque.POURCENTFANTOM){
-				this.addMonstreRand(new Fantome()); //ajout de fantome
-			}else{
-				this.addMonstreRand(new Zombi()); // ajout de zombi
+				this.addMonstreRand(new Fantome(new DeplacementPathfindingFantom())); //ajout de fantome
+			}else{ 
+				this.addMonstreRand(new Zombi(new DeplacementPathfinding())); // ajout de zombi
 			}
 		}
 		
@@ -178,13 +177,12 @@ public class MonJeu extends Observable implements Jeu {
 	 * @param m le monstre a deplacer
 	 * @param c la derniere commande effectue par le hero
 	 */
-	public void deplacerMonstre(DeplacementMonstre iaZombi,
-			DeplacementMonstre iaFantome, Monstre m, Commande c) {
+	public void deplacerMonstre(Monstre m, Commande c) {
 		
 		Point p;
 		int x,y;
 		if (m.getId() == Bibliotheque.FANTOME) {
-			p = iaFantome.deplacer(this, m, c);
+			p = m.deplacer(this, c);
 			x = (int) p.getX();
 			y = (int) p.getY();
 			if ((!(x < 0 || y < 0 || x > Bibliotheque.TAILLE_TABLEAUX - 1 || y > Bibliotheque.TAILLE_TABLEAUY - 1))
@@ -193,7 +191,7 @@ public class MonJeu extends Observable implements Jeu {
 				m.deplacer(x, y);
 			}
 		} else {
-			p = iaZombi.deplacer(this, m, c);
+			p = m.deplacer(this, c);
 			x = (int) p.getX();
 			y = (int) p.getY();
 			if ((!plateau.collision(x, y)) && (!this.collisionHero(x, y))

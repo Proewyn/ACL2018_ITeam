@@ -1,5 +1,12 @@
 package personnage;
 
+import java.awt.Point;
+
+import monJeu.MonJeu;
+import moteurJeu.Commande;
+
+import ia.DeplacementMonstre;
+
 /**
  * @author levy54u
  *
@@ -9,11 +16,14 @@ public abstract class Monstre implements Personnage {
 	private int x;
 	private int y;
 	private int Hp;
+		
+	protected DeplacementMonstre ia;
 	
 	/**
 	 * Constructeur par defaut
 	 */
-	public Monstre() {
+	public Monstre(DeplacementMonstre ia) {
+		this.ia = ia;
 		this.x = 0;
 		this.y  = 0;
 		this.Hp = 1;
@@ -30,6 +40,8 @@ public abstract class Monstre implements Personnage {
 		this.Hp = 1;
 	}
 
+	public abstract Point deplacer(MonJeu m , Commande c);
+	
 	@Override
 	public void deplacer(int x2, int y2){
 		this.setX(x2);
