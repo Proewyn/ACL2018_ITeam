@@ -1,6 +1,3 @@
-/**
- * 
- */
 package ia;
 
 import java.awt.Point;
@@ -18,12 +15,13 @@ import moteurJeu.Commande;
 public class DeplacementNaif implements DeplacementMonstre {
 
 	/**
-	 * 
+	 * Constructeur par defaut
 	 */
 	public DeplacementNaif() {
 		
 	}
 
+	@Override
 	public Point deplacer(MonJeu jeu,Monstre m, Commande c) {
 		Point p = new Point();
 		Random r = new Random();

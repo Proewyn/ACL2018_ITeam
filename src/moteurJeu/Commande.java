@@ -14,10 +14,12 @@ public class Commande {
 	public boolean haut;
 	public boolean bas; 
 	public boolean attaque;
+
+	public boolean pause;
 	
 	public Commande()
 	{
-		
+		pause = false;
 	}
 	
 	/**
@@ -32,6 +34,7 @@ public class Commande {
 		this.gauche=commandeACopier.gauche;
 		this.droite=commandeACopier.droite;
 		this.attaque = commandeACopier.attaque;
+		this.pause = commandeACopier.pause;
 	}
 	
 }

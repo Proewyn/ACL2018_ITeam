@@ -29,9 +29,9 @@ public class Bibliotheque {
 	//donnée physique
 	public static int TAILLE_TABLEAUX = 101;	
 	public static int TAILLE_TABLEAUY = 101;	
-	public static final int NBMONSTRE = 30;
+	public static final int NBMONSTRE = 100;
 	public static final int NBOBJET = 50;
-	public static final int DISTANCEVUEMONSTRE = 10;
+	public static final int DISTANCEVUEMONSTRE = 15;
 	public static int VUE_LARGEUR = 21;
 	public static int VUE_HAUTEUR = 21;
 	public static double POURCENTFANTOM  = 50;
@@ -51,6 +51,10 @@ public class Bibliotheque {
 	
 	public static void setTaillePlateauY (int y) {
 		TAILLE_TABLEAUY = y ;
+	}
+	
+	public static boolean ouEx (boolean a, boolean b) {
+		return (a||b)&&(!a&&b);
 	}
 	
 }

@@ -1,11 +1,6 @@
-/**
- * 
- */
 package sprite.spritePersonnage;
 
 import java.awt.Image;
-import java.io.File;
-
 import personnage.Monstre;
 
 /**
@@ -15,12 +10,12 @@ import personnage.Monstre;
 public class DessinFantome extends DessinMonstre {
 
 	/**
-	 * @param m
-	 * @param dessinFantome
+	 * Constructeur pour dessiner les fantomes
+	 * @param m a dessiner
+	 * @param dessinFantome pour le fantome
 	 */
 	public DessinFantome(Monstre m, Image dessinFantome) {
 		super(m, dessinFantome);
-		// TODO Auto-generated constructor stub
 	}
 
 }

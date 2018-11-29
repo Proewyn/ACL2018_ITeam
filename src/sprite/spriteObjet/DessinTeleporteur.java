@@ -1,11 +1,6 @@
-/**
- * 
- */
 package sprite.spriteObjet;
 
 import java.awt.Image;
-import java.io.File;
-
 import objet.Objet;
 
 /**
@@ -15,12 +10,12 @@ import objet.Objet;
 public class DessinTeleporteur extends DessinObjet {
 
 	/**
-	 * @param objet
-	 * @param dessinTeleporteur
+	 * Constructeur pour dessiner un teleporteur
+	 * @param objet a dessiner
+	 * @param dessinTeleporteur pour le teleporteur
 	 */
 	public DessinTeleporteur(Objet objet, Image dessinTeleporteur) {
 		super(objet, dessinTeleporteur);
-		
 	}
 
 }

@@ -168,4 +168,11 @@ public class Hero implements Personnage {
 		return ("(" + this.x+","+this.y+")");
 	}
 
+	@Override
+	public boolean collision(int x2, int y2) {
+		// TODO Auto-generated method stub
+		return x==x2 && y==y2;
+		
+	}
+
 }

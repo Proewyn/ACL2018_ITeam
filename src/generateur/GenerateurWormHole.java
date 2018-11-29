@@ -13,8 +13,8 @@ public class GenerateurWormHole extends AbstractGenerateur {
 
 	private boolean[][] traverser;
 
-	/*
-	 * 
+	/**
+	 * Constructeur par defaut
 	 */
 	public GenerateurWormHole() {
 		super();
@@ -35,7 +35,6 @@ public class GenerateurWormHole extends AbstractGenerateur {
 			}
 		}
 		lab[x][y] = new Spawn();
-		
 		do {
 			genererRetour();	
 		} while (traverser[x][y]);
@@ -56,7 +55,6 @@ public class GenerateurWormHole extends AbstractGenerateur {
 		ArrayList<Integer> list = new ArrayList<>();
 		Random rand = new Random();
 		int randint = rand.nextInt(100);
-				
 		if (y - 2 >= 0 		   	  && lab[x][y - 2] 	== null)
 			list.add(0);
 		if (x + 2 < lab.length 	  && lab[x + 2][y]	== null )
@@ -65,7 +63,6 @@ public class GenerateurWormHole extends AbstractGenerateur {
 			list.add(2);
 		if (x - 2 >= 0 			   && lab[x - 2][y] == null)
 			list.add(3);
-
 		if (list.size() != 0) {
 			randint = list.get(rand.nextInt(list.size()));
 			switch (randint) {
@@ -99,9 +96,7 @@ public class GenerateurWormHole extends AbstractGenerateur {
 				break;
 			default:
 				break;
-
 			}
-
 		} else {
 			list.clear();
 			if (y - 1 >= 0 && lab[x][y - 1] 			!= null && traverser[x][y - 1])
@@ -138,7 +133,5 @@ public class GenerateurWormHole extends AbstractGenerateur {
 			}
 		}
 	}
-
-	
 
 }

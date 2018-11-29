@@ -1,11 +1,6 @@
-/**
- * 
- */
 package sprite.spriteObjet;
 
 import java.awt.Image;
-import java.io.File;
-
 import objet.Objet;
 
 /**
@@ -15,12 +10,12 @@ import objet.Objet;
 public class DessinCoffreDeClef extends DessinObjet {
 
 	/**
-	 * @param objet
-	 * @param urlImage
+	 * Constructeur pour dessiner un coffre avec clef
+	 * @param objet a dessiner
+	 * @param image pour le coffre avec clef
 	 */
 	public DessinCoffreDeClef(Objet objet, Image image) {
 		super(objet, image);
-		// TODO Auto-generated constructor stub
 	}
 
 }

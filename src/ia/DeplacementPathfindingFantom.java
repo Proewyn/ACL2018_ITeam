@@ -21,7 +21,6 @@ public class DeplacementPathfindingFantom implements DeplacementMonstre{
 		if(pc.DistanceArriver(depart) < Bibliotheque.DISTANCEVUEMONSTRE) {
 			double d = Double.MAX_VALUE;
 			double dd = Double.MAX_VALUE;
-
 			if(depart.x+1 < Bibliotheque.TAILLE_TABLEAUX) {
 				dd = pc.DistanceArriver(p = new Point(depart.x+1, depart.y));
 				if( dd  < d) {

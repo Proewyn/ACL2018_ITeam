@@ -1,56 +1,71 @@
 package attaque.aDistance;
 
 import personnage.Monstre;
+import personnage.Personnage;
 import monJeu.Bibliotheque;
 import monJeu.MonJeu;
-import moteurJeu.Commande;
 
 public abstract class AttaqueADistance {
+	public static final int GAUCHE=0;
+	public static final int DROITE=1;
+	public static final int HAUT=2;
+	public static final int Bas=3;
 	
 	public boolean aToucher;
 	protected int x;
 	protected int y;
-	protected Commande direction;
 	
+	protected int direction;
 	
-	public AttaqueADistance(int x,int y,Commande dir) {
+	/**
+	 * Cree un projectile
+	 * @param x position en X
+	 * @param y position en Y
+	 * @param dir direction dans laquelle va le projectile
+	 */
+	public AttaqueADistance(int x,int y,int dir) {
 		this.x=x;
 		this.y=y;
 		this.direction=dir;
 	}
 
-
 	public boolean isaToucher() {
 		return aToucher;
 	}
-
 
 	public void setaToucher(boolean aToucher) {
 		this.aToucher = aToucher;
 	}
 
-
 	public int getX() {
 		return x;
 	}
-
 
 	public int getY() {
 		return y;
 	}
 
-
+	/**
+	 * Deplace le projectile
+	 * @param mj jeu dans lequel se deplace les projectiles
+	 */
 	public void deplacement(MonJeu mj) {
-		if (direction.gauche)
+		if (direction == GAUCHE)
 			x--;
-		if (direction.droite)
+		if (direction == DROITE)
 			x++;
-		if (direction.haut)	
+		if (direction == HAUT)
 			y--;
-		if (direction.bas)
+		if (direction == Bas)
 			y++;
+		collision(mj);
+	}
 		
-		
+	/**
+	 * Effectue les collision pour chaque projectile
+	 * @param mj jeu dans lequel se deplace les projectiles
+	 */
+	public void collision(MonJeu mj){
 		if (mj.getPlateau().collision(x, y)){
 			aToucher = true;
 		}else{
@@ -59,7 +74,10 @@ public abstract class AttaqueADistance {
 					degat(m);
 					aToucher = true;
 				}
-				
+			}
+			if (mj.getPj().collision(x,y)){
+				degat(mj.getPj());
+				aToucher = true;
 			}
 		}
 	}
@@ -68,8 +86,10 @@ public abstract class AttaqueADistance {
 		return Bibliotheque.ATTAQUE;
 	}
 
-	protected abstract void degat(Monstre m);
+	/**
+	 * Effectue les degats du projectile
+	 * @param m personnage subissant les degats
+	 */
+	protected abstract void degat(Personnage m);
 	
-	
-
 }

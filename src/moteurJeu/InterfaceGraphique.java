@@ -94,7 +94,13 @@ public class InterfaceGraphique implements Observer {
 			this.reset();
 		}
 		else {
-			this.stat.hp.setText("Point de vie : " + jeu.getPj().getHp());
+			if (jeu.isEnPause())
+				this.stat.pause.setText("PAUSE!!!!!!!!!!!");
+			
+			else{
+				this.stat.hp.setText("Point de vie : " + jeu.getPj().getHp());
+				this.stat.pause.setText("");
+			}
 		}
 	}
 

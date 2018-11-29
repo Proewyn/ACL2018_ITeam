@@ -13,17 +13,14 @@ import moteurJeu.Commande;
 public class DeplacementMiroir implements DeplacementMonstre {
 
 	private DeplacementNaif d;
+	
 	/**
-	 * 
+	 * Constructeur par defaut
 	 */
 	public DeplacementMiroir() {
-		// TODO Auto-generated constructor stub
 		d = new DeplacementNaif();
 	}
-
-	/* (non-Javadoc)
-	 * @see monJeu.DeplacementMonstre#deplacer(monJeu.Monstre, moteurJeu.Commande)
-	 */
+	
 	@Override
 	public Point deplacer(MonJeu jeu, Monstre m, Commande commande) {
 		Point p = new Point();

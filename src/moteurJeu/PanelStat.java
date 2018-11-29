@@ -12,7 +12,7 @@ import monJeu.MonJeu;
 public class PanelStat extends JPanel{
 	
 	protected JLabel hp;
-	
+	protected JLabel pause;
 	/**
 	 * Cree un Panel pour l'affichage de diverses statistiques
 	 * @param jeu donnant les informations au Panel
@@ -22,7 +22,9 @@ public class PanelStat extends JPanel{
 		this.setPreferredSize(new Dimension(150, 100));
 		hp = new JLabel("Point de vie : " + jeu.getPj().getHp());
 		add(new JLabel("Player 1"));
+		pause = new JLabel();
 		add(hp);
+		add(pause);
 	}
 
 }

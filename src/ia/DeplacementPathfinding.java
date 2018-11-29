@@ -34,7 +34,6 @@ public class DeplacementPathfinding implements DeplacementMonstre {
 					poid[i][j] = Integer.MAX_VALUE;
 				}
 			}
-
 			poid[depart.x][depart.y] = 0;
 			poid = getPathFromTo(plateau, depart, arriver, poid);
 			retour = getNextPointTo(arriver, poid);
@@ -98,10 +97,8 @@ public class DeplacementPathfinding implements DeplacementMonstre {
 				}
 			}
 		}
-
 		return poid;
 	}
-
 
 	/**
 	 * Retourne la liste des point accessible depuis un autre point
@@ -123,7 +120,6 @@ public class DeplacementPathfinding implements DeplacementMonstre {
 		if(depart.y-1 > 0 && plateau[depart.x][depart.y - 1].isTraversable()) {
 			ptAccessible.add(new Point(depart.x,depart.y - 1));
 		}
-
 		return ptAccessible;
 	}
 
