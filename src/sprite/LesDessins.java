@@ -37,6 +37,7 @@ import sprite.spritePersonnage.DessinMonstre;
 import sprite.spritePersonnage.DessinZombie;
 
 public class LesDessins {
+	
 	private LesDessinsObjets dessinObjets;
 	private LesDessinsCases dessinCases;
 	private LesDessinsPersonnages dessinPerso;
@@ -132,7 +133,6 @@ public class LesDessins {
 		this.dessinAttaque = new DessinAttaque(dessinFlamme);
 
 		this.dessinPerso = new LesDessinsPersonnages(new DessinHero(hero, dessinHero), new LesDessinsMonstres(dm));
-
 	}
 
 	/**
@@ -157,7 +157,6 @@ public class LesDessins {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**

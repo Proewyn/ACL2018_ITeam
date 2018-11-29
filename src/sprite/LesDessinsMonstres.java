@@ -25,8 +25,7 @@ public class LesDessinsMonstres{
 	public LesDessinsMonstres(List<DessinMonstre> dessinsMonstres) {
 		this.dessinsMonstres = dessinsMonstres;
 	}
-
-
+	
 	/**
 	 * Dessine les monstres dans toute la portee du hero
 	 * @param hero avec sa portee

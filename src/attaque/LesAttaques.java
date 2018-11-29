@@ -15,16 +15,14 @@ public class LesAttaques {
 	 */
 	public LesAttaques(List<AttaqueADistance> a) {
 		attaques = a;
-		
 	}
 	
 	/**
 	 * Deplace les projectiles
 	 * @param mj jeu dans lequel se deplace les projectiles
 	 */
-	public void deplacement(MonJeu mj){
-		for (AttaqueADistance ad : attaques){
-			
+	public void deplacement(MonJeu mj) {
+		for (AttaqueADistance ad : attaques) {
 			ad.deplacement(mj);
 		}
 		cleanAttaque();
@@ -49,11 +47,11 @@ public class LesAttaques {
 	 * Ajoute un projectile a la liste des attaques
 	 * @param a
 	 */
-	public void addAttaque(AttaqueADistance a){
+	public void addAttaque(AttaqueADistance a) {
 		attaques.add(a);
 	}
 	
-	public List<AttaqueADistance> getAttaques(){
+	public List<AttaqueADistance> getAttaques() {
 		return attaques;
 	}
 

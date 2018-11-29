@@ -9,8 +9,8 @@ import java.awt.image.BufferedImage;
  *
  */
 public class DessinGameOver {
+	
 	protected Image gameOver;
-
 
 	/**
 	 * Constructeur pour dessiner la defaite
@@ -18,7 +18,6 @@ public class DessinGameOver {
 	 */
 	public DessinGameOver(Image gameOver) {
 		this.gameOver = gameOver;
-		
 	}
 	
 	/**

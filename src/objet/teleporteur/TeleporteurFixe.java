@@ -26,9 +26,5 @@ public class TeleporteurFixe extends Teleporteur {
 			listeTeleporteur.get(lien).setVienDApparaitre(true);
 		}
 	}
-
 	
-
-
-
 }

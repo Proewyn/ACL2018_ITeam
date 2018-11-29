@@ -23,7 +23,7 @@ public class Bibliotheque {
 	//parametre graphique
 	public static final int TAILLE_CASE = 35;
 	public static final int TAILLE_OBJET = TAILLE_CASE/2 ;
-	public static boolean VUEPLATEAUENTIERDEFAULT = true;
+	public static boolean VUEPLATEAUENTIERDEFAULT = false;
 	public static int TIMERRAFRAICHISSEMENTMS = 100;
 	
 	//donnée physique
@@ -37,11 +37,9 @@ public class Bibliotheque {
 	public static double POURCENTFANTOM  = 30;
 	public static int POINTDEVIEBASEHERO = 15;
 	
-	/**
+	/*
 	 * 1 : Generateur WormHole
 	 * 2 : Generateur WormHoleImparfait
-	 * 3 : Generateur Cancer
-	 * 4 : Generateur Fusion
 	 */
 	public static final int GENERATEUR = 2;
 	
@@ -51,10 +49,6 @@ public class Bibliotheque {
 	
 	public static void setTaillePlateauY (int y) {
 		TAILLE_TABLEAUY = y ;
-	}
-	
-	public static boolean ouEx (boolean a, boolean b) {
-		return (a||b)&&(!a&&b);
 	}
 	
 }

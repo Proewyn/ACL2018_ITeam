@@ -24,7 +24,6 @@ public class Hero implements Personnage {
 		this.y_vue = 0;
 		this.hp = Bibliotheque.POINTDEVIEBASEHERO;
 		this.vision = 5;
-		
 	}
 	
 	/**

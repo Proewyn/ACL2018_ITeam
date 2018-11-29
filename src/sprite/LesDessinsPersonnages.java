@@ -11,6 +11,7 @@ import sprite.spritePersonnage.DessinHero;
  *
  */
 public class LesDessinsPersonnages {
+	
 	private LesDessinsMonstres dessinsMonstres;
 	private DessinHero dessinHero;
 
@@ -23,7 +24,6 @@ public class LesDessinsPersonnages {
 		this.dessinHero = dessinHero;
 		this.dessinsMonstres = dessinsMonstres;
 	}
-
 
 	/**
 	 * Dessine les personnages dans toute la portee du hero
@@ -44,6 +44,5 @@ public class LesDessinsPersonnages {
 		this.dessinHero.dessiner(crayon);
 		this.dessinsMonstres.dessinerPorteeVision(hero,crayon);
 	}
-
 
 }

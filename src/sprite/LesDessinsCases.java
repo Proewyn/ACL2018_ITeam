@@ -11,6 +11,7 @@ import sprite.spriteCase.DessinCase;
  *
  */
 public class LesDessinsCases {
+	
 	private DessinCase[][] dc;
 
 	/**
@@ -22,7 +23,6 @@ public class LesDessinsCases {
 		for(int i = 0 ;i<dec.length;i++) {
 			for(int j = 0 ;j<dec[0].length;j++) {
 				this.dc[i][j] = dec[i][j];
-				
 			}
 		}
 	}

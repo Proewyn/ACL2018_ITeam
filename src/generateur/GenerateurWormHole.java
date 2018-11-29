@@ -21,7 +21,7 @@ public class GenerateurWormHole extends AbstractGenerateur {
 		traverser = new boolean[Bibliotheque.TAILLE_TABLEAUX-2][Bibliotheque.TAILLE_TABLEAUY-2];
 	}
 
-	/*
+	/**
 	 * Genere un labyrinthe parfait (Algorithme Exhaustif)
 	 */
 	public void generer() {

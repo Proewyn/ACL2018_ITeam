@@ -17,7 +17,6 @@ public class CoffreDeClef extends Coffre {
 	@Override
 	public void action(MonJeu mj) {
 		pasTrouve=false;
-
 	}
 	
 	@Override

@@ -12,12 +12,11 @@ import plateau.Case;
 
 public class DeplacementPathfinding implements DeplacementMonstre {
 
-	/*
+	@Override
+	/**
 	 * Gere un deplacement avec pathfinding (Algorithme wA*) 
 	 * Dans le cas ou le monstre est a une distance importante du joueur le deplacement est gerer par un deplacement naif 
-	 * 
 	 */
-	@Override
 	public Point deplacer(MonJeu jeu, Monstre m, Commande c) {
 		Point retour = new Point(0,0);
 		Case[][] plateau = jeu.getPlateau().getLaby();
@@ -71,7 +70,6 @@ public class DeplacementPathfinding implements DeplacementMonstre {
 		}
 		return getNextPointTo(pointMin, poid);
 	}
-
 
 	/**
 	 * Determine un tableau avec la distance necessaire pour l'atteindre 

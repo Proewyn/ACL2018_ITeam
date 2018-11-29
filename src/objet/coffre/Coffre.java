@@ -24,7 +24,6 @@ public abstract class Coffre implements Objet {
 	public void Collision(MonJeu mj, int x, int y) {
 		if(pasTrouve && this.x==x && this.y==y)
 			this.action(mj);
-
 	}
 
 	@Override

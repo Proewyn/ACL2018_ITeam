@@ -3,7 +3,6 @@ package monJeu;
 import ia.*;
 
 import java.awt.Point;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Random;
@@ -54,8 +53,6 @@ public class MonJeu extends Observable implements Jeu {
 		enPause=false;
 	}
 	
-	
-
 	/**
 	 * Constructeur avec un plateau donnee
 	 * @param plateau donnee en entree pour initialiser le labyrinthe
@@ -255,15 +252,6 @@ public class MonJeu extends Observable implements Jeu {
 		return plateau;
 	}
 
-	/**
-	 * Initialise un labyrinthe a partir d'un fichier
-	 * @throws FileNotFoundException
-	 * @throws InterruptedException
-	 */
-	public void initLabyFichier() throws FileNotFoundException, InterruptedException {
-		plateau.initLabyFichier(this);
-	}
-	
 	public boolean isGagne() {
 		return gagne;
 	}
@@ -370,12 +358,11 @@ public class MonJeu extends Observable implements Jeu {
 		return enPause;
 	}
 
-
-
 	/**
 	 * surcharge toString
 	 */
 	public String toString() {
 		return ("" + this.getPj());
 	}
+	
 }

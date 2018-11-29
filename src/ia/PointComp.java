@@ -6,6 +6,7 @@ import java.util.Comparator;
 public class PointComp implements Comparator<Point> {
 
 	Point arriver;
+	
 	public PointComp(Point arriver) {
 		this.arriver = arriver; 
 	}
@@ -30,7 +31,6 @@ public class PointComp implements Comparator<Point> {
 	} 
 	
 	/**
-	 * 
 	 * @param depart
 	 * @return
 	 */

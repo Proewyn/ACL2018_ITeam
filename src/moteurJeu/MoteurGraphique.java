@@ -29,11 +29,9 @@ public class MoteurGraphique {
 	 * @throws InterruptedException
 	 */
 	public void lancerJeu() throws InterruptedException {
-
 		// creation de l'interface graphique
 		this.gui = new InterfaceGraphique(this.dessin, Bibliotheque.TAILLE_CASE*Bibliotheque.VUE_LARGEUR, Bibliotheque.TAILLE_CASE*Bibliotheque.VUE_HAUTEUR, jeu);
 		Controleur controle = this.gui.getControleur();
-
 		// boucle de jeu
 		while (!this.jeu.etreFini()) {
 			// demande controle utilisateur

@@ -17,10 +17,10 @@ public class GenerateurWormHoleImparfait extends GenerateurWormHole{
 		super();
 	}
 
+	@Override
 	/**
 	 * Utilise le generateur de labyrinthe parfait et creuse des trous aleatoirement 
 	 */
-	@Override
 	public void generer() {
 		super.generer();
 		int nbmur = 0;

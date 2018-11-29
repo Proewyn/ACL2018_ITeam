@@ -11,6 +11,7 @@ import personnage.Hero;
  *
  */
 public abstract class DessinObjet {
+	
 	protected Objet objet;
 	protected Image dessinObjet;
 

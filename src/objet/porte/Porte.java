@@ -21,13 +21,10 @@ public abstract class Porte implements Objet {
 	public void Collision(MonJeu mj, int x, int y) {
 		if(!clef.isPasTrouve() && this.x==x && this.y==y)
 			this.action(mj);
-
 	}
-
 
 	@Override
 	public int getId() {
-		
 		return Bibliotheque.PORTE;
 	}
 

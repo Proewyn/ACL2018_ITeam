@@ -13,6 +13,7 @@ public class PanelStat extends JPanel{
 	
 	protected JLabel hp;
 	protected JLabel pause;
+	
 	/**
 	 * Cree un Panel pour l'affichage de diverses statistiques
 	 * @param jeu donnant les informations au Panel

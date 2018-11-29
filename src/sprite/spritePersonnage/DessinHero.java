@@ -10,6 +10,7 @@ import personnage.Hero;
  *
  */
 public class DessinHero { 
+	
 	private Hero hero;
 	private Image imageHero;
 
@@ -19,7 +20,6 @@ public class DessinHero {
 	 * @param dessinHero pour le hero
 	 */
 	public DessinHero(Hero hero, Image dessinHero) {
-		
 		this.hero = hero ;
 		this.imageHero = dessinHero;
 	}

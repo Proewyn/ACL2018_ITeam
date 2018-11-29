@@ -18,7 +18,7 @@ public class CoffreTeleporteur extends Coffre {
 		super(x, y);
 	}
 	
-	public void action(MonJeu mj){
+	public void action(MonJeu mj) {
 		Plateau p = mj.getPlateau();
 		Objets o = mj.getListeDObjets();
 		Random r= new Random();

@@ -27,7 +27,6 @@ public class PanelDessin extends JPanel {
 		this.width = x;
 		this.height = y;
 		this.dessin=affiche;
-
 		// cree l'image buffer et son graphics
 		this.imageSuivante = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		this.imageEnCours = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);

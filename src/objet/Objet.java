@@ -10,8 +10,8 @@ public interface Objet {
 	 * @param x position en X
 	 * @param y position en Y
 	 */
-	
 	public void Collision (MonJeu mj,int x, int y);
+	
 	/**
 	 * Effectue l'action de l'objet
 	 * @param mj jeu permettant d'agir

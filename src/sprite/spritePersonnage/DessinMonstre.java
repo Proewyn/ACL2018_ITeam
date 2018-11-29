@@ -23,7 +23,6 @@ public abstract class DessinMonstre {
 	public DessinMonstre(Monstre m ,Image dessinMonstre) {
 		this.m = m;
 		this.imageMonstre = dessinMonstre;
-
 	}
 
 	public Monstre getMonstre() {
@@ -43,7 +42,7 @@ public abstract class DessinMonstre {
 					(this.m.getY() - hero.getYVue())* Bibliotheque.TAILLE_CASE, 
 					Bibliotheque.TAILLE_CASE, 
 					Bibliotheque.TAILLE_CASE,null);
-			}
+		}
 	}
 	
 	/**

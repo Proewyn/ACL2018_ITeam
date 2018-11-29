@@ -14,7 +14,6 @@ public class Commande {
 	public boolean haut;
 	public boolean bas; 
 	public boolean attaque;
-
 	public boolean pause;
 	
 	public Commande()

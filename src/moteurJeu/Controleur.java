@@ -32,10 +32,7 @@ public class Controleur implements KeyListener {
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
-
-		
-		
+	public void keyPressed(KeyEvent e) {		
 		switch (e.getKeyCode()) {
 		// si on appuie sur 'q',commande joueur est gauche
 		case KeyEvent.VK_Q:	
@@ -85,7 +82,6 @@ public class Controleur implements KeyListener {
 			this.commandeARetourner.gauche = false;
 			this.commandeARetourner.droite = false;
 			break;
-			
 		case KeyEvent.VK_SPACE:
 			this.commandeEnCours.attaque = true;
 			break;
@@ -117,7 +113,6 @@ public class Controleur implements KeyListener {
 		case KeyEvent.VK_SPACE:
 			this.commandeEnCours.attaque = false;
 			break;
-		
 		}
 	}
 

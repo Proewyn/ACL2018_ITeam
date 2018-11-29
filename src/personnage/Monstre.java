@@ -21,6 +21,7 @@ public abstract class Monstre implements Personnage {
 	
 	/**
 	 * Constructeur par defaut
+	 * @param ia IA pour le monstre cree
 	 */
 	public Monstre(DeplacementMonstre ia) {
 		this.ia = ia;
@@ -33,11 +34,13 @@ public abstract class Monstre implements Personnage {
 	 * Cree un monstre avec une position
 	 * @param x position en X
 	 * @param y position en Y
+	 * @param ia IA pour le monstre cree
 	 */
-	public Monstre(int x, int y){
+	public Monstre(int x, int y, DeplacementMonstre ia){
 		this.x = x;
 		this.y = y;
 		this.Hp = 1;
+		this.ia = ia;
 	}
 
 	public abstract Point deplacer(MonJeu m , Commande c);
