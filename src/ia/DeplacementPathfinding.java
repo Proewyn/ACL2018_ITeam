@@ -29,23 +29,19 @@ public class DeplacementPathfinding implements DeplacementMonstre {
 					poid[i][j] = Integer.MAX_VALUE;
 				}
 			}
-
 			poid[depart.x][depart.y] = 0;
 			poid = getPathFromTo(plateau, depart, arriver, poid);
-			/*
-			for (int i = 0; i < poid.length; i++) {
-				for (int j = 0; j < poid[0].length; j++) {
-					System.out.print(poid[i][j] < 10 ? poid[i][j]+" ||" :( poid[i][j] == Integer.MAX_VALUE  ? "##||" : +poid[i][j]+"||"));
-				}
-				System.out.println();
-			}
-			System.out.println();*/
 			retour = getNextPointTo(arriver, poid);
-
 		}
 		return retour;
 	}
 
+	/**
+	 * 
+	 * @param depart
+	 * @param poid
+	 * @return
+	 */
 	public Point getNextPointTo(Point depart, int[][] poid) {
 		int poidMin = poid[depart.x][depart.y];
 		Point pointMin = new Point(0,0);
@@ -71,20 +67,21 @@ public class DeplacementPathfinding implements DeplacementMonstre {
 		return getNextPointTo(pointMin, poid);
 	}
 
-
+	/**
+	 * 
+	 * @param plateau
+	 * @param depart
+	 * @param arriver
+	 * @param poid
+	 * @return
+	 */
 	public int[][] getPathFromTo(Case[][] plateau, Point depart, Point arriver, int[][] poid) {
 		ArrayList<Point> ptAccessible;
 		ptAccessible = getPointAccessible(plateau, depart);
 		if(depart.equals(arriver)){
-			//poid[arriver.x][arriver.y] = 142;
 			return poid;
 		}
 		Collections.sort(ptAccessible, new PointComp(arriver));
-		/*for (Point point : ptAccessible) {
-			System.out.println(point.x+ " "+point.y+" Distance : "+ new PointComp(arriver).Distance(point.x, point.y, arriver.x, arriver.y));
-		}
-		System.out.println("||||||||||||||||");
-		 */
 		for (Point p : ptAccessible) {
 			if(poid[p.x][p.y] > poid[depart.x][depart.y]+1){
 				poid[p.x][p.y]  = poid[depart.x][depart.y] + 1; 
@@ -94,11 +91,15 @@ public class DeplacementPathfinding implements DeplacementMonstre {
 				}
 			}
 		}
-
 		return poid;
 	}
 
-
+	/**
+	 * 
+	 * @param plateau
+	 * @param depart
+	 * @return
+	 */
 	public ArrayList<Point> getPointAccessible(Case[][] plateau, Point depart) {
 		ArrayList<Point> ptAccessible = new ArrayList<Point>();
 		if(depart.x+1 < plateau.length && plateau[depart.x + 1][depart.y].isTraversable()) {
@@ -113,7 +114,6 @@ public class DeplacementPathfinding implements DeplacementMonstre {
 		if(depart.y-1 > 0 && plateau[depart.x][depart.y - 1].isTraversable()) {
 			ptAccessible.add(new Point(depart.x,depart.y - 1));
 		}
-
 		return ptAccessible;
 	}
 

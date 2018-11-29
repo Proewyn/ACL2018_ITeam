@@ -1,6 +1,3 @@
-/**
- * 
- */
 package ia;
 
 import java.awt.Point;
@@ -18,20 +15,13 @@ import moteurJeu.Commande;
 public class DeplacementNaif implements DeplacementMonstre {
 
 	/**
-	 * 
+	 * Constructeur par defaut
 	 */
 	public DeplacementNaif() {
 		
 	}
 
-	
-	
-	/**
-	 * @param jeu : le jeu dans lequel on utilise le deplacement
-	 * @param m : le monstre que l'on veut deplacer
-	 * @param c : inutilise
-	 * @return p : point ou l'on souhaite deplacer le monstre
-	 */
+	@Override
 	public Point deplacer(MonJeu jeu,Monstre m, Commande c) {
 		Point p = new Point();
 		Random r = new Random();

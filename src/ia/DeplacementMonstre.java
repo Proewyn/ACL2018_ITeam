@@ -1,6 +1,3 @@
-/**
- * 
- */
 package ia;
 
 import java.awt.Point;
@@ -17,7 +14,7 @@ import moteurJeu.Commande;
 public interface DeplacementMonstre {
 	
 	/**
-	 * 
+	 * Deplace les monstres dans le jeu
 	 * @param jeu : le jeu dans lequel on utilise le deplacement
 	 * @param m : le monstre que l'on veut deplacer
 	 * @param c : commande du monstre

@@ -8,6 +8,9 @@ import plateau.Spawn;;
 
 public class GenerateurFusion extends AbstractGenerateur{
 
+	/**
+	 * Constructeur par defaut
+	 */
 	public GenerateurFusion() {
 		super();
 		for (int i = 0; i < lab.length; i++) {

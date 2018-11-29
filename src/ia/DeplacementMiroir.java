@@ -13,21 +13,14 @@ import moteurJeu.Commande;
 public class DeplacementMiroir implements DeplacementMonstre {
 
 	private DeplacementNaif d;
-	/**
-	 * 
-	 */
-	public DeplacementMiroir() {
-		// TODO Auto-generated constructor stub
-		d = new DeplacementNaif();
-	}
-
 	
 	/**
-	 * @param jeu : le jeu dans lequel on utilise le deplacement
-	 * @param m : le monstre que l'on veut deplacer
-	 * @param c : commande du monstre
-	 * @return p : point ou l'on souhaite deplacer le monstre
+	 * Constructeur par defaut
 	 */
+	public DeplacementMiroir() {
+		d = new DeplacementNaif();
+	}
+	
 	@Override
 	public Point deplacer(MonJeu jeu, Monstre m, Commande commande) {
 		Point p = new Point();

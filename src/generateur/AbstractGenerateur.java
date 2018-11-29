@@ -6,11 +6,13 @@ import monJeu.Bibliotheque;
 
 public abstract class AbstractGenerateur {
 
-	
 	protected Case[][] lab;
 	protected int x;
 	protected int y;
 	
+	/**
+	 * Constructeur par defaut
+	 */
 	public AbstractGenerateur() {
 		lab = new Case[Bibliotheque.TAILLE_TABLEAUX-2][Bibliotheque.TAILLE_TABLEAUY-2];
 	}
@@ -21,8 +23,14 @@ public abstract class AbstractGenerateur {
 		return lab;
 	}
 	
+	/**
+	 * Genere un labyrinthe
+	 */
 	public abstract void generer();
 	
+	/**
+	 * Ajoute des murs aux extremites du labyrinthe
+	 */
 	public void addBordure(){
 		Case[][] lab2 = new Case[lab.length+2][lab[0].length+2];
 		for (int i = 0; i < lab.length; i++) {

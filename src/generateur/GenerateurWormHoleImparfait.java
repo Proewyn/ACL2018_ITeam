@@ -10,6 +10,9 @@ public class GenerateurWormHoleImparfait extends GenerateurWormHole{
 
 	private int POURCENTNBTROU = 20;
 
+	/**
+	 * Constructeur par defaut
+	 */
 	public GenerateurWormHoleImparfait() {
 		super();
 	}

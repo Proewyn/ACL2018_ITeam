@@ -15,6 +15,9 @@ public class GenerateurCancer extends AbstractGenerateur{
 	private static final int NBITERATION = 5; 
 	private static final int NBVIRUS     = 20; 
 
+	/**
+	 * Constructeur par defaut
+	 */
 	public GenerateurCancer() {
 		super();
 		proba = new int[Bibliotheque.TAILLE_TABLEAUX-2][Bibliotheque.TAILLE_TABLEAUY-2];
@@ -45,6 +48,9 @@ public class GenerateurCancer extends AbstractGenerateur{
 
 	}
 
+	/**
+	 * Met a jour les probabilites de s'etendre
+	 */
 	public void majProba(){
 		for (int i = 0; i < proba.length; i++) {
 			for (int j = 0; j < proba[0].length; j++) {
@@ -81,6 +87,9 @@ public class GenerateurCancer extends AbstractGenerateur{
 		}
 	}
 
+	/**
+	 * S'etend sur les cases adjacentes
+	 */
 	public void contaminer(){
 		Random r = new Random();
 		for (int i = 0; i < proba.length; i++) {
